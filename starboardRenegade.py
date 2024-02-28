@@ -478,16 +478,16 @@ class planet():  # Planet Class
         # Determines if temperature follows circadian rhythm
         self.temperatureSwings = False
         if self.uwp[2] == 0 or self.uwp[2] == 1:
-            climate_roll = twodsix(0)
+            climate_roll = d(2,6,0)
             self.temperatureSwings = True
 
         # Rolls a number with DM based on atmosphere roll
-        if self.uwp[2] == 2 or self.uwp[2] == 3: climate_roll = twodsix(-2)
-        if self.uwp[2] == 4 or self.uwp[2] == 5 or self.uwp[2] == 14: climate_roll = twodsix(-1)
-        if self.uwp[2] == 6 or self.uwp[2] == 7: climate_roll = twodsix(0)
-        if self.uwp[2] == 8 or self.uwp[2] == 9: climate_roll = twodsix(+1)
-        if self.uwp[2] == 10 or self.uwp[2] == 13 or self.uwp[2] == 15: climate_roll = twodsix(+2)
-        if self.uwp[2] == 11 or self.uwp[2] == 12: climate_roll = twodsix(+6)
+        if self.uwp[2] == 2 or self.uwp[2] == 3: climate_roll = d(2,6,-2)
+        if self.uwp[2] == 4 or self.uwp[2] == 5 or self.uwp[2] == 14: climate_roll = d(2,6,-1)
+        if self.uwp[2] == 6 or self.uwp[2] == 7: climate_roll = d(2,6,0)
+        if self.uwp[2] == 8 or self.uwp[2] == 9: climate_roll = d(2,6,1)
+        if self.uwp[2] == 10 or self.uwp[2] == 13 or self.uwp[2] == 15: climate_roll = d(2,6,2)
+        if self.uwp[2] == 11 or self.uwp[2] == 12: climate_roll = d(2,6,6)
 
         # Sets planet climate based on roll
         if climate_roll <= 2: self.climate = [-100, -51, 'Frozen']
@@ -506,7 +506,7 @@ class planet():  # Planet Class
         if self.uwp[2] != 13:
             if self.climate[2] == 'Hot': modifier = -2
             if self.climate[2] == 'Roasting': modifier = -6
-        self.uwp[3] = twodsix(modifier)
+        self.uwp[3] = d(2,6,modifier)
         if self.uwp[1] <= 1 or self.uwp[3] < 0: self.uwp[3] = 0
 
         # Sets roll limit
