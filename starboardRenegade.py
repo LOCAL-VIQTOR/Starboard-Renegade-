@@ -15,12 +15,11 @@
 #    |\____/0207\____/0407\____/0607\____/0807\|
 #    |/0108\____/0308\____/0508\____/0708\____/|    By LOCAL-VIQTOR
 #    |\____/0208\____/0408\____/0608\____/0808\|
-#    |/____\____/____\____/____\____/____\____/|    Build 2024.01.26
+#    |/____\____/____\____/____\____/____\____/|    GitHub Build
 
 import random
 import math
 from time import sleep
-
 
 #    ____  ___   _____ __________
 #   / __ )/   | / ___//  _/ ____/
@@ -52,7 +51,6 @@ def hexSwitch(number):  # Takes a decimal and returns a hexadecimal string
     if number == 18: return 'J'
     if number == 19: return 'K'
     if number == 20: return 'L'
-
 
 def alphaSwitch(numLet):  # Takes either a number or a
     if str(numLet).isdigit() == True:  # letter and returns the inverse
@@ -110,8 +108,7 @@ def alphaSwitch(numLet):  # Takes either a number or a
         if numLet == 'Y': return 25
         if numLet == 'Z': return 26
 
-
-def generateName():
+def generateName(): # List of first names, middle names as letters, and nouns as last name (See: Toast of London)
     first_names = ['John', 'Steven', 'Mark', 'Caitlyn', 'Stella', 'Jessica', 'James', 'Robert', 'Michael', 'David',
                    'William', 'Richard', 'Joseph', 'Thomas', 'Christopher', 'Calvin', 'Mary', 'Patricia',
                    'Jennifer', 'Henry', 'Elijah', 'Charles', 'Tobias', 'Philomena', 'Phillip', 'Patrick', 'Stewart',
@@ -125,7 +122,6 @@ def generateName():
                   'Knife', 'Switchblade', 'Basket', 'Harpoon', 'Harpsichord', 'Taco', 'Burrito', 'Sock', 'Branch',
                   'Cane', 'Driftwood', 'Woods', 'Processor', 'Candlestick', 'Blunderbuss']
     return random.choice(first_names) + ' ' + random.choice(middle_initial) + '. ' + random.choice(last_names)
-
 
 #    ____  __    ___    _   ______________
 #   / __ \/ /   /   |  / | / / ____/_  __/
@@ -147,53 +143,46 @@ def generateHexList(rows, columns):         # Creates and returns a list of habi
             if c == 2: hexes.append(z)      # Adds successful hexes to the hexes list
     return hexes
 
-
 class planet():  # Planet Class
     def __init__(self):
 
         # PLANET DETAILS
-        self.name = 'PlanetNameErr'  # Name of the planet
-        self.hex = 'PlanetHexErr'  # Planet's hex location
-        self.uwp = ['X', 0, 0, 0, 0, 0, 0, 0]  # Planet's Universal World Profile
-        self.codes = []  # Trade Codes
+        self.name = 'PlanetNameErr'                 # Name of the planet
+        self.hex = 'PlanetHexErr'                   # Planet's hex location
+        self.uwp = ['X', 0, 0, 0, 0, 0, 0, 0]       # Planet's Universal World Profile
+        self.codes = []                             # Trade Codes
 
         # STARPORT DETAILS
-        self.starportQuality = 'StarportQualErr'  # Starport's Quality
-        self.berthingCost = 0  # Starport's berthing cost
-        self.fuel = 'PlanetFuelErr'  # Type of fuel available at starport
-        self.facilities = 'PlanetFacErr'  # Type of fuel available at starport
-        self.bases = []  # Bases available at starport or surrounding area
+        self.starportQuality = 'StarportQualErr'    # Starport's Quality
+        self.berthingCost = 0                       # Starport's berthing cost
+        self.fuel = 'PlanetFuelErr'                 # Type of fuel available at starport
+        self.facilities = 'PlanetFacErr'            # Type of fuel available at starport
+        self.bases = []                             # Bases available at starport or surrounding area
 
         # GEOGRAPHIC DETAILS
-        self.size = 800  # Diameter of planet (km)
-        self.surfaceGravity = 0.0  # Gravity on surface as percentage of earth's (gs)
+        self.size = 800                             # Diameter of planet (km)
+        self.surfaceGravity = 0.0                   # Gravity on surface as percentage of earth's (gs)
         self.lowGravity = True
         self.highGravity = False
         self.negligibleGravity = True
-        self.atmosphere = 'PlanetAtmoErr'  # Planet's Atmosphere & PPE
+        self.atmosphere = 'PlanetAtmoErr'           # Planet's Atmosphere & PPE
         self.taintedAtmosphere = False
         self.vaccSuit = True
         self.respirator = False
         self.filter = False
         self.airSupply = False
         self.ppeVaries = False
-        self.hydrosphere = 0  # Planet's percentage of surface area (water/total)
-        self.climate = [0, 30, 'PlanetTempErr']  # Climate and temperature
+        self.hydrosphere = 0                        # Planet's percentage of surface area (water/total)
+        self.climate = [0, 30, 'PlanetTempErr']     # Climate and temperature
         self.temperatureSwings = False
 
         # SOCIOECONOMIC DETAILS
-        # Planet's population
-        self.population = 0
-        # People per square kilometer
-        self.population_density = 0
-        # PLanet Government type
-        self.government = 'PlanetGovErr'
-        # Planet factions
-        self.factions = []
-        # Is the planet experiencing balkanization?
-        self.balkanization = False
-        # Planet Culture & Langauge Base
-        self.culture = 'PlanetCultureErr'
+        self.population = 0                         # Planet's population
+        self.population_density = 0                 # People per square kilometer
+        self.government = 'PlanetGovErr'            # PLanet Government type
+        self.factions = []                          # Planet factions
+        self.balkanization = False                  # Is the planet experiencing balkanization?
+        self.culture = 'PlanetCultureErr'           # Planet Culture & Langauge Base
         self.language = 'PlanetLangErr'
 
         # TRADE GOODS
@@ -2657,19 +2646,6 @@ def constructVessel(vessel):
 # / /___    / / /_/ / /___/ _, _/ ____/ /_/ / /|  / /| |
 # \____/   /_/_____/_____/_/ |_/_/    \____/_/ |_/_/ |_|
 # CYBERPUNK NPC GENERATOR FUNCTIONS
-
-# There was a lot of struggle trying to get the class variables to be
-# appropriately manipulated. This is the second method used to attempt to
-# catalogue skills, and there was a lot of type-out work to do- a lot of that
-# 1-to-1 translation that I feel like I should be able to think around, but my
-# usual modus operandi did not work. The lesson to be learned is that it is
-# tricky to try and manipulate variables because sometimes it can be difficult
-# to tell when a variable or class is migrating and when it is just the value
-# it holds. The class object for each skill would migrate when I only wanted
-# the value to be transferred, and class variables did not migrate when placed
-# inside of another variable that I would use to manipulate them. If this were
-# German, you'd have to ask it like a question, with the class variable at the
-# beginning. -cl 1/26
 
 class cyberpunkSkills():
     def __init__(self):
