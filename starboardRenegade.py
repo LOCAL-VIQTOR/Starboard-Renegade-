@@ -30,23 +30,14 @@ from time import sleep
 # BASIC FUNCTIONS - DICE ROLLING,
 # INTEGER AND LETTER SWITCHING
 
-def twodsix(modifier):  # Rolls 2D6 with a modifier
-    return random.randint(1, 6) + random.randint(1, 6) + modifier
-
-def d(dice,base,mod):
+def d(dice,base,mod):   # Dice Roller, 2D6+1 = d(2,6,1)
     result = mod
     for i in range(dice):
         result += random.randint(1,base)
     return result
 
-
 def dsixtysix(tens_modifier, ones_modifier):  # Rolls D66 with a modifier to 10s and 1s places
     return (random.randint(1, 6) * 10) + random.randint(1, 6) + (tens_modifier * 10) + ones_modifier
-
-
-def d10(modifier):
-    return random.randint(1, 10) + modifier
-
 
 def hexSwitch(number):  # Takes a decimal and returns a hexadecimal string
     if number < 10: return str(number)
@@ -306,7 +297,7 @@ class planet():  # Planet Class
 
     # Determines a planet's atmosphere and required PPE
     def generate_atmosphere(self, atmosphere_result):
-        self.uwp[2] = atmosphere_result  # twodsix(-7) + self.uwp[1]
+        self.uwp[2] = atmosphere_result  # d(2,6,-7) + self.uwp[1]
 
         # Sets limits at 0 and 15
         if self.uwp[2] < 0: self.uwp[2] = 0
@@ -527,7 +518,7 @@ class planet():  # Planet Class
 
     # Determines a planet's sophont population
     def generate_population(self):
-        self.uwp[4] = twodsix(-2)
+        self.uwp[4] = d(2,6,-2)
 
         # Sets roll limits of 0 and 12
         if self.uwp[4] < 0: self.uwp[4] = 0
@@ -601,7 +592,7 @@ class planet():  # Planet Class
     # Determines the planet's main government and culture
     def generate_government_and_culture(self):
         self.balkanization = False
-        self.uwp[5] = twodsix(-7) + self.uwp[4]
+        self.uwp[5] = d(2,6,-7) + self.uwp[4]
 
         # Determines balkanization and sets roll limits
         if self.uwp[5] == 7: self.balkanization = True
@@ -628,7 +619,7 @@ class planet():  # Planet Class
         rolls = random.randint(1, 3) + modifier
         while i in range(rolls):
             i += 1
-            faction_strength = twodsix(0)
+            faction_strength = d(2,6,0)
             faction_culture = self.culture_types(dsixtysix(0, 0))
             if faction_strength <= 3: factions.append(['Obscure', faction_culture])
             if faction_strength == 4 or faction_strength == 5: factions.append(['Fringe', faction_culture])
@@ -641,7 +632,7 @@ class planet():  # Planet Class
     # Determines the law level of the planetary government
     def generate_law_level(self):
         # Makes flat roll with population modifier
-        self.uwp[6] = twodsix(-7) + self.uwp[5]
+        self.uwp[6] = d(2,6,-7) + self.uwp[5]
         if self.uwp[6] < 0: self.uwp[6] = 0
 
     # Determines tech level from planet's variables
@@ -818,7 +809,7 @@ class planet():  # Planet Class
         if self.uwp[0] == 'A':
             base_rolls = [0, 0, 0, 0, 0]
             for i in range(len(base_rolls)):
-                base_rolls[i - 1] = twodsix(0)
+                base_rolls[i - 1] = d(2,6,0)
             if base_rolls[0] >= 8: self.bases.append('Naval')
             if base_rolls[1] >= 10: self.bases.append('Scout')
             if base_rolls[2] >= 8: self.bases.append('Research')
@@ -829,7 +820,7 @@ class planet():  # Planet Class
         if self.uwp[0] == 'B':
             base_rolls = [0, 0, 0, 0, 0, 0]
             for i in range(len(base_rolls)):
-                base_rolls[i - 1] = twodsix(0)
+                base_rolls[i - 1] = d(2,6,0)
             if base_rolls[0] >= 8: self.bases.append('Naval')
             if base_rolls[1] >= 8: self.bases.append('Scout')
             if base_rolls[2] >= 10: self.bases.append('Research')
@@ -841,7 +832,7 @@ class planet():  # Planet Class
         if self.uwp[0] == 'C':
             base_rolls = [0, 0, 0, 0, 0]
             for i in range(len(base_rolls)):
-                base_rolls[i - 1] = twodsix(0)
+                base_rolls[i - 1] = d(2,6,0)
             if base_rolls[0] >= 8: self.bases.append('Scout')
             if base_rolls[1] >= 10: self.bases.append('Research')
             if base_rolls[2] >= 10: self.bases.append('TAS/TT')
@@ -852,13 +843,13 @@ class planet():  # Planet Class
         if self.uwp[0] == 'D':
             base_rolls = [0, 0]
             for i in range(len(base_rolls)):
-                base_rolls[i - 1] = twodsix(0)
+                base_rolls[i - 1] = d(2,6,0)
             if base_rolls[0] >= 8: self.bases.append('Scout')
             if base_rolls[1] >= 10: self.bases.append('Pirate')
 
         # No Starport
         if self.uwp[0] == 'E':
-            x = twodsix(0)
+            x = d(2,6,0)
             if x >= 12: self.bases.append('Pirate')
 
     # Assigns a language base to the planet
@@ -918,9 +909,9 @@ class planet():  # Planet Class
     def generate(self, hex_field, printX):
         self.generate_hex(hex_field)
         self.generate_name()
-        self.generate_starport(twodsix(0))
-        self.generate_size(twodsix(-2))
-        self.generate_atmosphere(twodsix(-7) + self.uwp[1])
+        self.generate_starport(d(2,6,0))
+        self.generate_size(d(2,6,-2))
+        self.generate_atmosphere(d(2,6,-7) + self.uwp[1])
         self.generate_climate()
         self.generate_hydrographics()
         self.generate_population()
@@ -1248,7 +1239,7 @@ def generateFreight(galaxy):
         extra_goods(trade_goods_list, available_goods)
 
         # Roll Purchase Modifier, determine purchase price, tonnage, print to monitor
-        result = twodsix(0) + random.randint(1, 6)
+        result = d(2,6,0) + random.randint(1, 6)
         for i in range(len(available_goods)):
             available_goods[i].determine_purchase_price(result, galaxy[l].codes)
             available_goods[i].determine_stock()
@@ -1286,7 +1277,7 @@ def determineAvailableGoods(hex_field, trade_goods_list, printX):
         extra_goods(trade_goods_list, available_goods)
 
         # Roll Purchase Modifier, determine purchase price, tonnage, print to monitor
-        result = twodsix(0) + random.randint(1, 6)
+        result = d(2,6,0) + random.randint(1, 6)
         for i in range(len(available_goods)):
             available_goods[i].determine_purchase_price(result, hallowsbelt.codes)
             available_goods[i].determine_stock()
@@ -1493,7 +1484,7 @@ class computer():
         self.install(manoeuvre0)
 
         if programTheme == 'random':
-            x = twodsix(0)
+            x = d(2,6,0)
             if x > 8: self.install(intellect)
 
         jumpCapacity = vessel.jumpDrive[1]
@@ -1506,11 +1497,11 @@ class computer():
         if jumpCapacity == 1: self.install(jumpControl1)
 
         if programTheme == 'random':
-            x = twodsix(0)
+            x = d(2,6,0)
             if x > 8: self.install(random.choice(evadeSoftware))
 
         if programTheme == 'random':
-            x = twodsix(0)
+            x = d(2,6,0)
             if x > 8: self.install(random.choice(fireControlSoftware))
 
         # Library is installed with autoRepair in vessel vehicle options
@@ -2365,7 +2356,7 @@ class vessel():
 
     def installComputer(self, compType, options):
         if options == 'random':
-            x = twodsix(0)
+            x = d(2,6,0)
             if x <= 6: option = 'none'
             if x > 6 and x <= 8: option = 'bis'
             if x > 8 and x <= 10: option = 'fib'
@@ -2427,7 +2418,7 @@ class vessel():
         for i in range(hardpoints):
             armament = hardpoint()
             if self.availableHull >= 200 or self.availableHull > self.hullMass / 4:
-                x = twodsix(0)
+                x = d(2,6,0)
                 if x <= 7: armament.randomTurret()
                 if x >= 8 and x <= 10: armament.installBay('random')
                 if x >= 11: armament.installScreen('random')
@@ -2446,7 +2437,7 @@ class vessel():
             if armorBudget // hardpointsRemaining < 51 and hardpointsRemaining >= 10:
                 armament.randomTurret()
             if armorBudget // hardpointsRemaining >= 51:
-                x = twodsix(0)
+                x = d(2,6,0)
                 if x <= 7: armament.randomTurret()
                 if x >= 8 and x <= 10: armament.installBay('random')
                 if x >= 11: armament.installScreen('random')
@@ -3187,8 +3178,8 @@ class cyberpunkSkills():
 
 
 def stat_roll():  # Statistic roll ONLY for CP2020 -cl 1/26
-    x = twodsix(0)
-    while x > 10: x = twodsix(0)
+    x = d(2,6,0)
+    while x > 10: x = d(2,6,0)
     return x
 
 
@@ -3600,12 +3591,12 @@ class cyberpunkCharacter():
             if self.skills.family == 10: self.occupation = ['Family Head', 5000]
 
     def bigProblemsBigWins(self):
-        oddOrEven = d10(0)
+        oddOrEven = d(1,10,0)
         oddResult = False
         evenResult = False
         if oddOrEven % 2 == 1: oddResult = True
         if oddOrEven % 2 == 0: evenResult = True
-        x = d10(0)
+        x = d(1,10,0)
         # Disaster Strikes!
         if oddResult == True:
             whatToDo = ['Clear your name',
@@ -3628,15 +3619,15 @@ class cyberpunkCharacter():
                 return ('You pick up ' + random.choice(
                     issues) + ' during this time and lose 1 REF.' + ' (' + action + ')')
             if x == 4:
-                y = d10(0)
+                y = d(1,10,0)
                 backstabbers = ['during a romance', 'within your career']
                 if y < 4: return 'You have been backstabbed and are being blackmailed' + ' (' + action + ')'
                 if y >= 4 and y < 8: return 'You have been backstabbed and a secret about you has been exposed' + ' (' + action + ')'
                 if y >= 8: return 'You were backstabbed by a close friend ' + random.choice(
                     backstabbers) + ' (' + action + ')'
             if x == 5:
-                y = d10(0)
-                z = d10(0)
+                y = d(1,10,0)
+                z = d(1,10,0)
                 if y < 5:
                     return 'You are disfigured in a horrible accidents (-5 ATT)' + ' (' + action + ')'
                     self.attr -= 5
@@ -3649,14 +3640,14 @@ class cyberpunkCharacter():
                     return 'You had an awful accident and the memory of it wakes you up screaming (8/10 chance)' + ' (' + action + ')'
 
             if x == 6:
-                y = d10(0)
+                y = d(1,10,0)
                 victim = random.choice(['lover', 'friend', 'relative'])
                 if y < 6: return 'Your ' + victim + ' was killed accidentally (' + action + ')'
                 if y >= 6 and y < 9: return 'Your ' + victim + ' was murdered by unknown parties' + ' (' + action + ')'
                 if y >= 9: return 'Your ' + victim + ' was murdered, and you know who did it' + ' (' + action + ')'
 
             if x == 7:
-                y = d10(0)
+                y = d(1,10,0)
                 accusation = 'accusationErr'
                 if y < 4: accusation = 'theft'
                 if y == 4 or y == 5: accusation = 'cowardace'
@@ -3666,7 +3657,7 @@ class cyberpunkCharacter():
                 return 'You were set up and accused of ' + accusation + ' (' + action + ')'
 
             if x == 8:
-                y = d10(0)
+                y = d(1,10,0)
                 policeForce = 'policeErr'
                 if y < 4: policeForce = 'a few local cops'
                 if y >= 4 and y <= 6: policeForce = 'the local department'
@@ -3676,7 +3667,7 @@ class cyberpunkCharacter():
                     ['did', 'did not']) + ' commit' + ' (' + action + ')'
 
             if x == 9:
-                y = d10(0)
+                y = d(1,10,0)
                 corporation = 'corporationErr'
                 if y < 4: corporation = 'a small, local firm'
                 if y >= 4 and y <= 6: corporation = 'a statewide corporation'
@@ -3685,7 +3676,7 @@ class cyberpunkCharacter():
                 return 'You have angered ' + corporation + "'s honcho" + ' (' + action + ')'
 
             if x == 10:
-                y = d10(0)
+                y = d(1,10,0)
                 if y < 4:
                     self.ref[1] -= 1
                     return 'You suffer some kind of nervous disorder, probably from bioplague (-1 REF)' + ' (' + action + ')'
@@ -3699,22 +3690,22 @@ class cyberpunkCharacter():
 
         # YOU GET LUCKY
         if oddResult == False:
-            x = d10(0)
+            x = d(1,10,0)
 
             if x == 1:
                 connections = ['Police Department', "District Attorney's Office", "Mayor's Office"]
                 return 'Make a powerful connection in the ' + random.choice(connections)
 
             if x == 2:
-                windfall = d10(0) * 100
+                windfall = d(1,10,0) * 100
                 return 'Financial Windfall: +' + str(windfall) + ' Cr.'
 
             if x == 3:
-                yourCut = d10(0) * 100
+                yourCut = d(1,10,0) * 100
                 return 'Big score on a ' + random.choice(['job', 'deal']) + ': +' + str(yourCut) + ' Cr.'
 
             if x == 4:
-                y = d10(0)
+                y = d(1,10,0)
                 if y == 1:
                     martialArt = 'an Aikido'
                     if self.skills.aikido > 0: self.skills.aikido += 1
@@ -3869,12 +3860,12 @@ class cyberpunkCharacter():
 
     # TODO Add Enemies
     def friendsAndEnemies(self):
-        friendOrEnemy = d10(0)
+        friendOrEnemy = d(1,10,0)
         if friendOrEnemy < 6:
             maleOrFemale = random.randint(1, 2)
             if maleOrFemale == 1: gender = 'female'
             if maleOrFemale == 2: gender = 'male'
-            x = d10(0)
+            x = d(1,10,0)
             if x == 1: friend = 'Like a big sibling to you'
             if x == 2: friend = 'Like a little sibling to you'
             if x == 3: friend = 'A ' + random.choice(['Teacher', 'Mentor'])
@@ -3889,10 +3880,10 @@ class cyberpunkCharacter():
         if friendOrEnemy >= 6: return 'Made Enemy'
 
     def romanticLife(self):
-        x = d10(0)
+        x = d(1,10,0)
         if x < 5: return 'Happy Love Affair'
         if x == 5:
-            y = d10(0)
+            y = d(1,10,0)
             if y == 1: return 'Lover Died in an Accident'
             if y == 2: return 'Lover Mysteriously Vanished'
             if y == 3: return 'You and your Lover Did Not Make It Work'
@@ -3904,8 +3895,8 @@ class cyberpunkCharacter():
             if y == 9: return 'Rival Cut You Off from your Lover'
             if y == 10: return random.choice(['Lover Imprisoned', 'Lover Exiled'])
         if x == 6 or x == 7:
-            y = d10(0)
-            z = d10(0)
+            y = d(1,10,0)
+            z = d(1,10,0)
             if y == 1: affair = 'Their ' + random.choice(['friends', 'family']) + ' hate you'
             if y == 2: affair = 'Their ' + random.choice(
                 ['friends', 'family']) + ' would use any means to get rid of you'
@@ -3932,10 +3923,10 @@ class cyberpunkCharacter():
 
     def lifeEventsGenerator(self):
         self.lifeEvents = []
-        self.age = twodsix(16)
+        self.age = d(2,6,16)
         yearsToRoll = self.age - 16
         for i in range(yearsToRoll):
-            x = d10(0)
+            x = d(1,10,0)
             if x < 4:
                 self.lifeEvents.append(self.bigProblemsBigWins())
             if x >= 4 and x < 7: self.lifeEvents.append(self.friendsAndEnemies())
@@ -4097,12 +4088,12 @@ class traveller_npc():
         self.name = random.choice(first_names) + ' ' + random.choice(middle_initial) + '. ' + random.choice(last_names)
 
     def roll_scores(self):
-        self.str = twodsix(0)
-        self.dex = twodsix(0)
-        self.end = twodsix(0)
-        self.int = twodsix(0)
-        self.edu = twodsix(0)
-        self.soc = twodsix(0)
+        self.str = d(2,6,0)
+        self.dex = d(2,6,0)
+        self.end = d(2,6,0)
+        self.int = d(2,6,0)
+        self.edu = d(2,6,0)
+        self.soc = d(2,6,0)
 
     # skills: untrained - (-3)
     # 0: Little Experience
@@ -4168,7 +4159,7 @@ class traveller_npc():
     def navy_career(self, assignment, term, draft):
         assignments = ['Line/Crew', 'Engineering/Gunner', 'Flight']
         service_skills = ['Pilot (any)', 'Vacc Suit', 'Zero-G', 'Gunner (any)', 'Mechanic', 'Gun Combat (any)']
-        enlistment = twodsix(characteristic_modifier(self.int))
+        enlistment = d(2,6,characteristic_modifier(self.int))
         if enlistment >= 6:
             if assignment == 'none': self.specialization = random.choice(assignments)
             if assignment == 'Line/Crew': self.specialization = assignment
@@ -4186,7 +4177,7 @@ class traveller_npc():
         assignments = ['Support', 'Infantry', 'Cavalry']
         service_skills = ['Drive (any)', 'Athletics (any)', 'Gun Combat (any)', 'Recon', 'Melee (any)',
                           'Heavy Weapons (any)']
-        enlistment = twodsix(characteristic_modifier(self.end))
+        enlistment = d(2,6,characteristic_modifier(self.end))
         if enlistment >= 5:
             self.specialization = random.choice(assignments)
             for i in range(len(service_skills)):
@@ -4200,7 +4191,7 @@ class traveller_npc():
         assignments = ['Support', 'Star Marines', 'Ground Assault']
         service_skills = ['Athletics (any)', 'Battle Dress', 'Tactics (any)', 'Heavy Weapons (any)', 'Gun Combat (any)',
                           'Stealth']
-        enlistment = twodsix(characteristic_modifier(self.end))
+        enlistment = d(2,6,characteristic_modifier(self.end))
         if enlistment >= 6:
             self.specialization = random.choice(assignments)
             for i in range(len(service_skills)):
@@ -4214,7 +4205,7 @@ class traveller_npc():
         # For the draft, only merchant marine has been added
         assignments = ['Merchant Marine']  # free trader, broker
         service_skills = ['Drive (any)', 'Vacc Suit', 'Broker', 'Steward', 'Comms', 'Persuade']
-        enlistment = twodsix(characteristic_modifier(self.int))
+        enlistment = d(2,6,characteristic_modifier(self.int))
         if enlistment >= 4:
             self.specialization = random.choice(assignments)
             for i in range(len(service_skills)):
@@ -4229,7 +4220,7 @@ class traveller_npc():
         pilot_options = ['Pilot (Spacecraft)', 'Pilot (Small Craft)']
         service_skills = [random.choice(pilot_options), 'Survival', 'Mechanic', 'Astrogation', 'Gun Combat (any)',
                           'Comms']
-        enlistment = twodsix(characteristic_modifier(self.int))
+        enlistment = d(2,6,characteristic_modifier(self.int))
         if enlistment >= 5:
             self.specialization = random.choice(assignments)
             for i in range(len(service_skills)):
@@ -4243,7 +4234,7 @@ class traveller_npc():
         # For the draft, only merchant marine has been added
         assignments = ['Law Enforcement']  # free trader, broker
         service_skills = ['Drive (any)', 'Streetwise', 'Investigate', 'Computers', 'Recon', 'Gun Combat (any)']
-        enlistment = twodsix(characteristic_modifier(self.int))
+        enlistment = d(2,6,characteristic_modifier(self.int))
         if enlistment >= 6:
             self.specialization = random.choice(assignments)
             for i in range(len(service_skills)):
@@ -4470,7 +4461,7 @@ class navy_career():
         eng_gun_skills = ['Engineer (any)', 'Mechanic', 'Sensors', 'Engineer (any)', 'Gunner (any)', 'Computer']
         flight_skills = ['Pilot (any)', 'Flyer (any)', 'Gunner (any)', 'Pilot (Small Craft)', 'Astrogation', 'Zero-G']
         skill_tables = [personal_development_skills, service_skills]
-        commission_roll = twodsix(characteristic_modifier(npc.soc))
+        commission_roll = d(2,6,characteristic_modifier(npc.soc))
         if commission_roll >= 8:
             self.commission = True
             skill_tables.append(officer_skills)
@@ -4498,7 +4489,7 @@ class navy_career():
             if assignment == 'Crew': skills = ['Sensors', 'Gunner (any)']
             if assignment == 'Engineering': skills = ['Mechanic', 'Vacc Suit']
             if assignment == 'Flight': skills = ['Pilot (Small or Spacecraft)', 'Tactics (Naval)']
-            roll = twodsix(0)
+            roll = d(2,6,0)
             if roll >= 8: return ('During a Battle: Honourable Discharge; keep benefits roll')
             if roll <= 7: return (
                 'During a battle: Your ship suffers severe damage and you are blamed for the disaster.')
@@ -4508,7 +4499,7 @@ class navy_career():
 
     def events(self):
         # events are rolled on 2d6 however
-        event = twodsix(0)
+        event = d(2,6,0)
         if event == 2:
             event_desc = 'Disaster! Roll on mishap table, but do not leave the navy.'
             print(self.mishap())
@@ -4519,7 +4510,7 @@ class navy_career():
             print('Skill: ' + skill)
             x = 0
             if skill == 'Gambler 1': x = 1
-            gambler_check = twodsix(x)
+            gambler_check = d(2,6,x)
             if gambler_check >= 8: print('You won! Gain a benefit.')
             if gambler_check <= 7: print('You lost. Lose a benefit.')
         if event == 4:
@@ -4527,7 +4518,7 @@ class navy_career():
             print('Gain +1 dm to any one benefit roll')
         if event == 5:
             event_desc = 'You are given advanced training in a specialist field.'
-            edu_check = twodsix(0)
+            edu_check = d(2,6,0)
             if edu_check >= 8: print('Gain one level in any skill you already have.')
             if edu_check <= 7: print('You did not pass the education check.')
         if event == 6:
@@ -4802,8 +4793,8 @@ def navy_progression(nick_carl, naval):
     print(nick_carl.specialization)
     naval.gain_skill(nick_carl)
     if nick_carl.specialization == 'Line/Crew':
-        survival_roll = twodsix(characteristic_modifier(nick_carl.int))
-        advancement_roll = twodsix(characteristic_modifier(nick_carl.edu))
+        survival_roll = d(2,6,characteristic_modifier(nick_carl.int))
+        advancement_roll = d(2,6,characteristic_modifier(nick_carl.edu))
         print(survival_roll, advancement_roll)
         if survival_roll >= 5:
             term_desc = naval.events()
@@ -4813,8 +4804,8 @@ def navy_progression(nick_carl, naval):
             naval.ejected = True
         print(term_desc)
     if nick_carl.specialization == 'Engineering/Gunner':  # NOT KICKED OUT ERR COUNT 1
-        survival_roll = twodsix(characteristic_modifier(nick_carl.int))  # ERR COUNT 1
-        advancement_roll = twodsix(characteristic_modifier(nick_carl.edu))
+        survival_roll = d(2,6,characteristic_modifier(nick_carl.int))  # ERR COUNT 1
+        advancement_roll = d(2,6,characteristic_modifier(nick_carl.edu))
         print(survival_roll, advancement_roll)
         if survival_roll >= 6:
             term_desc = naval.events()
@@ -4824,8 +4815,8 @@ def navy_progression(nick_carl, naval):
             naval.ejected = True
         print(term_desc)
     if nick_carl.specialization == 'Flight':
-        survival_roll = twodsix(characteristic_modifier(nick_carl.dex))
-        advancement_roll = twodsix(characteristic_modifier(nick_carl.edu))
+        survival_roll = d(2,6,characteristic_modifier(nick_carl.dex))
+        advancement_roll = d(2,6,characteristic_modifier(nick_carl.edu))
         print(survival_roll, advancement_roll)
         if survival_roll >= 7:
             term_desc = naval.events()
