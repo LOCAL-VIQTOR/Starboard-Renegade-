@@ -139,7 +139,7 @@ def generateHexList(rows, columns):         # Creates and returns a list of habi
                 z = '0' + str(z)
             if x >= 10:
                 z = str(z)
-            c = random.randint(1, 2)   # Gives each hex a 50/50 shot of containing a settled world.
+            c = random.randint(1, 2)       # Gives each hex a 50/50 shot of containing a settled world.
             if c == 2: hexes.append(z)      # Adds successful hexes to the hexes list
     return hexes
 
@@ -189,7 +189,7 @@ class planet():  # Planet Class
         self.goods = []
 
     # Generates a name for the planet
-    def generate_name(self):
+    def generateName(self):
         prefix = ['Alph', 'Br', 'Ch', 'D', 'Ech', 'F', 'G', 'H', 'Ind', 'J', 'K', 'L', 'M', 'Nov', 'Osc', 'P', 'Qu',
                   'R', 'Si', 'T', 'Un', 'V', 'Wh', 'X', 'Y', 'Z', 'Calv', 'Dian', 'Rog']
         suffix = ['a', 'avo', 'arlie', 'elta', 'o', 'oxtrot', 'olf', 'otel', 'ia', 'uliett', 'ilo', 'ima', 'ike',
@@ -198,12 +198,12 @@ class planet():  # Planet Class
         self.name = random.choice(prefix) + random.choice(suffix) + '-' + str(random.randint(1, 13))
 
     # Takes the first hex in the hex list's locatons, then removes it from the list.
-    def generate_hex(self, hex_field):
-        self.hex = hex_field[0]
-        hex_field.remove(self.hex)
+    def generateHex(self, hexField):
+        self.hex = hexField[0]
+        hexField.remove(self.hex)
 
     # Determines starport quality, berth, and fuel and repair availability
-    def generate_starport(self, result):
+    def generateStarport(self, result):
 
         # No Starport
         if result == 0 or result == 1:
@@ -254,7 +254,7 @@ class planet():  # Planet Class
             self.facilities = 'Repair Facilities (All)'
 
     # Determines a planet's size (km) and surface gravity (gs)
-    def generate_size(self, size_result):
+    def generateSize(self, size_result):
         self.uwp[1] = size_result
 
         # Determines whether the surface gravity is negligible
@@ -285,7 +285,7 @@ class planet():  # Planet Class
         if self.surfaceGravity >= 1.25: self.highGravity = True
 
     # Determines a planet's atmosphere and required PPE
-    def generate_atmosphere(self, atmosphere_result):
+    def generateAtmosphere(self, atmosphere_result):
         self.uwp[2] = atmosphere_result  # d(2,6,-7) + self.uwp[1]
 
         # Sets limits at 0 and 15
@@ -895,12 +895,12 @@ class planet():  # Planet Class
         if len(self.bases) <= 0: print('No Bases Nearby')
 
     # Master subprogram for generating a planet
-    def generate(self, hex_field, printX):
-        self.generate_hex(hex_field)
-        self.generate_name()
-        self.generate_starport(d(2,6,0))
-        self.generate_size(d(2,6,-2))
-        self.generate_atmosphere(d(2,6,-7) + self.uwp[1])
+    def generate(self, hexField, printX):
+        self.generateHex(hexField)
+        self.generateName()
+        self.generateStarport(d(2,6,0))
+        self.generateSize(d(2,6,-2)) # generateAtmosphere
+        self.generateAtmosphere(d(2,6,-7) + self.uwp[1])
         self.generate_climate()
         self.generate_hydrographics()
         self.generate_population()
@@ -1189,13 +1189,9 @@ def initialize_trade_goods():
 
     return trade_goods_list
 
-
-def spawnPlanet(hex_field, printX):
+def spawnPlanet(hexField, printX):
     hallowsbelt = planet()
-
-    # hallowsbelt.generate() contains .generate_hex(hex_field), which takes the first from the 'hex_field'
-    # list, and then removes it from a list.
-    hallowsbelt.generate(hex_field, printX)
+    hallowsbelt.generate(hexField, printX)
     return hallowsbelt
 
 
@@ -2646,6 +2642,7 @@ def constructVessel(vessel):
 # / /___    / / /_/ / /___/ _, _/ ____/ /_/ / /|  / /| |
 # \____/   /_/_____/_____/_/ |_/_/    \____/_/ |_/_/ |_|
 # CYBERPUNK NPC GENERATOR FUNCTIONS
+# TO BE REMOVED ONCE THE SKILL HANDLER IS COMPLETE
 
 class cyberpunkSkills():
     def __init__(self):
@@ -4905,18 +4902,18 @@ while terminalRunning == True:
                 print('What is the Quality of the Starport?')
                 print('A = Excellent, B = Good, C = Routine, D = Poor, E = Frontier, X = None')
                 starport_choice = input('>>: ')
-                if starport_choice == 'A': hallowsbelt.generate_starport(10)
-                if starport_choice == 'B': hallowsbelt.generate_starport(8)
-                if starport_choice == 'C': hallowsbelt.generate_starport(6)
-                if starport_choice == 'D': hallowsbelt.generate_starport(4)
-                if starport_choice == 'E': hallowsbelt.generate_starport(2)
-                if starport_choice == 'X': hallowsbelt.generate_starport(0)
+                if starport_choice == 'A': hallowsbelt.generateStarport(10)
+                if starport_choice == 'B': hallowsbelt.generateStarport(8)
+                if starport_choice == 'C': hallowsbelt.generateStarport(6)
+                if starport_choice == 'D': hallowsbelt.generateStarport(4)
+                if starport_choice == 'E': hallowsbelt.generateStarport(2)
+                if starport_choice == 'X': hallowsbelt.generateStarport(0)
 
                 # Size
                 print('Enter diameter of planet in kilometers.')
                 size_choice = int(input('>>: '))
                 size_choice = size_choice // 1600
-                hallowsbelt.generate_size(int(size_choice))
+                hallowsbelt.generateSize(int(size_choice))
 
                 # Atmosphere
                 print("What is the planet's atmosphere?")
@@ -4926,7 +4923,7 @@ while terminalRunning == True:
                 print('9 = Dense + Tainted, 10 = Exotic, 11 = Corrosive,')
                 print('12 = Insidious, 13 = Dense + High, 14 = Thin + Low,')
                 print('15 = Unusual.')
-                hallowsbelt.generate_atmosphere(int(input('>>: ')))
+                hallowsbelt.generateAtmosphere(int(input('>>: ')))
 
                 # Climate
                 print("What is the planet's climate?")
