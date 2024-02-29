@@ -453,7 +453,7 @@ class planet():  # Planet Class
             self.ppeVaries = True
 
     # Determine's a planet's temperature
-    def generate_climate(self):
+    def generateClimate(self):
 
         # Determines if temperature follows circadian rhythm
         self.temperatureSwings = False
@@ -477,7 +477,7 @@ class planet():  # Planet Class
         if climate_roll >= 12: self.climate = [81, 100, 'Roasting']
 
     # Determines how much of the planet's surface is covered by liquid ocean
-    def generate_hydrographics(self):
+    def generateHydrographics(self):
 
         # Determines modifier based on size, atmosphere and climate
         modifier = 0
@@ -506,7 +506,7 @@ class planet():  # Planet Class
         if self.uwp[3] == 10: self.hydrosphere = random.randint(96, 100)
 
     # Determines a planet's sophont population
-    def generate_population(self):
+    def generatePopulation(self):
         self.uwp[4] = d(2,6,-2)
 
         # Sets roll limits of 0 and 12
@@ -579,7 +579,7 @@ class planet():  # Planet Class
         if roll == 66: return "Unusual Customs: Conspiracy"
 
     # Determines the planet's main government and culture
-    def generate_government_and_culture(self):
+    def generateGovernmentAndCulture(self):
         self.balkanization = False
         self.uwp[5] = d(2,6,-7) + self.uwp[4]
 
@@ -593,7 +593,7 @@ class planet():  # Planet Class
         self.culture = self.culture_types(dsixtysix(0, 0))
 
     # Determines any factions that may be present on the planet
-    def generate_factions(self):
+    def generateFactions(self):
 
         # Resets faction, modifier, and cycle count
         factions = []
@@ -619,13 +619,13 @@ class planet():  # Planet Class
         self.factions = factions
 
     # Determines the law level of the planetary government
-    def generate_law_level(self):
+    def generateLawLevel(self):
         # Makes flat roll with population modifier
         self.uwp[6] = d(2,6,-7) + self.uwp[5]
         if self.uwp[6] < 0: self.uwp[6] = 0
 
     # Determines tech level from planet's variables
-    def generate_tech_level(self):
+    def generateTechLevel(self):
         self.uwp[7] = random.randint(1, 6)
 
         # Starport
@@ -671,7 +671,7 @@ class planet():  # Planet Class
             if self.uwp[2] == 9: self.uwp[7] = 3
 
     # Determines which travel codes are applicable to the planet
-    def generate_travel_codes(self):
+    def generateTravelCodes(self):
         self.codes = []
 
         # Agricultural
@@ -791,7 +791,7 @@ class planet():  # Planet Class
         return printString
 
     # Determines if any bases are available in/around the planet
-    def generate_bases(self):
+    def generateBases(self):
         self.bases = []
 
         # Excellent Quality Starbase
@@ -894,23 +894,22 @@ class planet():  # Planet Class
         if len(self.bases) >= 1: print(self.bases)
         if len(self.bases) <= 0: print('No Bases Nearby')
 
-    # Master subprogram for generating a planet
     def generate(self, hexField, printX):
         self.generateHex(hexField)
         self.generateName()
         self.generateStarport(d(2,6,0))
-        self.generateSize(d(2,6,-2)) # generateAtmosphere
+        self.generateSize(d(2,6,-2))
         self.generateAtmosphere(d(2,6,-7) + self.uwp[1])
-        self.generate_climate()
-        self.generate_hydrographics()
-        self.generate_population()
-        self.generate_government_and_culture()
-        self.generate_factions()
-        self.generate_law_level()
-        self.generate_tech_level()
-        self.generate_travel_codes()
-        self.generate_bases()
-        self.generate_language()
+        self.generateClimate()
+        self.generateHydrographics()
+        self.generatePopulation()
+        self.generateGovernmentAndCulture()
+        self.generateFactions()
+        self.generateLawLevel()
+        self.generateTechLevel()
+        self.generateTravelCodes()
+        self.generateBases()
+        self.generateLanguage()
         if printX == True:
             self.print()
             print()
