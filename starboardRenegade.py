@@ -254,8 +254,8 @@ class planet():  # Planet Class
             self.facilities = 'Repair Facilities (All)'
 
     # Determines a planet's size (km) and surface gravity (gs)
-    def generateSize(self, size_result):
-        self.uwp[1] = size_result
+    def generateSize(self, sizeResult):
+        self.uwp[1] = sizeResult
 
         # Determines whether the surface gravity is negligible
         if self.uwp[1] == 0:
@@ -285,8 +285,8 @@ class planet():  # Planet Class
         if self.surfaceGravity >= 1.25: self.highGravity = True
 
     # Determines a planet's atmosphere and required PPE
-    def generateAtmosphere(self, atmosphere_result):
-        self.uwp[2] = atmosphere_result  # d(2,6,-7) + self.uwp[1]
+    def generateAtmosphere(self, atmosphereResult):
+        self.uwp[2] = atmosphereResult
 
         # Sets limits at 0 and 15
         if self.uwp[2] < 0: self.uwp[2] = 0
@@ -514,16 +514,16 @@ class planet():  # Planet Class
         if self.uwp[4] > 12: self.uwp[4] = 12
 
         # Sets population beteen 10^roll and 10*10^roll
-        minimum_population = int(math.pow(10, self.uwp[4]))
-        self.population = random.randint(minimum_population, (10 * minimum_population))
+        minimumPopulation = int(math.pow(10, self.uwp[4]))
+        self.population = random.randint(minimumPopulation, (10 * minimumPopulation))
 
         # Calculates population density and rounds it out
-        self.population_density = self.population / self.size
-        if self.population_density < 1: self.population_density = round(self.population_density, 2)
-        if self.population_density >= 1: self.population_density = int(self.population_density)
+        self.populationDensity = self.population / self.size
+        if self.populationDensity < 1: self.populationDensity = round(self.populationDensity, 2)
+        if self.populationDensity >= 1: self.populationDensity = int(self.populationDensity)
 
     # Returns planetary government type from external roll
-    def government_types(self, roll):
+    def governmentTypes(self, roll):
         if roll == 0: return 'No Ruling Government'
         if roll == 1: return 'Company/Corporation'
         if roll == 2: return 'Participating Democracy'
@@ -540,7 +540,7 @@ class planet():  # Planet Class
         if roll == 13: return 'Religious Dictatorship'
 
     # Returns planet's or faction's culture from external roll
-    def culture_types(self, roll):
+    def cultureTypes(self, roll):
         if roll == 11: return "Sexist"
         if roll == 12: return "Religious"
         if roll == 13: return "Artistic"
@@ -589,8 +589,8 @@ class planet():  # Planet Class
         if self.uwp[5] > 13: self.uwp[5] = 13
 
         # Makes roll and sets governemt and culture
-        self.government = self.government_types(self.uwp[5])
-        self.culture = self.culture_types(dsixtysix(0, 0))
+        self.government = self.governmentTypes(self.uwp[5])
+        self.culture = self.cultureTypes(dsixtysix(0, 0))
 
     # Determines any factions that may be present on the planet
     def generateFactions(self):
@@ -608,14 +608,14 @@ class planet():  # Planet Class
         rolls = random.randint(1, 3) + modifier
         while i in range(rolls):
             i += 1
-            faction_strength = d(2,6,0)
-            faction_culture = self.culture_types(dsixtysix(0, 0))
-            if faction_strength <= 3: factions.append(['Obscure', faction_culture])
-            if faction_strength == 4 or faction_strength == 5: factions.append(['Fringe', faction_culture])
-            if faction_strength == 6 or faction_strength == 7: factions.append(['Minor', faction_culture])
-            if faction_strength == 8 or faction_strength == 9: factions.append(['Notable', faction_culture])
-            if faction_strength == 10 or faction_strength == 11: factions.append(['Significant', faction_culture])
-            if faction_strength >= 12: factions.append(['Overwhelming', faction_culture])
+            factionStrength = d(2,6,0)
+            factionCulture = self.cultureTypes(dsixtysix(0, 0))
+            if factionStrength <= 3: factions.append(['Obscure', factionCulture])
+            if factionStrength == 4 or factionStrength == 5: factions.append(['Fringe', factionCulture])
+            if factionStrength == 6 or factionStrength == 7: factions.append(['Minor', factionCulture])
+            if factionStrength == 8 or factionStrength == 9: factions.append(['Notable', factionCulture])
+            if factionStrength == 10 or factionStrength == 11: factions.append(['Significant', factionCulture])
+            if factionStrength >= 12: factions.append(['Overwhelming', factionCulture])
         self.factions = factions
 
     # Determines the law level of the planetary government
@@ -842,7 +842,7 @@ class planet():  # Planet Class
             if x >= 12: self.bases.append('Pirate')
 
     # Assigns a language base to the planet
-    def generate_language(self):
+    def generateLanguage(self):
         anglo_american = ['English']
         african = ['Bantu', 'Kongo', 'Ashandi', 'Zulu', 'Swahili']
         japanese_korean = ['Japanese', 'Korean']
@@ -897,7 +897,7 @@ class planet():  # Planet Class
     def generate(self, hexField, printX):
         self.generateHex(hexField)
         self.generateName()
-        self.generateStarport(d(2,6,0))
+        self.generateStarport(d(2,6,-2))
         self.generateSize(d(2,6,-2))
         self.generateAtmosphere(d(2,6,-7) + self.uwp[1])
         self.generateClimate()
@@ -5191,4 +5191,3 @@ while terminalRunning == True:
     if menuChoice < 99 and menuChoice > 6:
         print('Incorrect integer choice, returning to terminal.')
         menuChoice = 0
-
