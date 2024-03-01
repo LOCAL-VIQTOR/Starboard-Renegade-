@@ -674,76 +674,42 @@ class planet():  # Planet Class
     def generateTravelCodes(self):
         self.codes = []
 
-        # Agricultural
-        if self.uwp[2] >= 4 and self.uwp[2] <= 9:
+        if self.uwp[2] >= 4 and self.uwp[2] <= 9:                           # Agricultural
             if self.uwp[3] >= 4 and self.uwp[3] <= 8:
                 if self.uwp[4] >= 5 and self.uwp[4] <= 7:
                     self.codes.append('Ag')
-
-        # Asteroid
-        if self.uwp[1] == 0:
+        if self.uwp[1] == 0:                                                # Asteroid
             if self.uwp[2] == 0:
                 if self.uwp[3] == 0:
                     self.codes.append('As')
-
-        # Barren
-        if self.uwp[4] == 0:
+        if self.uwp[4] == 0:                                                # Barren
             if self.uwp[5] == 0:
                 if self.uwp[6] == 0:
                     self.codes.append('Ba')
-
-        # Desert
-        if self.uwp[2] >= 2 and self.uwp[3] == 0: self.codes.append('De')
-
-        # Fluid Oceans
-        if self.uwp[2] >= 10 and self.uwp[3] >= 1: self.codes.append('Fl')
-
-        # Garden
-        if self.uwp[1] >= 5:
+        if self.uwp[2] >= 2 and self.uwp[3] == 0: self.codes.append('De')   # Desert
+        if self.uwp[2] >= 10 and self.uwp[3] >= 1: self.codes.append('Fl')  # Fluid Oceans
+        if self.uwp[1] >= 5:                                                # Garden
             if self.uwp[2] >= 4 and self.uwp[2] <= 9:
                 if self.uwp[3] >= 4 and self.uwp[3] <= 8:
                     self.codes.append('Ga')
-
-        # High Population
-        if self.uwp[4] >= 9: self.codes.append('Hi')
-
-        # High Technology
-        if self.uwp[7] >= 12: self.codes.append('Ht')
-
-        # Ice-Capped
-        if self.uwp[2] <= 1 and self.uwp[3] >= 1: self.codes.append('IC')
-
-        # Industrial
-        if self.uwp[4] >= 9:
+        if self.uwp[4] >= 9: self.codes.append('Hi')                        # High Population
+        if self.uwp[7] >= 12: self.codes.append('Ht')                       # High Technology
+        if self.uwp[2] <= 1 and self.uwp[3] >= 1: self.codes.append('IC')   # Ice-Capped
+        if self.uwp[4] >= 9:                                                # Industrial
             if self.uwp[2] <= 2 or self.uwp[2] == 4: self.codes.append('In')
             if self.uwp[2] == 7 or self.uwp[2] == 9: self.codes.append('In')
-
-        # Low Population
-        if self.uwp[4] >= 1 and self.uwp[4] <= 3: self.codes.append('Lo')
-
-        # Low Technology
-        if self.uwp[7] <= 5: self.codes.append('Lt')
-
-        # Non-Agricultural
-        if self.uwp[2] <= 3 and self.uwp[3] <= 3:
+        if self.uwp[4] >= 1 and self.uwp[4] <= 3: self.codes.append('Lo')   # Low Population
+        if self.uwp[7] <= 5: self.codes.append('Lt')                        # Low Technology
+        if self.uwp[2] <= 3 and self.uwp[3] <= 3:                           # Non-Agricultural
             if self.uwp[4] >= 6: self.codes.append('Na')
-
-        # Non-Industrial
-        if self.uwp[4] >= 4 and self.uwp[4] <= 6: self.codes.append('NI')
-
-        # Poor
-        if self.uwp[2] >= 2 and self.uwp[2] <= 5:
+        if self.uwp[4] >= 4 and self.uwp[4] <= 6: self.codes.append('NI')   # Non-Industrial
+        if self.uwp[2] >= 2 and self.uwp[2] <= 5:                           # Poor
             if self.uwp[3] <= 3: self.codes.append('Po')
 
-        # Rich
-        if self.uwp[2] == 6 or self.uwp[2] == 8:
+        if self.uwp[2] == 6 or self.uwp[2] == 8:                            # Rich
             if self.uwp[4] >= 6 and self.uwp[4] <= 8: self.codes.append('Ri')
-
-        # Vacuum
-        if self.uwp[2] == 0: self.codes.append('Va')
-
-        # Water World
-        if self.uwp[3] == 10: self.codes.append('Wa')
+        if self.uwp[2] == 0: self.codes.append('Va')                        # Vacuum
+        if self.uwp[3] == 10: self.codes.append('Wa')                       # Water World
 
     # Formats a readable string from the planet's UWP data
     def return_uwp(self):
