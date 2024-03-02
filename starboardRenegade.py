@@ -712,28 +712,28 @@ class planet():  # Planet Class
         if self.uwp[3] == 10: self.codes.append('Wa')                       # Water World
 
     # Formats a readable string from the planet's UWP data
-    def return_uwp(self):
-        uwp_string = self.uwp[0] + hexSwitch(self.uwp[1]) + hexSwitch(self.uwp[2]) + hexSwitch(
+    def returnUWP(self):
+        uwpString = self.uwp[0] + hexSwitch(self.uwp[1]) + hexSwitch(self.uwp[2]) + hexSwitch(
             self.uwp[3]) + hexSwitch(self.uwp[4]) + hexSwitch(self.uwp[5]) + hexSwitch(
             self.uwp[6]) + '-' + hexSwitch(self.uwp[7])
-        return uwp_string
+        return uwpString
 
     # Formats a readable string of travel codes
-    def travel_codes_format(self):
+    def travelCodesFormat(self):
         printString = ''
         for i in range(len(self.codes)):
             printString = printString + self.codes[i] + ' '
         return printString
 
     # Formats hex, name, UWP, and travel codes for printing
-    def return_tagline(self):
-        if len(self.codes) == 0: tagline = self.hex + ' ' + self.name + ' ' + self.return_uwp()
+    def returnTagline(self):
+        if len(self.codes) == 0: tagline = self.hex + ' ' + self.name + ' ' + self.returnUWP()
         if len(
-                self.codes) >= 1: tagline = self.hex + ' ' + self.name + ' ' + self.return_uwp() + ' ' + self.travel_codes_format()
+                self.codes) >= 1: tagline = self.hex + ' ' + self.name + ' ' + self.returnUWP() + ' ' + self.travelCodesFormat()
         return tagline
 
     # Formats PPE for printing
-    def assess_ppe(self):
+    def assessPPE(self):
         # Determines the PPE needed to survive on the surface.
         ppe = []
         if self.vaccSuit == True:
@@ -828,7 +828,7 @@ class planet():  # Planet Class
     def print(self):
         print()
         print('PLANET')
-        print(self.return_tagline())
+        print(self.returnTagline())
         if self.uwp[0] == 'X': print('No Starport | Berth ' + str(self.berthingCost) + ' Cr.')
         if self.uwp[0] != 'X': print(
             self.starportQuality + ' Starport Quality | Berth ' + str(self.berthingCost) + ' Cr.')
@@ -849,9 +849,9 @@ class planet():  # Planet Class
         if self.temperatureSwings == False: print(
             self.climate[2] + ' Climate | High ' + str(self.climate[1]) + '°C | Low ' + str(self.climate[0]) + '°C')
         if self.vaccSuit == True or self.respirator == True or self.filter == True or self.airSupply == True or self.ppeVaries == True:
-            print(self.assess_ppe())
+            print(self.assessPPE())
         print(self.government + ' | ' + self.culture + ' | Law ' + str(self.uwp[6]))
-        print('pop. ' + str(self.population) + ' | ' + str(self.population_density) + ' people per sqkm')
+        print('pop. ' + str(self.population) + ' | ' + str(self.populationDensity) + ' people per sqkm')
         print('Language Base: ' + self.language)
         print('Known Factions:')
         for i in range(len(self.factions)):
@@ -4834,7 +4834,7 @@ while terminalRunning == True:
                 print('---> CURRENT GALAXY <---')
                 for i in range(len(galaxy)):
                     print(
-                        galaxy[i].return_tagline() + '| ' + galaxy[i].government + ' | ' + galaxy[i].culture + ' | ' +
+                        galaxy[i].returnTagline() + '| ' + galaxy[i].government + ' | ' + galaxy[i].culture + ' | ' +
                         galaxy[i].climate[2] + ' | Factions: ' + str(len(galaxy[i].factions)))
                 print('<<< Returning to Terminal')
                 print()
@@ -5050,7 +5050,7 @@ while terminalRunning == True:
                 print()
                 for i in range(int(input('How many draftees? >>: '))):
                     homeworld = random.choice(galaxy)
-                    print('Homeworld: ' + homeworld.return_tagline())
+                    print('Homeworld: ' + homeworld.returnTagline())
                     # ^^^^^ ADDED
                     nick_carl = traveller_npc()
                     print('chk1')
