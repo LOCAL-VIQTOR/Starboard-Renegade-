@@ -188,7 +188,14 @@ class planet():  # Planet Class
         # TRADE GOODS
         self.goods = []
 
-    # Generates a name for the planet
+# NEW PLANET FUNCTIONS HERE
+
+    # Assigns 1st location in hexField
+    def generateHex(self, hexField):
+        self.hex = hexField[0]
+        hexField.remove(self.hex)
+
+    # Assigns Planet Name
     def generateName(self):
         prefix = ['Alph', 'Br', 'Ch', 'D', 'Ech', 'F', 'G', 'H', 'Ind', 'J', 'K', 'L', 'M', 'Nov', 'Osc', 'P', 'Qu',
                   'R', 'Si', 'T', 'Un', 'V', 'Wh', 'X', 'Y', 'Z', 'Calv', 'Dian', 'Rog']
@@ -197,56 +204,39 @@ class planet():  # Planet Class
                   'ulu', 'owe', 'iana', 'ers']
         self.name = random.choice(prefix) + random.choice(suffix) + '-' + str(random.randint(1, 13))
 
-    # Takes the first hex in the hex list's locatons, then removes it from the list.
-    def generateHex(self, hexField):
-        self.hex = hexField[0]
-        hexField.remove(self.hex)
-
-    # Determines starport quality, berth, and fuel and repair availability
+    # Assigns starport details
     def generateStarport(self, result):
-
-        # No Starport
-        if result == 0 or result == 1:
+        if result == 0 or result == 1:  # No Starport
             self.uwp[0] = 'X'
             self.starportQuality = 'No'
             self.berthingCost = 0
             self.fuel = 'No Fuel'
             self.facilities = 'No Repair Facilities'
-
-        # Frontier Starport
-        if result == 2 or result == 3:
+        if result == 2 or result == 3:  # Frontier Starport
             self.uwp[0] = 'E'
             self.starportQuality = 'Frontier'
             self.berthingCost = 0
             self.fuel = 'No Fuel'
             self.facilities = 'No Repair Facilities'
-
-        # Poor Starport
-        if result == 4 or result == 5:
+        if result == 4 or result == 5:  # Poor Starport
             self.uwp[0] = 'D'
             self.starportQuality = 'Poor'
             self.berthingCost = random.randint(1, 6) * 10
             self.fuel = 'Unrefined Fuel'
             self.facilities = 'Limited Repair Facilities'
-
-        # Routine Starport
-        if result == 6 or result == 7:
+        if result == 6 or result == 7:  # Routine Starport
             self.uwp[0] = 'C'
             self.starportQuality = 'Routine'
             self.berthingCost = random.randint(1, 6) * 100
             self.fuel = 'Unrefined Fuel'
             self.facilities = 'Small Craft Repair Facilities'
-
-        # Good Starport
-        if result == 8 or result == 9:
+        if result == 8 or result == 9:  # Good Starport
             self.uwp[0] = 'B'
             self.starportQuality = 'Good'
             self.berthingCost = random.randint(1, 6) * 500
             self.fuel = 'Refined fuel'
             self.facilities = 'Spacecraft Repair Facilities'
-
-        # Excellent Starport
-        if result == 10:
+        if result == 10:                # Excellent Starport
             self.uwp[0] = 'A'
             self.starportQuality = 'Excellent'
             self.berthingCost = random.randint(1, 6) * 1000
@@ -291,9 +281,7 @@ class planet():  # Planet Class
         # Sets limits at 0 and 15
         if self.uwp[2] < 0: self.uwp[2] = 0
         if self.uwp[2] > 15: self.uwp[2] = 15
-
-        # No Atmosphere
-        if self.uwp[2] == 0:
+        if self.uwp[2] == 0:    # No Atmosphere
             self.atmosphere = 'No'
             self.taintedAtmosphere = False
             self.vaccSuit = True
@@ -301,9 +289,7 @@ class planet():  # Planet Class
             self.filter = False
             self.airSupply = False
             self.ppeVaries = False
-
-        # Trace Atmosphere
-        if self.uwp[2] == 1:
+        if self.uwp[2] == 1:    # Trace Atmosphere
             self.atmosphere = 'Trace'
             self.taintedAtmosphere = False
             self.vaccSuit = True
@@ -311,9 +297,7 @@ class planet():  # Planet Class
             self.filter = False
             self.airSupply = False
             self.ppeVaries = False
-
-        # Very Thin, Tainted Atmosphere
-        if self.uwp[2] == 2:
+        if self.uwp[2] == 2:    # Very Thin, Tainted Atmosphere
             self.atmosphere = 'Very Thin'
             self.taintedAtmosphere = True
             self.vaccSuit = False
@@ -321,9 +305,7 @@ class planet():  # Planet Class
             self.filter = True
             self.airSupply = False
             self.ppeVaries = False
-
-        # Very Thin Atmosphere
-        if self.uwp[2] == 3:
+        if self.uwp[2] == 3:    # Very Thin Atmosphere
             self.atmosphere = 'Very Thin'
             self.taintedAtmosphere = False
             self.vaccSuit = False
@@ -331,9 +313,7 @@ class planet():  # Planet Class
             self.filter = False
             self.airSupply = False
             self.ppeVaries = False
-
-        # Thin, Tainted Atmosphere
-        if self.uwp[2] == 4:
+        if self.uwp[2] == 4:    # Thin, Tainted Atmosphere
             self.atmosphere = 'Thin'
             self.taintedAtmosphere = True
             self.vaccSuit = False
@@ -341,9 +321,7 @@ class planet():  # Planet Class
             self.filter = True
             self.airSupply = False
             self.ppeVaries = False
-
-        # Thin Atmosphere
-        if self.uwp[2] == 5:
+        if self.uwp[2] == 5:    # Thin Atmosphere
             self.atmosphere = 'Thin'
             self.taintedAtmosphere = False
             self.vaccSuit = False
@@ -351,9 +329,7 @@ class planet():  # Planet Class
             self.filter = False
             self.airSupply = False
             self.ppeVaries = False
-
-        # Standard Atmosphere
-        if self.uwp[2] == 6:
+        if self.uwp[2] == 6:    # Standard Atmosphere
             self.atmosphere = 'Standard'
             self.taintedAtmosphere = False
             self.vaccSuit = False
@@ -361,9 +337,7 @@ class planet():  # Planet Class
             self.filter = False
             self.airSupply = False
             self.ppeVaries = False
-
-        # Tainted Atmosphere
-        if self.uwp[2] == 7:
+        if self.uwp[2] == 7:    # Tainted Atmosphere
             self.atmosphere = 'Standard'
             self.taintedAtmosphere = True
             self.vaccSuit = False
@@ -371,9 +345,7 @@ class planet():  # Planet Class
             self.filter = True
             self.airSupply = False
             self.ppeVaries = False
-
-        # Dense Atmosphere
-        if self.uwp[2] == 8:
+        if self.uwp[2] == 8:    # Dense Atmosphere
             self.atmosphere = 'Dense'
             self.taintedAtmosphere = False
             self.vaccSuit = False
@@ -381,9 +353,7 @@ class planet():  # Planet Class
             self.filter = False
             self.airSupply = False
             self.ppeVaries = False
-
-        # Dense, Tainted Atmosphere
-        if self.uwp[2] == 9:
+        if self.uwp[2] == 9:    # Dense, Tainted Atmosphere
             self.atmosphere = 'Dense'
             self.taintedAtmosphere = True
             self.vaccSuit = False
@@ -391,9 +361,7 @@ class planet():  # Planet Class
             self.filter = True
             self.airSupply = False
             self.ppeVaries = False
-
-        # Exotic Atmosphere
-        if self.uwp[2] == 10:
+        if self.uwp[2] == 10:   # Exotic Atmosphere
             self.atmosphere = 'Exotic'
             self.taintedAtmosphere = False
             self.vaccSuit = False
@@ -401,9 +369,7 @@ class planet():  # Planet Class
             self.filter = False
             self.airSupply = True
             self.ppeVaries = False
-
-        # Corrosive Atmosphere
-        if self.uwp[2] == 11:
+        if self.uwp[2] == 11:   # Corrosive Atmosphere
             self.atmosphere = 'Corrosive'
             self.taintedAtmosphere = False
             self.vaccSuit = True
@@ -411,9 +377,7 @@ class planet():  # Planet Class
             self.filter = False
             self.airSupply = False
             self.ppeVaries = False
-
-        # Insidious Atmosphere
-        if self.uwp[2] == 12:
+        if self.uwp[2] == 12:   # Insidious Atmosphere
             self.atmosphere = 'Insidious'
             self.taintedAtmosphere = False
             self.vaccSuit = True
@@ -421,9 +385,7 @@ class planet():  # Planet Class
             self.filter = False
             self.airSupply = False
             self.ppeVaries = False
-
-        # Dense, High Atmosphere
-        if self.uwp[2] == 13:
+        if self.uwp[2] == 13:   # Dense, High Atmosphere
             self.atmosphere = 'Dense, High'
             self.taintedAtmosphere = False
             self.vaccSuit = False
@@ -431,9 +393,7 @@ class planet():  # Planet Class
             self.filter = False
             self.airSupply = False
             self.ppeVaries = False
-
-        # Thin, Low Atmosphere
-        if self.uwp[2] == 14:
+        if self.uwp[2] == 14:   # Thin, Low Atmosphere
             self.atmosphere = 'Thin, Low'
             self.taintedAtmosphere = False
             self.vaccSuit = False
@@ -441,9 +401,7 @@ class planet():  # Planet Class
             self.filter = False
             self.airSupply = False
             self.ppeVaries = False
-
-        # Unusual Atmosphere
-        if self.uwp[2] == 15:
+        if self.uwp[2] == 15:   # Unusual Atmosphere
             self.atmosphere = 'Unusual'
             self.taintedAtmosphere = False
             self.vaccSuit = False
@@ -711,51 +669,6 @@ class planet():  # Planet Class
         if self.uwp[2] == 0: self.codes.append('Va')                        # Vacuum
         if self.uwp[3] == 10: self.codes.append('Wa')                       # Water World
 
-    # Formats a readable string from the planet's UWP data
-    def returnUWP(self):
-        uwpString = self.uwp[0] + hexSwitch(self.uwp[1]) + hexSwitch(self.uwp[2]) + hexSwitch(
-            self.uwp[3]) + hexSwitch(self.uwp[4]) + hexSwitch(self.uwp[5]) + hexSwitch(
-            self.uwp[6]) + '-' + hexSwitch(self.uwp[7])
-        return uwpString
-
-    # Formats a readable string of travel codes
-    def travelCodesFormat(self):
-        printString = ''
-        for i in range(len(self.codes)):
-            printString = printString + self.codes[i] + ' '
-        return printString
-
-    # Formats hex, name, UWP, and travel codes for printing
-    def returnTagline(self):
-        if len(self.codes) == 0: tagline = self.hex + ' ' + self.name + ' ' + self.returnUWP()
-        if len(
-                self.codes) >= 1: tagline = self.hex + ' ' + self.name + ' ' + self.returnUWP() + ' ' + self.travelCodesFormat()
-        return tagline
-
-    # Formats PPE for printing
-    def assessPPE(self):
-        # Determines the PPE needed to survive on the surface.
-        ppe = []
-        if self.vaccSuit == True:
-            ppe.append('Vacc Suit')
-        if self.respirator == True:
-            ppe.append('Respirator')
-        if self.filter == True:
-            ppe.append('Filter')
-        if self.airSupply == True:
-            ppe.append('Air Supply')
-        if self.ppeVaries == True:
-            ppe.append('Varies')
-
-        # Improved PPE string return
-        printString = 'PPE: '
-        for i in range(len(ppe)):
-            if i < len(ppe) - 1:
-                printString = printString + ppe[i] + ', '
-            if i == len(ppe) - 1:
-                printString = printString + ppe[i]
-        return printString
-
     # Determines if any bases are available in/around the planet
     def generateBases(self):
         self.bases = []
@@ -824,6 +737,63 @@ class planet():  # Planet Class
                      chinese_southeast_asian, future_punk, hispanic_american, central_south_american, european]
         self.language = random.choice(random.choice(languages))
 
+    def generate(self, hexField, printX):
+        self.generateHex(hexField)
+        self.generateName()
+        self.generateStarport(d(2,6,-2))
+        self.generateSize(d(2,6,-2))
+        self.generateAtmosphere(d(2,6,-7) + self.uwp[1])
+        self.generateClimate()
+        self.generateHydrographics()
+        self.generatePopulation()
+        self.generateGovernmentAndCulture()
+        self.generateFactions()
+        self.generateLawLevel()
+        self.generateTechLevel()
+        self.generateTravelCodes()
+        self.generateBases()
+        self.generateLanguage()
+        if printX == True:
+            self.print()
+            print()
+
+
+    # PRINTING FUNCTIONS
+    def returnUWP(self):            # UWP String Return
+        uwpString = self.uwp[0] + hexSwitch(self.uwp[1]) + hexSwitch(self.uwp[2]) + hexSwitch(
+            self.uwp[3]) + hexSwitch(self.uwp[4]) + hexSwitch(self.uwp[5]) + hexSwitch(
+            self.uwp[6]) + '-' + hexSwitch(self.uwp[7])
+        return uwpString
+    def travelCodesFormat(self):    # Trade Codes String Return
+        printString = ''
+        for i in range(len(self.codes)):
+            printString = printString + self.codes[i] + ' '
+        return printString
+    def returnTagline(self):        # 'Tagline' String Return
+        if len(self.codes) == 0: tagline = self.hex + ' ' + self.name + ' ' + self.returnUWP()
+        if len(
+                self.codes) >= 1: tagline = self.hex + ' ' + self.name + ' ' + self.returnUWP() + ' ' + self.travelCodesFormat()
+        return tagline
+    def assessPPE(self):            # PPE String Return
+        ppe = []                    # Adds PPE to list if True
+        if self.vaccSuit == True:
+            ppe.append('Vacc Suit')
+        if self.respirator == True:
+            ppe.append('Respirator')
+        if self.filter == True:
+            ppe.append('Filter')
+        if self.airSupply == True:
+            ppe.append('Air Supply')
+        if self.ppeVaries == True:
+            ppe.append('Varies')
+        printString = 'PPE: '       # Compiles single string
+        for i in range(len(ppe)):
+            if i < len(ppe) - 1:
+                printString = printString + ppe[i] + ', '
+            if i == len(ppe) - 1:
+                printString = printString + ppe[i]
+        return printString
+
     # Prints planet
     def print(self):
         print()
@@ -859,26 +829,6 @@ class planet():  # Planet Class
             print(str(i + 1) + '. ' + faction_to_print[0] + ', ' + faction_to_print[1])
         if len(self.bases) >= 1: print(self.bases)
         if len(self.bases) <= 0: print('No Bases Nearby')
-
-    def generate(self, hexField, printX):
-        self.generateHex(hexField)
-        self.generateName()
-        self.generateStarport(d(2,6,-2))
-        self.generateSize(d(2,6,-2))
-        self.generateAtmosphere(d(2,6,-7) + self.uwp[1])
-        self.generateClimate()
-        self.generateHydrographics()
-        self.generatePopulation()
-        self.generateGovernmentAndCulture()
-        self.generateFactions()
-        self.generateLawLevel()
-        self.generateTechLevel()
-        self.generateTravelCodes()
-        self.generateBases()
-        self.generateLanguage()
-        if printX == True:
-            self.print()
-            print()
 
 
 #    __________  __________________  ________
