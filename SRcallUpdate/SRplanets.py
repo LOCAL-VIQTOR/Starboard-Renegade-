@@ -784,7 +784,6 @@ class planet():  # Planet Class
             print(self.assess_ppe())
         print(self.government + ' | ' + self.culture + ' | Law ' + str(self.uwp[6]))
         print('pop. ' + str(self.population) + ' | ' + str(self.population_density) + ' people per sqkm')
-        print('Population Stock: '+ self.stock)
         print('Language Base: ' + self.language)
         print('Known Factions:')
         for i in range(len(self.factions)):
