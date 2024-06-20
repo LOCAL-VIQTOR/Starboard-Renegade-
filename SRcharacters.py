@@ -1,17 +1,10 @@
 import random
 from SRtools import *
 from SRplanets import *
-from SRskillsheet import *
+from SRskills import *
 from SRbackstory import *
 from SRoccupation import *
 from SRlifepath import *
-
-# Separate classes for the following:
-    # Skills
-    # Equipment (head, shoulders, knees, toes)
-    # Backstory (there's too much info here')
-
-# Tragedies not added to character for some reason when family_status = true
 
 # Returns a modifier based on a character's ability score
 def characteristic_modifier(score):
