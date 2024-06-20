@@ -134,6 +134,38 @@ class backstory():
         self.randomDisposition()
         self.randomValuedPossession()
 
+    def homeworld_skills(self,character):
+        skill_list = []
+        if 'Ag' in character.homeworld.codes or 'Ga' in character.homeworld.codes or 'Po' in character.homeworld.codes:
+            a = ['Animals (any)', 0]
+            skill_list.append(a)
+        if 'As' in character.homeworld.codes:
+            a = ['Zero-G', 0]
+            skill_list.append(a)
+        if 'De' in character.homeworld.codes or 'Lt' in character.homeworld.codes:
+            a = ['Survival', 0]
+            skill_list.append(a)
+        if 'Fl' in character.homeworld.codes or 'Wa' in character.homeworld.codes:
+            a = ['Seafarer (any)', 0]
+            skill_list.append(a)
+        if 'Ht' in character.homeworld.codes:
+            a = ['Computers', 0]
+            skill_list.append(a)
+        if 'Hi' in character.homeworld.codes:
+            a = ['Streetwise', 0]
+            skill_list.append(a)
+        if 'IC' in character.homeworld.codes or 'Va' in character.homeworld.codes:
+            a = ['Vacc Suit', 0]
+            skill_list.append(a)
+        if 'In' in character.homeworld.codes:
+            a = ['Trade (any)', 0]
+            skill_list.append(a)
+        if 'Ri' in character.homeworld.codes:
+            a = ['Carouse (any)', 0]
+            skill_list.append(a)
+        if len(skill_list) > 0: return random.choice(skill_list)
+        if len(skill_list) == 0: return ['null',0]
+
     def generateBackstory(self, homeworldTL):
         self.childhood()
         self.motivations()
