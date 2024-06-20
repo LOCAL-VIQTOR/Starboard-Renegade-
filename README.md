@@ -1,5 +1,5 @@
 # Starboard, Renegade!
-An obstensive roleplaying 'game' set in the far reaches of space in the far-off future year of 2006. In its current form, it can be used to roll various roleplaying characters, planets, or space vessels, as well as parouse a certain amount of equipment and freight, although there is no legitimate playability as of yet. 
+Set in the far-off future year of 2006, *Starboard, Renegade!* is a programming project and ostensive roleplaying "game". Drawn with hefty inspiration from *Cyberpunk 2020*, *Mongoose Traveller*, and *GAMMAWORLD*, it is meant as a storytelling device that seeks to quickly determine worldbuilding details and alleviate some of the headache involved in having to consistently generate new ideas by hand for objects or locations which will reasonably never be explored. Unfortunately, there is an extremely fun *'one-shot'* aspect to the program, watching characters continue to develop until they die in the process, sometimes at over 100 years old. Watch out, Conway's *Game of Life*, there's a new 0-player game in town.
 
 ## Major Considerations
 - Planet Generator
@@ -8,7 +8,18 @@ An obstensive roleplaying 'game' set in the far reaches of space in the far-off 
 - Character Generator (Childhood & Lifeskills, Education, Sebatical, Career)
 
 ## Current Files
-- fnff.py | 'Friday Night Firefight', a module from Cyberpunk 2020. Two NPCs will shoot at each other until one of them falls over, unconscious. Incredibly limited in firearm capability.
-- starboardRenegade.py | The main program file. In its current state, it will provide the user with a series of menus, some dead-end, that will help the layman use some of the program features.
-- travCharGenerator v2.py | A half-constructed rewrite of travCharGenerator, used to test ergonomics of a few key features. Currently unusable.
-- travCharGenerator.py | A basic character generator for Mongoose Traveller, constructed halfway through the 'Draft' character careers. Relatively literate.
+- SRbackstory.py | Determines a character's childhood, such as family class & environment, status of parents, number of and relationships with siblings, current family status, and childhood skill selection.
+- SRcharacters.py | The main handler for creating characters with SRbackstory, SRoccupation, and SRlifepath.
+- SRcomputers.py | Details for handling computers and their connected equipment. Will most likely be merged with SRequipment.
+- SRdiana.py | Details surrounding a player character being tested.
+- SRequipment.py | Equippable or hands-on items for use by players.
+- SRfirearms.py | Document detailing firearms and other general weaponry.
+- SRfreight.py | Creates and distributes hands-off trade goods for use with SRplanets.
+- SRlifepath.py | Handles Traveller-based character career paths.
+- SRmain.py | Outdated main loop from previous branch.
+- SRoccupation.py | Handles Cyberpunk-based character career paths.
+- SRpatrons.py | Creates random missions and mission patrons.
+- SRplanets.py | Generates galactic maps and populates them with detailed planets.
+- SRskills.py | Skill handler for use with SRcharacters.
+- SRtools.py | Generally called-upon functions, such as d().
+- SRvessels.py | Details concerning construction and operation of various vehicles. 
