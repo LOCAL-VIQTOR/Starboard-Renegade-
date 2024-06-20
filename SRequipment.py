@@ -183,3 +183,25 @@ toolkits_list = [mechanical_toolkit, forensics_toolkit, engineer_toolkit, scient
 # Putting it all together
 equipment_list = [bugs_list, tranceivers_list, comms_list, computersEquipmentList, medical_supplies_list, robots_list,
                   sensors_list, survival_list, toolkits_list]
+
+class armor():
+    def __init__(self,name,sp,slot,hard,ev,cost):
+        self.name = name
+        self.sp = sp
+        self.slot = slot
+        self.hard = hard
+        self.ev = ev
+        self.cost = cost
+
+kevlarT = armor('Kevlar T-shirt',10,['Torso'],False,0,90)
+kevlarVest = armor('Kevlar Vest',10,['Torso'],False,0,90)
+steelHelmet = armor('Steel Helmet',14,['Head'],True,0,20)
+lgtArmorJacket = armor('Light Armor Jacket',14,['Torso','Arms'],False,0,150)
+medArmorJacket = armor('Medium Armor Jacket',18,['Torso','Arms'],False,1,200)
+flakVest = armor('Flak Vest',20,['Torso'],True,1,200)
+flakPants = armor('Flak Pants',20,['Legs'],True,1,200)
+nylonHelmet = armor('Nylon Helmet',20,['Head'],True,0,100)
+hvyArmorJacket = armor('Heavy Armor Jacket',20,['Torso','Arms'],False,2,250)
+doorGunnerVest = armor("Door Gunner's Vest",25,['Torso'],False,3,250)
+metalGear = armor('MetalGear(TM)',25,['Whole Body'],True,2,600)
+
