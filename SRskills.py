@@ -278,8 +278,13 @@ class skills():
             self.tradeHydroponics = -3
             self.tradePolymers = -3
 
-            self.vaccSuit = -3
-            self.zeroG = -3
+        self.vaccSuit = 0
+        self.zeroG = 0
+        self.computers = 0
+        self.deception = 0
+        self.mechanic = 0
+        self.recon = 0
+        self.astrogation = 0
 
     def train(self,character,skill,num):
         # Cyberpunk Characteristics (Ability Scores)

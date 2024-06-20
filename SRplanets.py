@@ -11,13 +11,22 @@ def spawnPlanet(hexField, printX):
     hallowsbelt.generate(hexField, printX)
     return hallowsbelt
 
+#    ____  __    ___    _   ______________
+#   / __ \/ /   /   |  / | / / ____/_  __/
+#  / /_/ / /   / /| | /  |/ / __/   / /
+# / ____/ /___/ ___ |/ /|  / /___  / /
+#/_/   /_____/_/  |_/_/ |_/_____/ /_/
+# PLANET GENERATOR CLASS & FUNCTIONS
+
 def generateHexList(rows, columns):         # Creates and returns a list of habited planets' hex locations.
     hexes = []                              # Creates an empty list waiting for hexes
     for x in range(columns):                # Creates a hex where the x location (x*100+y) up to 9999.
         for y in range(rows):
             z = (x + 1) * 100 + y + 1
-            if x < 10: z = '0' + str(z)     # Add a leading 0 if hex is less than 1000
-            if x >= 10: z = str(z)
+            if x < 10:                      # Add a leading 0 if hex is less than 1000
+                z = '0' + str(z)
+            if x >= 10:
+                z = str(z)
             c = random.randint(1, 2)       # Gives each hex a 50/50 shot of containing a settled world.
             if c == 2: hexes.append(z)      # Adds successful hexes to the hexes list
     return hexes
