@@ -3,13 +3,60 @@
 import random
 import math
 from SRtools import *
-from SRskills import returnEthnics
+#from SRskills import returnEthnics
 
 # Where does this go?
 def spawnPlanet(hexField, printX):
     hallowsbelt = planet()
     hallowsbelt.generate(hexField, printX)
     return hallowsbelt
+
+def returnEthnics():
+    anglo_american = ['English']
+    african = ['Bantu', 'Kongo', 'Ashandi', 'Zulu', 'Swahili']
+    japanese_korean = ['Japanese', 'Korean']
+    central_european_soviet = ['Bulgarian', 'Russian', 'Czech', 'Polish', 'Ukranian', 'Slovak']
+    pacific_islander = ['Microneasian', 'Tagalog', 'Polynesian', 'Malayan', 'Sudanese', 'Indonesian', 'Hawaiian']
+    chinese_southeast_asian = ['Burmese', 'Cantonese', 'Mandarin', 'Thai', 'Tibetan', 'Vietnamese']
+    future_punk = ['Lingua Astra', 'Alien Language']
+    hispanic_american = ['English', 'Spanish']
+    central_south_american = ['Spanish', 'Portuguese']
+    european = ['French', 'German', 'English', 'Spanish', 'Italian', 'Greek', 'Danish', 'Dutch', 'Norwegian',
+                'Swedish', 'Finnish']
+    ethnicities = [anglo_american, african, japanese_korean, central_european_soviet, pacific_islander,
+                   chinese_southeast_asian, future_punk, hispanic_american, central_south_american, european]
+    ethnicity = random.choice(ethnicities)
+    if ethnicity == anglo_american:
+        ethnicity = 'Anglo-American'
+        language = random.choice(anglo_american)
+    if ethnicity == african:
+        ethnicity = 'African'
+        language = random.choice(african)
+    if ethnicity == japanese_korean:
+        ethnicity = 'Japanese/Korean'
+        language = random.choice(japanese_korean)
+    if ethnicity == central_european_soviet:
+        ethnicity = 'Central European/Soviet'
+        language = random.choice(central_european_soviet)
+    if ethnicity == pacific_islander:
+        ethnicity = 'Pacific Islander'
+        language = random.choice(pacific_islander)
+    if ethnicity == chinese_southeast_asian:
+        ethnicity = 'Chinese/Southeast Asian'
+        language = random.choice(chinese_southeast_asian)
+    if ethnicity == future_punk:
+        ethnicity = 'Future-Punk'
+        language = random.choice(future_punk)
+    if ethnicity == hispanic_american:
+        ethnicity = 'Hispanic American'
+        language = random.choice(hispanic_american)
+    if ethnicity == central_south_american:
+        ethnicity = 'Central/South American'
+        language = random.choice(central_south_american)
+    if ethnicity == european:
+        ethnicity = 'European'
+        language = random.choice(european)
+    return [ethnicity,language]
 
 def generateHexList(rows, columns):         # Creates and returns a list of habited planets' hex locations.
     hexes = []                              # Creates an empty list waiting for hexes

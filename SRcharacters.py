@@ -120,6 +120,7 @@ class character():
         self.lifepath.career = 'Drifter'
         self.lifepath.drifter_career_check(self)
         
+        
     def characterNiche(self):
         stockRegion = self.homeworld.stock
         firstLanguage = self.homeworld.language
