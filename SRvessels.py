@@ -137,7 +137,12 @@ class hardpoint():
         self.tons = screenChoice[2]
         self.price = screenChoice[3]
 
-
+def name_vessel():
+    prefix = ['Kes','Pen','Ost','Casso','Ea','Ha','Mall','Du']
+    suffix = ['trel','guin','rich','wary','gle','wk','ard','ck']
+    vessel_name = random.choice(prefix)+random.choice(suffix)
+    return vessel_name
+    
 class vessel():
     def __init__(self):
         self.designation = 'Test Vessel'
@@ -259,10 +264,16 @@ class vessel():
                 self.armor += chosenArmor[1]
                 costPerc = self.price * chosenArmor[2]
                 armorCost += costPerc
-            if randomSetting == False:
-                for i in range(tit): armorCost += self.price * titanium[2]
-                for i in range(cry): armorCost += self.price * crystal[2]
-                for i in range(bon): armorCost += self.price * bonded[2]
+        if randomSetting == False:
+            for i in range(tit):
+                armorCost += self.price * titanium[2]
+                self.armor += titanium[1]
+            for i in range(cry):
+                armorCost += self.price * crystal[2]
+                self.armor += titanium[1]
+            for i in range(bon):
+                armorCost += self.price * bonded[2]
+                self.armor += titanium[1]
         self.price += armorCost
 
         # Sets up string to print for terminal
@@ -438,24 +449,22 @@ class vessel():
             thrust = 5
         drivePerformance = self.drivePerformanceTool()
         driveCode = [0, 0, 0, 0]
+        w = 0
         for i in range(len(drivePerformance)):
             if drivePerformance[i][1] == thrust:
                 driveCode = self.driveCodeTool(drivePerformance[i][0])
+                w = i
         self.availableHull -= driveCode[2]
         self.driveTons[1] = driveCode[2]
         self.price += driveCode[3]
+        drivePerformance = drivePerformance[w]
 
         # Turns drive number into string for drive printing
         drivePerformance[0] = alphaSwitch(drivePerformance[0])
-        print('here'+str(self.mannyDrive))
-        self.mannyDrive = drivePerformance[1]
-        print('there'+str(self.mannyDrive))
-
-        
-        self.mannyDrive[0] = alphaSwitch(self.mannyDrive[0])
+        self.mannyDrive = drivePerformance
 
         print(self.mannyDrive)
-        
+        self.mannyDrive[0] = alphaSwitch(self.mannyDrive[0])
         if thrust == 0: self.mannyDrive = ['N/A', 0]
 
     def decideJumpDistance(self, jumpDistance):
@@ -472,7 +481,7 @@ class vessel():
             if drivePerformance[i][1] == jumpDistance:
                 driveCode = self.driveCodeTool(drivePerformance[i][0])
                 x = i
-        drivePerformance = drivePerformance[i]
+        drivePerformance = drivePerformance[x]
         self.availableHull -= driveCode[0]
         self.driveTons[0] = driveCode[0]
         self.price += driveCode[1]
@@ -481,10 +490,15 @@ class vessel():
         if jumpDistance == 0: self.jumpDrive = ['N/A', 0]
 
     def installPowerPlant(self, driveScope):
+        x = 0
+        y = 0
+        if isinstance(self.jumpDrive[0],int) == True: self.jumpDrive[0] = alphaSwitch(self.jumpDrive[0])
+        if isinstance(self.mannyDrive[0],int) == True: self.mannyDrive[0] = alphaSwitch(self.mannyDrive[0])
         if self.jumpDrive[0] != 'N/A': x = alphaSwitch(self.jumpDrive[0])
         if self.jumpDrive[0] == 'N/A': x = 0
         if self.mannyDrive[0] != 'N/A': y = alphaSwitch(self.mannyDrive[0])
         if self.mannyDrive[0] == 'N/A': y = 0
+        print('XY CHECK' + str(x) + ' ' + str(y))
         if x < y: x = y
         if x != 0:
             driveCode = self.driveCodeTool(x)
@@ -497,6 +511,7 @@ class vessel():
         self.jumpFuel = [int((self.hullMass) // 10), int((self.hullMass * self.jumpDrive[1]) // 10)]
         print(self.jumpDrive)
         print(self.jumpFuel)
+        print(self.powerPlant)
         self.fuel[1] = self.powerPlant[1] + self.jumpFuel[1]
         if self.fuelScoops == True:
             self.fuelProcessors = self.fuel[1] // 20
@@ -545,7 +560,7 @@ class vessel():
         if computer == 'model7': self.computer = model7
         if option == 'bis' or option == 'fib' or option == 'both':
             self.computer.shipComputerOptions(option)
-        self.computer.install(library)
+        
 
     def installSensorsSuite(self, sensorsSuite):
         standardElectronics = ['Standard', 8, -4, ['Radar', 'Lidar'], 0, 0]
@@ -751,6 +766,8 @@ class vessel():
 
 
 def constructVessel(vessel):
+    vessel.designation = name_vessel()
+    
     # 1. Choose Hull Mass
     vessel.constructHull('random')
     vessel.determineHullStructure()
@@ -908,12 +925,7 @@ def constructMallard(vessel):
     vessel.decideCruisingSpeed(3)
     vessel.decideJumpDistance(1)
     vessel.installPowerPlant([1,3])
-
-    print(vessel.fuel[1])
-    
     vessel.allocateFuelTank()
-
-    print(vessel.fuel[1])
 
     vessel.installBridge()
     vessel.installComputer('optimal', 'none')
