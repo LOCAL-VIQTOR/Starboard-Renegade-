@@ -3,46 +3,21 @@
 # DATE      6/26/24
 
 from SRpilot import *
-
-# Password protects the program
-#print("Welcome to LOCALVIQ's HMI Framework.")
-#password = input('Password: ')
-#if password != 'User1': quit()
-
 import os
-#from pylogix import PLC
 from distutils import command # comes from setuptools
 try:
     from Tkinter import *
 except ImportError:
     from tkinter import *
-
-from winsound import Beep
-def blip(): Beep(300,300)   # Incorrect Buzzer (不对)
-def bep(): Beep(400,300)    # Correct Bell (对)
-
 import datetime
 def returnTime():           # Returns time (点)
     now = datetime.datetime.now()
     timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
     return timestamp
 
-# Creates a logfile with the date for storing commands
-now = datetime.datetime.now()
-timestamp = now.strftime("%Y%m%d")
-logFileName = timestamp+'_hmiLogfile.txt'
-#logFile = open(logFileName,'a')
-#logFile.close
+import turtle as t
 
-# Used to print things to the terminal and to the logfile
-# won't print path to terminal as a sneaky move
-def spit(logFileName,toPrint):
-    #logFile = open(logFileName,'a')
-    #logFile.write(toPrint+'\n')
-    if 'PATH:' not in toPrint: print(toPrint)
-    #logFile.close
-
-
+t.up()
 
 #   _____ _                _____ _____ ______  _____ 
 #  / ____| |        /\    / ____/ ____|  ____|/ ____|
@@ -80,10 +55,6 @@ root.title('Starboard, Renegade!')
 # | |____| | \ \| |____ / ____ \| |  | |____  | |____| |____| |____| |  | | |____| |\  |  | |  ____) |
 #  \_____|_|  \_\______/_/    \_\_|  |______| |______|______|______|_|  |_|______|_| \_|  |_| |_____/ 
 # CREATE GUI ELEMENTS & CONTROLS SO THAT YOU CAN PLACE THEM ON SCREEN FURTHER DOWN
-
-# EXAMPLE:
-#cc210_label = Label(root, text='CC210',fg='white',bg='black',width=8,font='Helvetica 12')
-#cc210_st = Button(root,text='START',fg='white',bg='black',width=8,font='Helvetica 12', command=lambda: receiving.start())
 
 fuel_label = Label(root,text='FUEL LABEL ERROR',fg='white',bg='black',font='Helvetica 12')
 #cargo_label = Label(root,text='CARGO LABEL ERROR',fg='black',bg='white',font='Helvetica 12')
@@ -161,7 +132,12 @@ ship_computer_software = Label(root,text=softlist,fg='white',bg='black',font='He
 readout = ''
 def scan_func(game,readout):
     game.scan()
-    if isinstance(game.planet,str) == False: readout = game.planet.return_tagline()
+    t.dot()
+    if isinstance(game.planet,str) == False:
+        readout = game.planet.return_tagline()
+        t.write(game.planet.uwp[0])
+    if isinstance(game.planet,str) == True: t.write('_')
+    
 
 scan_button = Button(root,text='SCAN',fg='white',bg='black',font='Helvetica 12', command=lambda:scan_func(game,readout))
 scan_readout = Label(root,text=readout,fg='white',bg='black',font='Helvetica 12')
@@ -177,6 +153,7 @@ pirate_label = Label(root,text='Pirate',fg='white',bg='gray',width=blw,font='Hel
 planet_head = Label(root,text='PLANET DETAILS',fg='white',bg='blue',width=39,font='Helvetica 12')
 
 starport_quality_label = Label(root,text='STARPORT ERROR',fg='white',bg='black',font='Helvetica 12')
+starport_fuel_label = Label(root,text='STARPORT ERROR',fg='white',bg='black',font='Helvetica 12')
 
 
 def hmi():        # Represents main() for tkinter
@@ -193,16 +170,6 @@ def hmi():        # Represents main() for tkinter
     # |_|    |______/_/    \_\_____|______| |______|______|______|_|  |_|______|_| \_|  |_| |_____/ 
     # PLACE ALL ELEMENTS HERE WITH TKINTER AND X,Y COORDINATES
 
-    # COLUMNS PLACEMENT
-    c1 = 50
-    c2 = 100
-    # ROWS PLACEMENT
-    r1 = 50
-    r2 = 100
-
-    # EXAMPLE:
-    #cc210_label.place(anchor=NW,x=c1,y=r1)
-    #cc210_st.place(anchor=NW, x=c2, y=r2)
     zhex = 800
     zhey = 440
 
@@ -287,8 +254,19 @@ def hmi():        # Represents main() for tkinter
     ship_computer_software.place(anchor=NW,x=cbloc_x,y=cbloc_3)
 
     # PLANET DETAILS
-    planet_x = [10,130,250]
-    planet_y = [335,365,400,430,455]
+    planet_x = 10
+    planet_y = 335
+    
+    planet_x = [planet_x,
+                planet_x+120,
+                planet_x+240]
+    planet_y = [planet_y,
+                planet_y+30,
+                planet_y+65,
+                planet_y+95,
+                planet_y+120,
+                planet_y+140]
+    
     planet_head.place(anchor=NW,x=planet_x[0],y=planet_y[0])
     # Scanning Button and Planet Readout
     scan_button.place(anchor=NW,x=planet_x[0],y=planet_y[1])
@@ -302,6 +280,7 @@ def hmi():        # Represents main() for tkinter
     pirate_label.place(anchor=NW,x=planet_x[2],y=planet_y[3])
     # Starport Information
     starport_quality_label.place(anchor=NW,x=planet_x[0],y=planet_y[4])
+    starport_fuel_label.place(anchor=NW,x=planet_x[0],y=planet_y[5])
 
 
 
@@ -312,12 +291,6 @@ def hmi():        # Represents main() for tkinter
 game.scan()
 
 def update_value():
-
-    # EXAMPLE
-    tag_updates = ['TAG_1',
-                   'TAG_2']
-    #tag_values = ccPLC.Read(tag_updates).Value
-
     #  _    _ _____  _____       _______ ______ 
     # | |  | |  __ \|  __ \   /\|__   __|  ____|
     # | |  | | |__) | |  | | /  \  | |  | |__   
@@ -326,9 +299,6 @@ def update_value():
     #  \____/|_|    |_____/_/    \_\_|  |______|
     # UPDATE TKINTER PACKAGES HERE
 
-    # EXAMPLE
-    #if receiving_values[0].Value == True: cc210_st['bg'] = 'black'
-    #if receiving_values[0].Value == False: cc210_st['bg'] = 'green'
     hexloc['text'] = str(game.location)
     fuel_label['text'] = 'Fuel: '+str(game.vessel.fuel[0])+'t / '+str(game.vessel.fuel[1]) + 't'
     if game.vessel.jumpFuel[0] > game.vessel.fuel[0]: fuel_label['fg'] = 'red'
@@ -410,23 +380,39 @@ def update_value():
         if neighbors[5].uwp[0] == 'C' or neighbors[5].uwp[0] == 'D': moveSE['bg'] = 'orange'
         if neighbors[5].uwp[0] == 'E' or neighbors[5].uwp[0] == 'X': moveSE['bg'] = 'red'
 
-    if 'Naval' in game.planet.bases: naval_label['bg'] = 'blue'
-    if 'Naval' not in game.planet.bases: naval_label['bg'] = 'gray'
-    if 'Scout' in game.planet.bases: scout_label['bg'] = 'blue'
-    if 'Scout' not in game.planet.bases: scout_label['bg'] = 'gray'
-    if 'Research' in game.planet.bases: research_label['bg'] = 'blue'
-    if 'Research' not in game.planet.bases: research_label['bg'] = 'gray'
-    if 'TAS' in game.planet.bases: tas_label['bg'] = 'blue'
-    if 'TAS' not in game.planet.bases: tas_label['bg'] = 'gray'
-    if 'Imperial Consulate' in game.planet.bases: consulate_label['bg'] = 'blue'
-    if 'Imperial Consulate' not in game.planet.bases: consulate_label['bg'] = 'gray'
-    if 'Pirate' in game.planet.bases: pirate_label['bg'] = 'red'
-    if 'Pirate' not in game.planet.bases: pirate_label['bg'] = 'gray'
+    if isinstance(game.planet,str) == False:
+        if 'Naval' in game.planet.bases: naval_label['bg'] = 'blue'
+        if 'Naval' not in game.planet.bases: naval_label['bg'] = 'gray'
+        if 'Scout' in game.planet.bases: scout_label['bg'] = 'blue'
+        if 'Scout' not in game.planet.bases: scout_label['bg'] = 'gray'
+        if 'Research' in game.planet.bases: research_label['bg'] = 'blue'
+        if 'Research' not in game.planet.bases: research_label['bg'] = 'gray'
+        if 'TAS' in game.planet.bases: tas_label['bg'] = 'blue'
+        if 'TAS' not in game.planet.bases: tas_label['bg'] = 'gray'
+        if 'Imperial Consulate' in game.planet.bases: consulate_label['bg'] = 'blue'
+        if 'Imperial Consulate' not in game.planet.bases: consulate_label['bg'] = 'gray'
+        if 'Pirate' in game.planet.bases: pirate_label['bg'] = 'red'
+        if 'Pirate' not in game.planet.bases: pirate_label['bg'] = 'gray'
 
-    starport_quality_label['text'] = game.planet.starportQuality + ' Starport | Berth ' + str(game.planet.berthingCost)
+        starport_quality_label['text'] = game.planet.starportQuality + ' Starport | Berth ' + str(game.planet.berthingCost)
+        starport_fuel_label['text'] = game.planet.fuel +' | '+ game.planet.facilities
 
+    topStart = False
+    x = game.location // 100
+    if x % 2 == 1: topStart = True
+    
+    x = game.location // 100
+    y = game.location - x * 100
+    x = int(x*15)
+    y = int(-y*15)
+    
+    if topStart == True: y += 7
 
-
+    x -= 410
+    y -= -380
+    
+    t.goto(x,y)
+    t.down()
 
 
 
