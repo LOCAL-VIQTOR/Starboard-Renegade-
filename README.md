@@ -1,4 +1,5 @@
 # Starboard, Renegade!
+### *The taxation of trade routes to outlying starsystems is once again in dispute. . .* 
 Set in the far-off future year of 2006, *Starboard, Renegade!* is a programming project and ostensive roleplaying "game". Drawn with hefty inspiration from *Cyberpunk 2020*, *Mongoose Traveller*, and *GAMMAWORLD*, it is meant as a storytelling device that seeks to quickly determine worldbuilding details and alleviate some of the headache involved in having to consistently generate new ideas by hand for objects or locations which will reasonably never be explored. Unfortunately, there is an extremely fun *'one-shot'* aspect to the program, watching characters continue to develop until they die in the process, sometimes at over 100 years old. Watch out, Conway's *Game of Life*, there's a new 0-player game in town.
 
 ## Major Considerations
