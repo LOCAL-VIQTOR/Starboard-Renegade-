@@ -138,9 +138,62 @@ class hardpoint():
         self.price = screenChoice[3]
 
 def name_vessel():
-    prefix = ['Kes','Pen','Ost','Casso','Ea','Ha','Mall','Du']
-    suffix = ['trel','guin','rich','wary','gle','wk','ard','ck']
-    vessel_name = random.choice(prefix)+random.choice(suffix)
+    #prefix = ['Kes','Pen','Ost','Casso','Ea','Ha','Mall','Du']
+    #suffix = ['trel','guin','rich','wary','gle','wk','ard','ck']
+    #vessel_name = random.choice(prefix)+random.choice(suffix)
+    anatidae = ['Dendrocygna', # combines the Ancient Greek dendron meaning "tree" with the genus name Cygnus Bechstein, 1803, meaning "swan" in Latin
+                'Thalassornis',
+                'Cereopsis',
+                'Branta', # Latinised form of Old Norse brandgás, "burnt (black) goose".
+                'Anser', # Latin anser, "goose"
+                'Coscoroba', # Has a loud trumpet-like call ‘cos-cor-oo’ the first syllable being longer and higher in pitch. Female’s calls are higher in pitch than those of the male. The species’ name is derived from the call.
+                'Cygnus',
+                'Stictonetta',
+                'Hymenolaimus',
+                'Tachyeres',
+                'Merganetta',
+                'Plectropterus',
+                'Sarkidiornis',
+                'Cyanochen',
+                'Alopochen',
+                'Neochen',
+                'Chloephaga',
+                'Radjah',
+                'Tadorna',
+                'Malacorhynchus',
+                'Salvadorina',
+                'Cairina',
+                'Asarcornis',
+                'Aix',
+                'Chenonetta',
+                'Nettapus',
+                'Amazonetta',
+                'Callonetta',
+                'Lophonetta',
+                'Speculanas',
+                'Sibirionetta',
+                'Spatula',
+                'Mareca',
+                'Anas',
+                'Marmaronetta',
+                'Rhodonessa',
+                'Netta', # Means 'Duck'
+                'Athya',
+                'Polysticta', # from polus "many" and stiktos "spotted"
+                'Somateria',
+                'Histrionicus',
+                'Camptorhynchus',
+                'Melanitta',
+                'Clangula',
+                'Bucephala',
+                'Mergellus',
+                'Lophodytes',
+                'Mergus',
+                'Heteronetta', # "Same Duck", black-headed brood theives
+                'Nomonyx',
+                'Oxyura',
+                'Biziura']
+    vessel_name = random.choice(anatidae)
     return vessel_name
     
 class vessel():
@@ -923,8 +976,8 @@ def constructMallard(vessel):
     #driveScope = vessel.scopeDrives()
     #print(driveScope)
     vessel.decideCruisingSpeed(3)
-    vessel.decideJumpDistance(1)
-    vessel.installPowerPlant([1,3])
+    vessel.decideJumpDistance(3)
+    vessel.installPowerPlant([3,3])
     vessel.allocateFuelTank()
 
     vessel.installBridge()
