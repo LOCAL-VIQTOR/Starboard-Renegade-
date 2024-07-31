@@ -1,5 +1,5 @@
 from SRcharacters import *
-from SRskillsheet import *
+from SRskills import *
 
 class occupation():
     def __init__(self):

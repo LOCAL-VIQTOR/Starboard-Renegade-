@@ -137,7 +137,65 @@ class hardpoint():
         self.tons = screenChoice[2]
         self.price = screenChoice[3]
 
-
+def name_vessel():
+    #prefix = ['Kes','Pen','Ost','Casso','Ea','Ha','Mall','Du']
+    #suffix = ['trel','guin','rich','wary','gle','wk','ard','ck']
+    #vessel_name = random.choice(prefix)+random.choice(suffix)
+    anatidae = ['Dendrocygna', # combines the Ancient Greek dendron meaning "tree" with the genus name Cygnus Bechstein, 1803, meaning "swan" in Latin
+                'Thalassornis',
+                'Cereopsis',
+                'Branta', # Latinised form of Old Norse brandgás, "burnt (black) goose".
+                'Anser', # Latin anser, "goose"
+                'Coscoroba', # Has a loud trumpet-like call ‘cos-cor-oo’ the first syllable being longer and higher in pitch. Female’s calls are higher in pitch than those of the male. The species’ name is derived from the call.
+                'Cygnus',
+                'Stictonetta',
+                'Hymenolaimus',
+                'Tachyeres',
+                'Merganetta',
+                'Plectropterus',
+                'Sarkidiornis',
+                'Cyanochen',
+                'Alopochen',
+                'Neochen',
+                'Chloephaga',
+                'Radjah',
+                'Tadorna',
+                'Malacorhynchus',
+                'Salvadorina',
+                'Cairina',
+                'Asarcornis',
+                'Aix',
+                'Chenonetta',
+                'Nettapus',
+                'Amazonetta',
+                'Callonetta',
+                'Lophonetta',
+                'Speculanas',
+                'Sibirionetta',
+                'Spatula',
+                'Mareca',
+                'Anas',
+                'Marmaronetta',
+                'Rhodonessa',
+                'Netta', # Means 'Duck'
+                'Athya',
+                'Polysticta', # from polus "many" and stiktos "spotted"
+                'Somateria',
+                'Histrionicus',
+                'Camptorhynchus',
+                'Melanitta',
+                'Clangula',
+                'Bucephala',
+                'Mergellus',
+                'Lophodytes',
+                'Mergus',
+                'Heteronetta', # "Same Duck", black-headed brood theives
+                'Nomonyx',
+                'Oxyura',
+                'Biziura']
+    vessel_name = random.choice(anatidae)
+    return vessel_name
+    
 class vessel():
     def __init__(self):
         self.designation = 'Test Vessel'
@@ -193,10 +251,10 @@ class vessel():
         self.mortgage = 0  # Mortgage to Buy Ship
 
     def constructHull(self, hullCode):
-        if hullCode.isdigit() == False:
+        if isinstance(hullCode,int) == False:
             if hullCode == 'random': self.hullCode = random.randint(1, 20)
             if hullCode != 'random': print("randomHull() Error: hullCode not 'random'")
-        if hullCode.isdigit() == True: self.hullCode = hullCode
+        if isinstance(hullCode,int) == True: self.hullCode = hullCode
         self.hullMass = self.hullCode * 100
         self.availableHull = self.hullMass
         if self.hullCode == 1: self.price = 2000000
@@ -259,10 +317,16 @@ class vessel():
                 self.armor += chosenArmor[1]
                 costPerc = self.price * chosenArmor[2]
                 armorCost += costPerc
-            if randomSetting == False:
-                for i in range(tit): armorCost += self.price * titanium[2]
-                for i in range(cry): armorCost += self.price * crystal[2]
-                for i in range(bon): armorCost += self.price * bonded[2]
+        if randomSetting == False:
+            for i in range(tit):
+                armorCost += self.price * titanium[2]
+                self.armor += titanium[1]
+            for i in range(cry):
+                armorCost += self.price * crystal[2]
+                self.armor += titanium[1]
+            for i in range(bon):
+                armorCost += self.price * bonded[2]
+                self.armor += titanium[1]
         self.price += armorCost
 
         # Sets up string to print for terminal
@@ -416,7 +480,8 @@ class vessel():
 
     def decideScope(self, scope):
         scopes = ['Station', 'System', 'Jump', 'Star']
-        self.scope = random.choice(scopes)
+        if scope == 'random': self.scope = random.choice(scopes)
+        else: self.scope = scope
 
     def scopeDrives(self):
         drive = random.randint(1, 6)
@@ -428,22 +493,30 @@ class vessel():
         if self.scope == 'Star': return [jump, drive]
 
     def decideCruisingSpeed(self, thrust):
+        print('THRUST:'+str(thrust))
         if self.hullMass // 100 <= 1:
             if thrust < 2: thrust = 2
-            if thrust > 2 and thrust < 4: thrust = 4
-            if thrust < 4: thrust = 6
+            if thrust > 2 and thrust <= 4: thrust = 4
+            if thrust > 4: thrust = 6
         if self.hullMass // 100 >= 14 and thrust == 6:
             thrust = 5
         drivePerformance = self.drivePerformanceTool()
         driveCode = [0, 0, 0, 0]
+        w = 0
         for i in range(len(drivePerformance)):
             if drivePerformance[i][1] == thrust:
                 driveCode = self.driveCodeTool(drivePerformance[i][0])
+                w = i
         self.availableHull -= driveCode[2]
         self.driveTons[1] = driveCode[2]
         self.price += driveCode[3]
+        drivePerformance = drivePerformance[w]
+
+        # Turns drive number into string for drive printing
         drivePerformance[0] = alphaSwitch(drivePerformance[0])
-        self.mannyDrive = drivePerformance[1]
+        self.mannyDrive = drivePerformance
+
+        print(self.mannyDrive)
         self.mannyDrive[0] = alphaSwitch(self.mannyDrive[0])
         if thrust == 0: self.mannyDrive = ['N/A', 0]
 
@@ -461,7 +534,7 @@ class vessel():
             if drivePerformance[i][1] == jumpDistance:
                 driveCode = self.driveCodeTool(drivePerformance[i][0])
                 x = i
-        drivePerformance = drivePerformance[i]
+        drivePerformance = drivePerformance[x]
         self.availableHull -= driveCode[0]
         self.driveTons[0] = driveCode[0]
         self.price += driveCode[1]
@@ -470,10 +543,15 @@ class vessel():
         if jumpDistance == 0: self.jumpDrive = ['N/A', 0]
 
     def installPowerPlant(self, driveScope):
+        x = 0
+        y = 0
+        if isinstance(self.jumpDrive[0],int) == True: self.jumpDrive[0] = alphaSwitch(self.jumpDrive[0])
+        if isinstance(self.mannyDrive[0],int) == True: self.mannyDrive[0] = alphaSwitch(self.mannyDrive[0])
         if self.jumpDrive[0] != 'N/A': x = alphaSwitch(self.jumpDrive[0])
         if self.jumpDrive[0] == 'N/A': x = 0
         if self.mannyDrive[0] != 'N/A': y = alphaSwitch(self.mannyDrive[0])
         if self.mannyDrive[0] == 'N/A': y = 0
+        print('XY CHECK' + str(x) + ' ' + str(y))
         if x < y: x = y
         if x != 0:
             driveCode = self.driveCodeTool(x)
@@ -484,6 +562,9 @@ class vessel():
 
     def allocateFuelTank(self):
         self.jumpFuel = [int((self.hullMass) // 10), int((self.hullMass * self.jumpDrive[1]) // 10)]
+        print(self.jumpDrive)
+        print(self.jumpFuel)
+        print(self.powerPlant)
         self.fuel[1] = self.powerPlant[1] + self.jumpFuel[1]
         if self.fuelScoops == True:
             self.fuelProcessors = self.fuel[1] // 20
@@ -532,6 +613,7 @@ class vessel():
         if computer == 'model7': self.computer = model7
         if option == 'bis' or option == 'fib' or option == 'both':
             self.computer.shipComputerOptions(option)
+        
 
     def installSensorsSuite(self, sensorsSuite):
         standardElectronics = ['Standard', 8, -4, ['Radar', 'Lidar'], 0, 0]
@@ -619,8 +701,10 @@ class vessel():
             self.lowBerts = manifest[1]
             self.availableHull -= self.lowBerths * 0.5
             self.price += self.lowBerths * 50000
+            self.availableHull -= self.staterooms * 4
             self.price += self.staterooms * 500000
 
+    # DESPARATE OVERHAUL
     def vehicleOptions(self, option):
         miningDrones = ['Mining Drones', 10, 1000000]
         repairDronesTons = 0.01 * self.hullMass
@@ -651,7 +735,7 @@ class vessel():
         for i in range(len(self.options)):
             self.availableHull -= self.options[i][1]
             self.price += self.options[i][2]
-        self.computer.install(library)
+        
 
     def technicalData(self):
         if self.hullMass // 100 == 1: scopeTag = 'craft'
@@ -735,6 +819,8 @@ class vessel():
 
 
 def constructVessel(vessel):
+    vessel.designation = name_vessel()
+    
     # 1. Choose Hull Mass
     vessel.constructHull('random')
     vessel.determineHullStructure()
@@ -792,3 +878,115 @@ def constructVessel(vessel):
 
     # 18. Printing to Terminal
     vessel.technicalData()
+
+def customVessel(vessel):
+    # 1. Choose Hull Mass
+    x = int(input('Please input hull code: '))
+    vessel.constructHull(int(x))
+    vessel.determineHullStructure()
+
+    # 2. Choose Hull Configuration
+    print('Choose a configuration:')
+    print('Wedge, Cone, Sphere, Cylinder,')
+    print('Wing, Disc, Other, Distributed')
+    x = input('>>> ')
+    vessel.assignConfiguration(x)
+
+    # 3. Install Armor
+    print('List desired number of armors:')
+    x = int(input('Titanium Steel: '))
+    y = int(input('Crystaliron: '))
+    z = int(input('Bonded Superdense: '))
+    vessel.installArmor(x, y, z, False)
+
+    # 4. Install Hull Options
+    print('Armor Options: 1 = Yes, 2 = No')
+    x = int(input('Install Reflec? >>>: '))
+    y = int(input('Install Self-Sealing? >>>: '))
+    z = int(input('Install Stealth? >>>: '))
+    a = [x,y,z]
+    for i in range(len(a)):
+        if a[i] == 1: a[i] = True
+        else: a[i] = False
+    vessel.installArmorOptions(a[0], a[1], a[2], False)
+
+    # 5. Decide Ship Scope
+    x = input('Station, System, Jump(ship) or Star(ship)? >>>: ')
+    vessel.decideScope(x)
+    driveScope = vessel.scopeDrives()
+    print(driveScope)
+
+    # 6. Decide Cruising Altitude (Thrust)
+    x = int(input('Lateral Gs of thrust? >>>: '))
+    vessel.decideCruisingSpeed(x)
+
+    # 7. Decide Jump Rating
+    y = int(input('Jump Rating?? >>>: '))
+    vessel.decideJumpDistance(driveScope[0])
+
+    # 8. Choose Power Plant
+    vessel.installPowerPlant([y,x])
+
+    # 9. Fuel Allocation
+    vessel.allocateFuelTank()
+
+    # 10. Install Bridge
+    vessel.installBridge()
+
+    # 11. Install Computer
+    if y == 1: vessel.computer.install('Jump Control/1')
+    if y == 1: vessel.computer.install('Jump Control/1')
+    if y == 1: vessel.computer.install('Jump Control/1')
+    if y == 1: vessel.computer.install('Jump Control/1')
+    if y == 1: vessel.computer.install('Jump Control/1')
+    if y == 1: vessel.computer.install('Jump Control/1')
+    vessel.installComputer('optimal', 'none')
+
+    # 12. Install Computer Software
+    vessel.computer.initializeShipSoftware(vessel, ['random'])
+
+    # 13. Install Sensors
+    input('standard, civilian, military, advanced, very advanced')
+    vessel.installSensorsSuite('random')
+
+    # 16. Hardpoints
+    vessel.attachArmaments(50)
+
+    # 14. Staterooms, Low berths, luxuries
+    vesselManifest = vessel.compileShipManifest(0, 0, 0, 0, True, False)
+    vessel.determineCrew('average', vesselManifest, True)
+
+    # 15. Vehicles / cargo options
+    vessel.vehicleOptions('random')
+
+    # 17. Final Cargo space allocation
+    vessel.cargo = int(vessel.availableHull)
+
+    # 18. Printing to Terminal
+    vessel.technicalData()
+
+def constructMallard(vessel):
+    vessel.designation = 'Mallard 310T'
+    vessel.constructHull(3)
+    vessel.determineHullStructure()
+    vessel.assignConfiguration('Wing')
+    vessel.installArmor(2, 0, 0, False)
+    vessel.installArmorOptions(False, True, False, False)
+    vessel.scope = 'Star'
+    #driveScope = vessel.scopeDrives()
+    #print(driveScope)
+    vessel.decideCruisingSpeed(3)
+    vessel.decideJumpDistance(3)
+    vessel.installPowerPlant([3,3])
+    vessel.allocateFuelTank()
+
+    vessel.installBridge()
+    vessel.installComputer('optimal', 'none')
+    vessel.computer.initializeShipSoftware(vessel, ['Jump Control/1'])
+    vessel.installSensorsSuite('civilian')
+    vessel.attachArmaments(20)
+    vesselManifest = vessel.compileShipManifest(0, 0, 0, 0, True, False)
+    vessel.determineCrew('minimum', vesselManifest, True)
+    #vessel.vehicleOptions('random')
+    vessel.cargo = int(vessel.availableHull)
+    #vessel.technicalData()

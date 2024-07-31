@@ -191,7 +191,9 @@ class computer():
     def initializeShipSoftware(self, vessel, programTheme):
         self.programs = []
 
+        self.install(library)
         self.install(manoeuvre0)
+        
 
         if programTheme == 'random':
             x = d(2,6,0)

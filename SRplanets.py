@@ -3,7 +3,7 @@
 import random
 import math
 from SRtools import *
-from SRskills import returnEthnics
+#from SRskills import returnEthnics
 
 # Where does this go?
 def spawnPlanet(hexField, printX):
@@ -11,22 +11,60 @@ def spawnPlanet(hexField, printX):
     hallowsbelt.generate(hexField, printX)
     return hallowsbelt
 
-#    ____  __    ___    _   ______________
-#   / __ \/ /   /   |  / | / / ____/_  __/
-#  / /_/ / /   / /| | /  |/ / __/   / /
-# / ____/ /___/ ___ |/ /|  / /___  / /
-#/_/   /_____/_/  |_/_/ |_/_____/ /_/
-# PLANET GENERATOR CLASS & FUNCTIONS
+def returnEthnics():
+    anglo_american = ['English']
+    african = ['Bantu', 'Kongo', 'Ashandi', 'Zulu', 'Swahili']
+    japanese_korean = ['Japanese', 'Korean']
+    central_european_soviet = ['Bulgarian', 'Russian', 'Czech', 'Polish', 'Ukranian', 'Slovak']
+    pacific_islander = ['Microneasian', 'Tagalog', 'Polynesian', 'Malayan', 'Sudanese', 'Indonesian', 'Hawaiian']
+    chinese_southeast_asian = ['Burmese', 'Cantonese', 'Mandarin', 'Thai', 'Tibetan', 'Vietnamese']
+    future_punk = ['Lingua Astra', 'Alien Language']
+    hispanic_american = ['English', 'Spanish']
+    central_south_american = ['Spanish', 'Portuguese']
+    european = ['French', 'German', 'English', 'Spanish', 'Italian', 'Greek', 'Danish', 'Dutch', 'Norwegian',
+                'Swedish', 'Finnish']
+    ethnicities = [anglo_american, african, japanese_korean, central_european_soviet, pacific_islander,
+                   chinese_southeast_asian, future_punk, hispanic_american, central_south_american, european]
+    ethnicity = random.choice(ethnicities)
+    if ethnicity == anglo_american:
+        ethnicity = 'Anglo-American'
+        language = random.choice(anglo_american)
+    if ethnicity == african:
+        ethnicity = 'African'
+        language = random.choice(african)
+    if ethnicity == japanese_korean:
+        ethnicity = 'Japanese/Korean'
+        language = random.choice(japanese_korean)
+    if ethnicity == central_european_soviet:
+        ethnicity = 'Central European/Soviet'
+        language = random.choice(central_european_soviet)
+    if ethnicity == pacific_islander:
+        ethnicity = 'Pacific Islander'
+        language = random.choice(pacific_islander)
+    if ethnicity == chinese_southeast_asian:
+        ethnicity = 'Chinese/Southeast Asian'
+        language = random.choice(chinese_southeast_asian)
+    if ethnicity == future_punk:
+        ethnicity = 'Future-Punk'
+        language = random.choice(future_punk)
+    if ethnicity == hispanic_american:
+        ethnicity = 'Hispanic American'
+        language = random.choice(hispanic_american)
+    if ethnicity == central_south_american:
+        ethnicity = 'Central/South American'
+        language = random.choice(central_south_american)
+    if ethnicity == european:
+        ethnicity = 'European'
+        language = random.choice(european)
+    return [ethnicity,language]
 
 def generateHexList(rows, columns):         # Creates and returns a list of habited planets' hex locations.
     hexes = []                              # Creates an empty list waiting for hexes
     for x in range(columns):                # Creates a hex where the x location (x*100+y) up to 9999.
         for y in range(rows):
             z = (x + 1) * 100 + y + 1
-            if x < 10:                      # Add a leading 0 if hex is less than 1000
-                z = '0' + str(z)
-            if x >= 10:
-                z = str(z)
+            if x < 10: z = '0' + str(z)     # Add a leading 0 if hex is less than 1000
+            if x >= 10: z = str(z)
             c = random.randint(1, 2)       # Gives each hex a 50/50 shot of containing a settled world.
             if c == 2: hexes.append(z)      # Adds successful hexes to the hexes list
     return hexes
@@ -784,6 +822,7 @@ class planet():  # Planet Class
             print(self.assess_ppe())
         print(self.government + ' | ' + self.culture + ' | Law ' + str(self.uwp[6]))
         print('pop. ' + str(self.population) + ' | ' + str(self.population_density) + ' people per sqkm')
+        print('Population Stock: '+ self.stock)
         print('Language Base: ' + self.language)
         print('Known Factions:')
         for i in range(len(self.factions)):
