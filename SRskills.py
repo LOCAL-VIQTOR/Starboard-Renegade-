@@ -12,6 +12,8 @@ def skillCalc(skill, num):
 
 class skills():
     def __init__(self,character):
+        n = -3
+
         # Special Abilities
         self.authority = 0
         self.charismaticLeadership = 0
@@ -30,238 +32,249 @@ class skills():
         self.befriendedGang = False
         self.executiveFavor = False
 
-        # Attr Skills
-        self.personalGrooming = 0
-        self.wardrobeStyle = 0
+        # vv SKILLS LISTED ALPHABETICALLY BY PARENT TAG
+        #    Tag                                # Name of Tag               Source  Ability Note:
+        
+        self.accounting = n                     # Accounting                CP      INT
+        self.admin = n                          # Admin                     TV
+        self.advocate = n                       # Advocate                  TV              Consider removing
+        self.astrogation = n                    # Astrogation               TV              
+        self.awarenessNotice = n                # Awareness/Notice          CP      INT     Classic "Perception"
 
-            # Body Skills
-        self.endurance = 0
-        self.strengthFeat = 0
-        self.swimming = 0
+        #   Animals
+        self.animals = n                        # Animals                   TV
+        self.animalRiding = n                   # Animal Riding             TV
+        self.veterinary = n                     # Veterinary                TV
+        self.animalTraining = n                 # Animal Training           TV
+        self.animalFarming = n                  # Animal Farming            TV
+        
+        #   Art - Self Expression or Pastiche
+        self.performance = n                    # Performance               CP      EMP
+        self.composition = n                    # Composition               CP      INT
+        self.dancing = n                        # Dancing                   CP/TV   REF     Traveller listed as 'Dance'
+        self.disguise = n                       # Disguise                  CP      TECH    Fool others (person)
+        self.forgery = n                        # Forgery                   CP      TECH    Fool others (object)
+        self.instrument = n                     # Instrument                CP/TV   TECH    Requires extrapolation
+        self.paintDraw = n                      # Paint or Draw             CP      TECH    Consider separating
+        self.photoFilm = n                      # Photo & Film              CP      TECH    Consider renaming "Camera"
+        self.art = n                            # Art                       TV
+        self.acting = n                         # Acting                    TV              
+        self.holography = n                     # Holography                TV
+        self.sculpting = n                      # Sculpting                 TV
+        self.writing = n                        # Writing                   TV
+        
+        #   Athletics
+        self.athletics = n                      # Athletics                 CP      REF
+        self.endurance = n                      # Endurance                 CP/TV   BODY
+        self.coordination = n                   # Coordination              TV
+        self.strength = n                       # Strength                  CP/TV   BODY    Cyberpunk listed 'Strength Feat'
+        self.flying = n                         # Flying                    TV              Only for characters with wings
+        self.swimming = n                       # Swimming                  CP      BODY
+        
+        self.battleDress = n                    # Battle Dress              TV
+        self.blade = n                          # Blade                     TV
+        self.bludgeon = n                       # Bludgeon                  TV
+        self.brawling = n                       # Brawling                  CP      REF
+        self.broker = n                         # Broker                    TV
+        self.carouse = n                        # Carouse                   TV
+        
+        
+        # Combat Skills - Tool-Oriented Missile Weapons
+        self.archery = n                        # Archery                   CP      REF
+        self.fencing = n                        # Fencing                   CP      REF
+        self.submachinegun = n                  # Submachinegun             CP      REF
+        self.gunCombat = n                      # Gun Combat                TV
+        self.slugRifle = n                      # Slug Rife                 TV/CP   REF     Cyberpunk referred 'rifle'
+        self.slugPistol = n                     # Slug Pistol               TV/CP   REF     Cyberpunk referred 'handgun'
+        self.shotgun = n                        # Shotgun                   TV
+        self.energyRifle = n                    # Energy Rifle              TV
+        self.energyPistol = n                   # Energy Pistol             TV
+        
+        # Heavy Weapons
+        self.heavyWeapons = n                   # Heavy Weapons             CP/TV   REF
+        self.launchers = n                      # Launchers                 TV  
+        self.MPA = n                            # MPA                       TV              Man-Portable Artillery
+        self.fieldArtillery = n                 # Field Artillery           TV
 
-            # Cool Skills
-        self.interrogation = 0
-        self.intimidate = 0
-        self.oratory = 0
-        self.resistTortureDrugs = 0
-        self.streetwise = 0
+        self.comms = n                          # Comms                     TV
+        self.computers = n                      # Computers                 TV
+        self.deception = n                      # Deception                 TV
+        self.diplomat = n                       # Diplomat                  TV
+        self.diagnoseIllness = n                # Diagnose Illness          CP      INT
+        self.dodgeEscape = n                    # Dodge/Escape              CP      REF
+        
+        # Driving - On or Below Surface Transportation Schemes
+        self.driving = n                        # Driving                   CP      REF     Traveller refers as "Drive"
+        self.motorcycle = n                     # Motorcycle                CP      REF
+        self.heavyMachinery = n                 # Heavy Machinery           CP      REF 
+        self.driveMole = n                      # Drive Mole                TV
+        self.driveTracked = n                   # Drive Tracked             TV
+        self.driveWheeled = n                   # Drive Wheeled             TV
 
-            # Empathy Skills
-        self.humanPerception = 0
-        self.interview = 0
-        self.leadership = 0
-        self.seduction = 0
-        self.social = 0
-        self.persuasion = 0
-        self.performance = 0
+        self.education = n                      # Education                 CP      INT
+        
+        # Engineer
+        self.engineer = n                       # Engineer                  TV
+        self.mDrive = n                         # M-Drive                   TV
+        self.jDrive = n                         # J-Drive                   TV
+        self.electricalEngineer = n             # Electrical Engineer       TV
+        self.lifeSupport = n                    # Life Support              TV              Life Support Systems
+        self.power = n                          # Power                     TV              Power Plants
+        self.explosives = n                     # Explosives                TV              Consider Merging with Demolitions
 
-            # Intelligence Skills
-        self.accounting = 0
-        self.anthropology = 0
-        self.awarenessNotice = 0
-        self.biology = 0
-        self.botany = 0
-        self.chemistry = 0
-        self.composition = 0
-        self.diagnoseIllness = 0
-        self.education = 0
-        self.expert = 0
-        self.gamble = 0
-        self.hideEvade = 0
-        self.history = 0
-        self.language = 0
-        self.librarySearch = 0
-        self.math = 0
-        self.physics = 0
-        self.programming = 0
-        self.shadowTrack = 0
-        self.stockMarket = 0
-        self.systemKnowledge = 0
-        self.teaching = 0
-        self.survival = 0
-        self.zoology = 0
+        self.expert = n                         # Expert                    CP      INT
+        
+        # Flyer - In-Atmosphere Flying Schemes
+        self.fixedWing = n                      # Fixed Wing                CP/TV   REF     Traveller referred 'Wing'
+        self.dirigible = n                      # Dirigible                 CP      REF     For Airships / Blimps
+        self.vectorThrust = n                   # Vector Thrust             CP      REF 
+        self.flyer = n                          # Flyer                     TV              For piloting in-atmosphere craft
+        self.grav = n                           # Grav                      TV              For crafts with anti-gravity propulsion
+        self.rotor = n                          # Rotor                     TV/CP   REF     Cyberpunk referred 'Gyro'
 
-            # Reflex Skills
-        self.archery = 0
-        self.athletics = 0
-        self.brawling = 0
-        self.dancing = 0
-        self.dodgeEscape = 0
-        self.driving = 0
-        self.fencing = 0
-        self.handgun = 0
-        self.heavyWeapons = 0
-        self.aikido = 0
-        self.animalKungFu = 0
-        self.boxing = 0
-        self.capoeria = 0
-        self.choiLiFut = 0
-        self.judo = 0
-        self.karate = 0
-        self.taeKwonDo = 0
-        self.thaiKickBoxing = 0
-        self.wrestling = 0
-        self.melee = 0
-        self.motorcycle = 0
-        self.heavyMachinery = 0
-        self.gyro = 0
-        self.fixedWing = 0
-        self.dirigible = 0
-        self.vectorThrust = 0
-        self.rifle = 0
-        self.stealth = 0
-        self.submachinegun = 0
+        self.gamble = n                         # Gamble                    CP/TV   INT     Traveller referred 'Gambler'
+        
+        # Gunner - On-Board Weaponry
+        self.gunner = n                         # Gunner                    TV              Ship Weaponry Familiarity
+        self.turrets = n                        # Turrets                   TV              Mounted Turret Weapons
+        self.ortillery = n                      # Ortillery                 TV              Orbital Artillery
+        self.screens = n                        # Screens                   TV              Ship Weapons: Screens
+        self.capitalWeapons = n                 # Capital Weapons           TV              Massive weapons on ships 5k tons and up
 
-            # Technical Skills
-        self.aeroTech = 0
-        self.vectorThrustTech = 0
-        self.basicTech = 0  #
-        self.cryotank = 0
-        self.cyberdeckDesign = 0
-        self.cyberTech = 0  #
-        self.demolitions = 0
-        self.disguise = 0
-        self.electronics = 0  #
-        self.electronicSecurity = 0
-        self.firstAid = 0
-        self.forgery = 0
-        self.gyroTech = 0
-        self.paintDraw = 0
-        self.photoFilm = 0
-        self.pharmaceuticals = 0
-        self.pickLock = 0
-        self.pickPocket = 0
-        self.instrument = 0
-        self.weaponsmith = 0
+        self.hideEvade = n                      # Hide/Evade                CP      INT
+        self.humanPerception = n                # Human Perception          CP      EMP
+        self.interrogation = n                  # Interrogation             CP      COOL
+        self.interview = n                      # Interview                 CP      EMP
+        self.intimidate = n                     # Intimidate                CP      COOL
+        self.investigate = n                    # Investigate               TV
+        self.jackOfAllTrades = n                # Jack of all Trades        TV              Consider Removal
+        self.language = n                       # Language                  CP/TV   INT     Requires Extrapolation
+        self.leadership = n                     # Leadership                CP/TV   EMP
+        self.librarySearch = n                  # Library Search            CP      INT
+
+        #   Martial Arts - No Brawling, Melee, or Crude Fighting Styles
+        self.aikido = n                         # Aikido                    CP      REF
+        self.animalKungFu = n                   # Animal Kung Fu            CP      REF   
+        self.boxing = n                         # Boxing                    CP      REF
+        self.capoeria = n                       # Capoeria                  CP      REF
+        self.choiLiFut = n                      # Choi Li Fut               CP      REF
+        self.judo = n                           # Judo                      CP      REF
+        self.karate = n                         # Karate                    CP      REF
+        self.taeKwonDo = n                      # Tae Kwon Do               CP      REF
+        self.thaiKickBoxing = n                 # Thai Kick Boxing          CP      REF
+        self.wrestling = n                      # Wrestling                 CP      REF
+        
+        self.melee = n                          # Melee                     CP/TV   REF
+        self.naturalWeapon = n                  # Natural Weapon            TV              Only for characters with claws etc.
+        self.navigation = n                     # Navigation                TV
+        self.oratory = n                        # Oratory                   CP      COOL
+        self.personalGrooming = n               # Personal Grooming         CP      ATTR
+        self.persuasion = n                     # Persuasion                CP      EMP
+
+        # Pilot
+        self.pilot = n                          # Pilot                     TV              x = ship tonnage
+        self.smallCraft = n                     # Small Craft               TV              x<100t
+        self.spacecraft = n                     # Spacecraft                TV              100t<x<5kt
+        self.capitalShips = n                   # Capital Ships             TV              x>5kt
+
+        self.persuade = n                       # Persuade                  TV
+        self.programming = n                    # Programming               CP      INT
+        self.recon = n                          # Recon                     TV
+        self.remoteOperation = n                # Remote Operation          TV
+        self.resistTortureDrugs = n             # Resist Torture/Drugs      CP      COOL
+        
+        #   Seafarer
+        self.seafarer = n
+        self.sail = n
+        self.submarine = n
+        self.oceanShips = n
+        self.motorboats = n
+
+
+        #   Sciences / Studies
+        self.anthropology = n                   # Anthropology              CP      INT
+        self.biology = n                        # Biology                   CP      INT
+        self.botany = n                         # Botony                    CP      INT
+        self.chemistry = n                      # Chemistry                 CP      INT 
+        self.history = n                        # History                   CP      INT
+        self.math = n                           # Math                      CP      INT
+        self.pharmaceuticals = n                # Pharmaceuticals           CP      TECH
+        self.physics = n                        # Physics                   CP      INT
+        self.zoology = n                        # Zoology                   CP      INT  
+        # Physical Science
+        self.physicalScience = n
+        self.physics = n
+        self.chemistry = n
+        self.electronicScience = n
+        # Life Science
+        self.lifeScience = n
+        self.biology = n
+        self.cybernetics = n
+        self.genetics = -3
+        self.psionicology = -3
+        # Social Science
+        self.socialScience = n
+        self.archeology = n
+        self.economics = n
+        self.history = n
+        self.linguistics = n
+        self.philosophy = n
+        self.psychology = n
+        self.sophontology = n
+        # Space Science
+        self.spaceScience = n
+        self.planetology = n
+        self.robotics = n
+        self.xenology = n
+
+        self.seduction = n                      # Seduction                 CP      EMP
+        self.sensors = n                        # Sensors                   TV      
+        self.shadowTrack = n                    # Shadow/Track              CP      INT
+        self.social = n                         # Social                    CP      EMP
+        self.stealth = n                        # Stealth                   CP      REF
+        self.stockMarket = n                    # Stock Market              CP      INT
+        self.streetwise = n                     # Streetwise                CP      COOL
+        self.survival = n                       # Survival                  CP      INT
+        self.systemKnowledge = n                # System Knowledge          CP      INT  
+        self.teaching = n                       # Teaching                  CP      INT
+
+        #   Technical Skills
+        self.aeroTech = n                       # Aero Tech                 CP      TECH
+        self.vectorThrustTech = n               # Vector Thrust Tech        CP      TECH
+        self.basicTech = n  #                   # Basic Tech                CP      TECH
+        self.cryotank = n                       # Cryotank                  CP      TECH
+        self.cyberdeckDesign = n                # Cyberdeck Design          CP      TECH
+        self.cyberTech = n  #                   # Cybertech                 CP      TECH
+        self.demolitions = n                    # Demolitions               CP      TECH
+        self.electronics = n  #                 # Electronics               CP      TECH
+        self.electronicSecurity = n             # Electronic Security       CP      TECH
+        self.firstAid = n                       # First Aid                 CP/TV   TECH    Traveller Refers 'Medic'
+        self.gyroTech = n                       # Gyro Tech                 CP      TECH
+        self.pickLock = n                       # Pick Lock                 CP      TECH
+        self.pickPocket = n                     # Pick Pocket               CP      TECH
+        self.weaponsmith = n                    # Weaponsmith               CP      TECH
+        self.mechanic = n                       # Mechanic                  TV
+
+        self.unarmed = n                        # Unarmed                   TV
+        self.wardrobeStyle = n                  # Wardrobe & Style          CP      ATTR
 
         #Cancel LOL
         if character.name == 'Traveller':
-            self.admin = -3
-            self.advocate = -3
 
-            self.animals = -3
-            self.animalRiding = -3
-            self.veterinary = -3
-            self.animalTraining = -3
-            self.animalFarming = -3
+            
 
-            self.athletics = -3
-            self.coordination = -3
-            self.endurance = -3
-            self.strength = -3
-            self.flying = -3
+            
+            
 
-            self.art = -3
-            self.acting = -3
-            self.dance = -3
-            self.holography = -3
-            self.instrument = -3
-            self.sculpting = -3
-            self.writing = -3
+            
 
-            self.astrogation = -3
-            self.battleDress = -3
-            self.broker = -3
-            self.carouse = -3
-            self.comms = -3
-            self.computers = -3
-            self.deception = -3
-            self.diplomat = -3
+            
 
-            self.drive = -3
-            self.driveMole = -3
-            self.driveTracked = -3
-            self.driveWheeled = -3
+            
 
-            self.engineer = -3
-            self.mDrive = -3
-            self.jDrive = -3
-            self.electricalEngineer = -3
-            self.lifeSupport = -3
-            self.power = -3
-            self.explosives = -3
+            
 
-            self.flyer = -3
-            self.grav = -3
-            self.rotor = -3
-            self.wing = -3
-
-            self.gambler = -3
-
-            self.gunner = -3
-            self.turrets = -3
-            self.ortillery = -3
-            self.screens = -3
-            self.capitalWeapons = -3
-
-            self.gunCombat = -3
-            self.slugRifle = -3
-            self.slugPistol = -3
-            self.shotgun = -3
-            self.energyRifle = -3
-            self.energyPistol = -3
-
-            self.heavyWeapons = -3
-            self.launchers = -3
-            self.MPA = -3  # man portable artillery
-            self.fieldArtillery = -3
-
-            self.investigate = -3
-            self.jackOfAllTrades = -3
-            self.language = -3  # must be extrapolated
-            self.leadership = -3
-            self.mechanic = -3
-            self.medic = -3
-
-            self.melee = -3
-            self.unarmed = -3
-            self.blade = -3
-            self.bludgeon = -3
-            self.naturalWeapon = -3
-
-            self.navigation = -3
-            self.persuade = -3
-
-            self.pilot = -3
-            self.smallCraft = -3
-            self.spacecraft = -3
-            self.capitalShips = -3
-
-            self.recon = -3
-            self.remoteOperation = -3
-
-            self.physicalScience = -3
-            self.physics = -3
-            self.chemistry = -3
-            self.electronicScience = -3
-
-            self.lifeScience = -3
-            self.biology = -3
-            self.cybernetics = -3
-            self.genetics = -3
-            self.psionicology = -3
-
-            self.socialScience = -3
-            self.archeology = -3
-            self.economics = -3
-            self.history = -3
-            self.linguistics = -3
-            self.philosophy = -3
-            self.psychology = -3
-            self.sophontology = -3
-
-            self.spaceScience = -3
-            self.planetology = -3
-            self.robotics = -3
-            self.xenology = -3
-
-            self.seafarer = -3
-            self.sail = -3
-            self.submarine = -3
-            self.oceanShips = -3
-            self.motorboats = -3
-
-            self.sensors = -3
+            
             self.stealth = -3
             self.steward = -3
             self.streetwise = -3
