@@ -1,4 +1,10 @@
 # SR skillsheet
+#___________             __       ________.__  __     ___ ___      ___.     _________               .__.__          __   
+#\_   _____/_ __   ____ |  | __  /  _____/|__|/  |_  /   |   \ __ _\_ |__   \_   ___ \  ____ ______ |__|  |   _____/  |_ 
+# |    __)|  |  \_/ ___\|  |/ / /   \  ___|  \   __\/    ~    \  |  \ __ \  /    \  \/ /  _ \\____ \|  |  |  /  _ \   __\
+# |     \ |  |  /\  \___|    <  \    \_\  \  ||  |  \    Y    /  |  / \_\ \ \     \___(  <_> )  |_> >  |  |_(  <_> )  |  
+# \___  / |____/  \___  >__|_ \  \______  /__||__|   \___|_  /|____/|___  /  \______  /\____/|   __/|__|____/\____/|__|  
+#     \/              \/     \/         \/                 \/           \/          \/       |__|                        - lv 8/6/24
 import random
 from SRtools import *
 
@@ -15,16 +21,16 @@ class skills():
         n = -3
 
         # Special Abilities
-        self.authority = 0
-        self.charismaticLeadership = 0
-        self.combatSense = 0
-        self.credibility = 0
-        self.family = 0
-        self.interface = 0
-        self.juryRig = 0
-        self.medicalTech = 0
-        self.resources = 0
-        self.streetdeal = 0
+        self.authority = n              # Cop
+        self.charismaticLeadership = n  # Rockerboy
+        self.combatSense = n            # Solo
+        self.credibility = n            # Media
+        self.family = n                 # Nomad
+        self.interface = n              # Netrunner
+        self.juryRig = n                # Techie
+        self.medicalTech = n            # Medtechie
+        self.resources = n              # Corporate
+        self.streetdeal = n             # Fixer
 
         # Favor Bools
         self.befriendedPolice = False
@@ -32,9 +38,12 @@ class skills():
         self.befriendedGang = False
         self.executiveFavor = False
 
-        # vv SKILLS LISTED ALPHABETICALLY BY PARENT TAG
+        # MASTER SKILLS LIST
+        # Arranged alphabetically by parent tag.
+
         #    Tag                                # Name of Tag               Source  Ability Note:
-        
+
+        # A - A
         self.accounting = n                     # Accounting                CP      INT
         self.admin = n                          # Admin                     TV
         self.advocate = n                       # Advocate                  TV              Consider removing
@@ -70,7 +79,8 @@ class skills():
         self.strength = n                       # Strength                  CP/TV   BODY    Cyberpunk listed 'Strength Feat'
         self.flying = n                         # Flying                    TV              Only for characters with wings
         self.swimming = n                       # Swimming                  CP      BODY
-        
+
+        # A - C
         self.battleDress = n                    # Battle Dress              TV
         self.blade = n                          # Blade                     TV
         self.bludgeon = n                       # Bludgeon                  TV
@@ -90,12 +100,13 @@ class skills():
         self.energyRifle = n                    # Energy Rifle              TV
         self.energyPistol = n                   # Energy Pistol             TV
         
-        # Heavy Weapons
+        # Heavy Weapons - Listed underneath combat skills for unknown reasons
         self.heavyWeapons = n                   # Heavy Weapons             CP/TV   REF
         self.launchers = n                      # Launchers                 TV  
         self.MPA = n                            # MPA                       TV              Man-Portable Artillery
         self.fieldArtillery = n                 # Field Artillery           TV
-
+        
+        # C - D
         self.comms = n                          # Comms                     TV
         self.computers = n                      # Computers                 TV
         self.deception = n                      # Deception                 TV
@@ -111,6 +122,7 @@ class skills():
         self.driveTracked = n                   # Drive Tracked             TV
         self.driveWheeled = n                   # Drive Wheeled             TV
 
+        # D - E
         self.education = n                      # Education                 CP      INT
         
         # Engineer
@@ -122,6 +134,7 @@ class skills():
         self.power = n                          # Power                     TV              Power Plants
         self.explosives = n                     # Explosives                TV              Consider Merging with Demolitions
 
+        # E - F
         self.expert = n                         # Expert                    CP      INT
         
         # Flyer - In-Atmosphere Flying Schemes
@@ -132,6 +145,7 @@ class skills():
         self.grav = n                           # Grav                      TV              For crafts with anti-gravity propulsion
         self.rotor = n                          # Rotor                     TV/CP   REF     Cyberpunk referred 'Gyro'
 
+        # F - G
         self.gamble = n                         # Gamble                    CP/TV   INT     Traveller referred 'Gambler'
         
         # Gunner - On-Board Weaponry
@@ -141,6 +155,7 @@ class skills():
         self.screens = n                        # Screens                   TV              Ship Weapons: Screens
         self.capitalWeapons = n                 # Capital Weapons           TV              Massive weapons on ships 5k tons and up
 
+        # G - M
         self.hideEvade = n                      # Hide/Evade                CP      INT
         self.humanPerception = n                # Human Perception          CP      EMP
         self.interrogation = n                  # Interrogation             CP      COOL
@@ -163,7 +178,8 @@ class skills():
         self.taeKwonDo = n                      # Tae Kwon Do               CP      REF
         self.thaiKickBoxing = n                 # Thai Kick Boxing          CP      REF
         self.wrestling = n                      # Wrestling                 CP      REF
-        
+
+        # M - P
         self.melee = n                          # Melee                     CP/TV   REF
         self.naturalWeapon = n                  # Natural Weapon            TV              Only for characters with claws etc.
         self.navigation = n                     # Navigation                TV
@@ -192,50 +208,55 @@ class skills():
 
 
         #   Sciences / Studies
-        self.anthropology = n                   # Anthropology              CP      INT
-        self.biology = n                        # Biology                   CP      INT
-        self.botany = n                         # Botony                    CP      INT
-        self.chemistry = n                      # Chemistry                 CP      INT 
-        self.history = n                        # History                   CP      INT
-        self.math = n                           # Math                      CP      INT
-        self.pharmaceuticals = n                # Pharmaceuticals           CP      TECH
-        self.physics = n                        # Physics                   CP      INT
-        self.zoology = n                        # Zoology                   CP      INT  
         # Physical Science
-        self.physicalScience = n
-        self.physics = n
-        self.chemistry = n
-        self.electronicScience = n
+        self.physicalScience = n                # Physical Science
+        self.physics = n                        # Physics                   CP/TV   INT
+        self.chemistry = n                      # Chemistry                 CP      INT 
+        self.electronicScience = n              # Electronic Science             
+        self.math = n                           # Math                      CP      INT
         # Life Science
-        self.lifeScience = n
-        self.biology = n
-        self.cybernetics = n
-        self.genetics = -3
-        self.psionicology = -3
+        self.lifeScience = n                    # Life Science
+        self.biology = n                        # Biology                   CP/TV   INT
+        self.botany = n                         # Botony                    CP      INT
+        self.cybernetics = n                    # Cybernetics
+        self.genetics = n                       # Genetics
+        self.psionicology = n                   # Psionicology
+        self.pharmaceuticals = n                # Pharmaceuticals           CP      TECH
+        self.zoology = n                        # Zoology                   CP      INT
         # Social Science
-        self.socialScience = n
-        self.archeology = n
-        self.economics = n
-        self.history = n
-        self.linguistics = n
-        self.philosophy = n
-        self.psychology = n
-        self.sophontology = n
+        self.socialScience = n                  # Social Science
+        self.anthropology = n                   # Anthropology              CP      INT
+        self.archeology = n                     # Archaeology
+        self.economics = n                      # Economics
+        self.history = n                        # History                   CP/TV   INT
+        self.linguistics = n                    # Linguistics
+        self.philosophy = n                     # Philosophy
+        self.psychology = n                     # Psychology
+        self.sophontology = n                   # Sophontology
         # Space Science
-        self.spaceScience = n
-        self.planetology = n
-        self.robotics = n
-        self.xenology = n
+        self.spaceScience = n                   # Space Science
+        self.planetology = n                    # Planetology
+        self.robotics = n                       # Robotics
+        self.xenology = n                       # Xenology
 
+        # S - T
         self.seduction = n                      # Seduction                 CP      EMP
         self.sensors = n                        # Sensors                   TV      
         self.shadowTrack = n                    # Shadow/Track              CP      INT
         self.social = n                         # Social                    CP      EMP
-        self.stealth = n                        # Stealth                   CP      REF
+        self.stealth = n                        # Stealth                   CP/TV   REF
+        self.steward = n                        # Steward                   TV
         self.stockMarket = n                    # Stock Market              CP      INT
-        self.streetwise = n                     # Streetwise                CP      COOL
-        self.survival = n                       # Survival                  CP      INT
+        self.streetwise = n                     # Streetwise                CP/TV   COOL
+        self.survival = n                       # Survival                  CP/TV   INT
         self.systemKnowledge = n                # System Knowledge          CP      INT  
+
+        # Tactics
+        self.tactics = n                        # Tactics                   TV
+        self.militaryTactics = n                # Military Tactics          TV
+        self.navalTactics = n                   # Naval Tactics             TV
+        
+        # T - T
         self.teaching = n                       # Teaching                  CP      INT
 
         #   Technical Skills
@@ -244,7 +265,7 @@ class skills():
         self.basicTech = n  #                   # Basic Tech                CP      TECH
         self.cryotank = n                       # Cryotank                  CP      TECH
         self.cyberdeckDesign = n                # Cyberdeck Design          CP      TECH
-        self.cyberTech = n  #                   # Cybertech                 CP      TECH
+        self.cyberTech = n  #                   # Cyber Tech                CP      TECH
         self.demolitions = n                    # Demolitions               CP      TECH
         self.electronics = n  #                 # Electronics               CP      TECH
         self.electronicSecurity = n             # Electronic Security       CP      TECH
@@ -255,49 +276,19 @@ class skills():
         self.weaponsmith = n                    # Weaponsmith               CP      TECH
         self.mechanic = n                       # Mechanic                  TV
 
+        # Trade: will probably attempt to add one per freight entry (LOTS)
+        self.trade = n                          # Trade                     TV
+        self.tradeBiologicals = n               # Trade Biologicals         TV
+        self.tradeCivilEngineering = n          # Trade Civil Engineering   TV
+        self.tradeSpaceConstruction = n         # Trade Space Construction  TV
+        self.tradeHydroponics = n               # Trade Hydroponics         TV
+        self.tradePolymers = n                  # Trade Polymers            TV
+        
+        # T - Z
         self.unarmed = n                        # Unarmed                   TV
+        self.vaccSuit = n                       # Vacc Suit                 TV
         self.wardrobeStyle = n                  # Wardrobe & Style          CP      ATTR
-
-        #Cancel LOL
-        if character.name == 'Traveller':
-
-            
-
-            
-            
-
-            
-
-            
-
-            
-
-            
-
-            
-            self.stealth = -3
-            self.steward = -3
-            self.streetwise = -3
-            self.survival = -3
-
-            self.tactics = -3
-            self.militaryTactics = -3
-            self.navalTactics = -3
-
-            self.trade = -3
-            self.tradeBiologicals = -3
-            self.tradeCivilEngineering = -3
-            self.tradeSpaceConstruction = -3
-            self.tradeHydroponics = -3
-            self.tradePolymers = -3
-
-        self.vaccSuit = 0
-        self.zeroG = 0
-        self.computers = 0
-        self.deception = 0
-        self.mechanic = 0
-        self.recon = 0
-        self.astrogation = 0
+        self.zeroG = n                          # Zero-G                    TV
 
     def train(self,character,skill,num):
         # Cyberpunk Characteristics (Ability Scores)
@@ -561,15 +552,6 @@ class skills():
         #Z
         if skill == 'Zoology': self.zoology = skillCalc(self.zoology,num) # INT
 
-        
-
-        
-        
-        
-        
-        
-
-        
         if skill == 'Slug Rifle': self.slugRifle = skillCalc(self.slugRifle, num)
         if skill == 'Slug Pistol': self.slugPistol = skillCalc(self.slugPistol, num)
         if skill == 'Shotgun': self.shotgun = skillCalc(self.shotgun, num)
@@ -643,7 +625,7 @@ class skills():
         if skill == 'Survival': self.survival = skillCalc(self.survival, num)
 
         if skill == 'Tactics': self.tactics = skillCalc(self.tactics, num)
-        if skill == 'Military Tactis': self.militaryTactics = skillCalc(self.militaryTactics, num)
+        if skill == 'Military Tactics': self.militaryTactics = skillCalc(self.militaryTactics, num)
         if skill == 'Naval Tactics': self.navalTactics = skillCalc(self.navalTactics, num)
 
         if skill == 'Trade': self.trade = skillCalc(self.trade, num)
