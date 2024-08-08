@@ -40,6 +40,12 @@ class skills():
 
         # MASTER SKILLS LIST
         # Arranged alphabetically by parent tag.
+        # Animals, Art, Athletics, Combat Skills, Heavy Weapons, Driving, Engineer Flyer, Gunner, 
+        # Melee, Martial Arts, Pilot, Gunner, Gun Combat, Seafarer, Sciences, Tactics, Technical Skills,
+        # Trade, Optionally Languages
+        #
+        # >> ADD GUERILLA TACTICS
+        # >> MAYBE PACK/PUNK TACTICS?
 
         #    Tag                                # Name of Tag               Source  Ability Note:
 
@@ -197,7 +203,7 @@ class skills():
         self.programming = n                    # Programming               CP      INT
         self.recon = n                          # Recon                     TV
         self.remoteOperation = n                # Remote Operation          TV
-        self.resistTortureDrugs = n             # Resist Torture/Drugs      CP      COOL
+        self.resistTortureDrugs = n             # Resist Torture & Drugs    CP      COOL
         
         #   Seafarer
         self.seafarer = n
@@ -402,19 +408,25 @@ class skills():
         if skill == 'Animals': self.animals = skillCalc(self.animals, num) # TV; ANIMALS
         if skill == 'Anthropology': self.anthropology = skillCalc(self.anthropology,num) # INT
         if skill == 'Archery': self.archery = skillCalc(self.archery,num) # REF
+        if skill == 'Archeology': self.archeology = skillCalc(self.archeology, num)
         if skill == 'Art': self.art = skillCalc(self.art, num) # TV; ART
         if skill == 'Astrogation': self.astrogation = skillCalc(self.astrogation, num) # TV
         if skill == 'Athletics': self.math = skillCalc(self.math,num) # REF
         if skill == 'Awareness/Notice': self.awarenessNotice = skillCalc(self.awarenessNotice,num) # INT
+        
         #B
         if skill == 'Basic Tech': self.basicTech = skillCalc(self.basicTech,num) # TECH
         if skill == 'Battle Dress': self.battleDress = skillCalc(self.battleDress, num) # TV
         if skill == 'Biology': self.biology = skillCalc(self.biology,num) # INT
+        if skill == 'Blade': self.blade = skillCalc(self.blade, num)
+        if skill == 'Bludgeon': self.bludgeon = skillCalc(self.bludgeon, num)
         if skill == 'Botany': self.botany = skillCalc(self.botany,num) # INT
         if skill == 'Boxing': self.boxing = skillCalc(self.boxing,num) # REF
         if skill == 'Brawling': self.brawling = skillCalc(self.brawling,num) # REF
         if skill == 'Broker': self.broker = skillCalc(self.broker, num) # TV
+        
         #C
+        if skill == 'Capital Ships': self.capitalShips = skillCalc(self.capitalShips, num)
         if skill == 'Capital Weapons': self.capitalWeapons = skillCalc(self.capitalWeapons, num) # TV; GUNNER
         if skill == 'Capoeria': self.capoeria = skillCalc(self.capoeria,num) # REF
         if skill == 'Carouse': self.carouse = skillCalc(self.carouse, num) # TV
@@ -426,10 +438,11 @@ class skills():
         if skill == 'Coordination': self.coordination = skillCalc(self.coordination, num) # TV; ATHLETICS
         if skill == 'Cryotank': self.cryotank = skillCalc(self.cryotank,num) # TECH
         if skill == 'Cyberdeck Design': self.cyberdeckDesign = skillCalc(self.cyberdeckDesign,num) # TECH
+        if skill == 'Cybernetics': self.cybernetics = skillCalc(self.cybernetics, num)
         if skill == 'Cyber Tech': self.cyberTech = skillCalc(self.cyberTech,num) # TECH
+        
         #D
         if skill == 'Dancing': self.dancing = skillCalc(self.dancing,num) # REF
-        if skill == 'Dance': self.dance = skillCalc(self.dance, num) # TV; ART
         if skill == 'Deception': self.deception = skillCalc(self.deception, num) # TV
         if skill == 'Demolitions': self.demolitions = skillCalc(self.demolitions,num) # TECH
         if skill == 'Diagnose Illness': self.diagnoseIllness = skillCalc(self.diagnoseIllness,num) # INT
@@ -437,207 +450,187 @@ class skills():
         if skill == 'Dirigible': self.dirigible = skillCalc(self.dirigible,num) # REF; PILOT
         if skill == 'Disguise': self.disguise = skillCalc(self.disguise,num) # TECH
         if skill == 'Dodge/Escape': self.dodgeEscape = skillCalc(self.dodgeEscape,num) # REF
-        if skill == 'Drive': self.drive = skillCalc(self.drive, num) # TV; DRIVE
         if skill == 'Drive Mole': self.driveMole = skillCalc(self.driveMole, num) # TV; DRIVE
         if skill == 'Drive Tracked': self.driveTracked = skillCalc(self.driveTracked, num) # TV; DRIVE
         if skill == 'Drive Wheeled': self.driveWheeled = skillCalc(self.driveWheeled, num) # TV; DRIVE
         if skill == 'Driving': self.driving = skillCalc(self.driving,num) # REF
+        
         #E
+        if skill == 'Economics': self.economics = skillCalc(self.economics, num) # Consider merging with stock market
         if skill == 'Education': self.education = skillCalc(self.education,num) # INT
-        if skill == 'Elcetrical Engineer': self.electricalEngineer = skillCalc(self.electricalEngineer, num) # TV; ENGINEER
+        if skill == 'Electrical Engineer': self.electricalEngineer = skillCalc(self.electricalEngineer, num) # TV; ENGINEER
         if skill == 'Electronics': self.electronics = skillCalc(self.electronics,num) # TECH
+        if skill == 'Electronic Science': self.electronicScience = skillCalc(self.electronicScience, num)
         if skill == 'Electronic Security': self.electronicSecurity = skillCalc(self.electronicSecurity,num) # TECH
+        if skill == 'Energy Pistol': self.energyPistol = skillCalc(self.energyPistol, num)
+        if skill == 'Energy Rifle': self.energyRifle = skillCalc(self.energyRifle, num)
         if skill == 'Endurance': self.endurance = skillCalc(self.endurance,num) # BODY
         if skill == 'Engineer': self.engineer = skillCalc(self.engineer, num) # TV; ENGINEER
         if skill == 'Expert': self.expert = skillCalc(self.expert,num) # INT
         if skill == 'Explosives': self.explosives = skillCalc(self.explosives, num) # TV
+        
         #F
         if skill == 'Fencing': self.fencing = skillCalc(self.fencing,num) # REF
+        if skill == 'Field Artillery': self.fieldArtillery = skillCalc(self.fieldArtillery, num)
         if skill == 'First Aid': self.firstAid = skillCalc(self.firstAid,num) # TECH
         if skill == 'Fixed Wing': self.fixedWing = skillCalc(self.fixedWing,num) # REF; PILOT
-            ###
-        if skill == 'Wing': self.wing = skillCalc(self.wing, num) # TV; FLYER
         if skill == 'Flyer': self.flyer = skillCalc(self.flyer, num) # TV FLYER
         if skill == 'Flying': self.flying = skillCalc(self.flying, num) # TV; ATHLETICS
         if skill == 'Forgery': self.forgery = skillCalc(self.forgery,num) # TECH
+        
         #G
         if skill == 'Gamble': self.gamble = skillCalc(self.gamble,num) # INT
-        #if skill == 'Gambler': self.gambler = skillCalc(self.gambler, num) # TV
+        if skill == 'Genetics': self.genetics = skillCalc(self.genetics, num)
         if skill == 'Grav': self.grav = skillCalc(self.grav, num) # TV; FLYER
         if skill == 'Gun Combat': self.gunCombat = skillCalc(self.gunCombat, num) # TV; GUN COMBAT
         if skill == 'Gunner': self.gunner = skillCalc(self.gunner, num) # TV; GUNNER
-        if skill == 'Gyro': self.gyro = skillCalc(self.gyro,num) # REF; PILOT
+        #if skill == 'Gyro': self.gyro = skillCalc(self.gyro,num) # REF; PILOT // REPLACED WITH ROTOR
         if skill == 'Gyro Tech': self.gyroTech = skillCalc(self.gyroTech,num) # TECH
+       
         #H
-        if skill == 'Handgun': self.handgun = skillCalc(self.handgun,num) # REF
         if skill == 'Heavy Machinery': self.heavyMachinery = skillCalc(self.heavyMachinery,num) # REF
         if skill == 'Heavy Weapons': self.heavyWeapons = skillCalc(self.heavyWeapons,num) # REF
         if skill == 'Hide/Evade': self.hideEvade = skillCalc(self.hideEvade,num) # INT
         if skill == 'History': self.history = skillCalc(self.history,num) # INT
         if skill == 'Holography': self.holography = skillCalc(self.holography, num) # TV; ART
         if skill == 'Human Perception': self.humanPerception = skillCalc(self.humanPerception,num) # EMP
+        
         #I
         if skill == 'Instrument': self.instrument = skillCalc(self.instrument,num) # TECH // TV; ART
         if skill == 'Interrogation': self.interrogation = skillCalc(self.interrogation,num) # COOL
         if skill == 'Interview': self.interview = skillCalc(self.interview,num) # EMP
-        if skill == 'Indimidate': self.intimidate = skillCalc(self.intimidation,num) # COOL
+        if skill == 'Intimidate': self.intimidate = skillCalc(self.intimidation,num) # COOL
+        if skill == 'Investigate': self.investigate = skillCalc(self.investigate, num)
+        
         #J
         if skill == 'J-Drive': self.jDrive = skillCalc(self.jDrive, num) # TV; ENGINEER
+        if skill == 'Jack Of All Trades': self.jackOfAllTrades = skillCalc(self.jackOfAllTrades, num)
         if skill == 'Judo': self.judo = skillCalc(self.judo,num) # REF
+        
         #K
         if skill == 'Karate': self.karate = skillCalc(self.karate,num) # REF
+        
         #L
         if skill == 'Language': self.language = skillCalc(self.language,num) # INT
+        if skill == 'Launchers': self.launchers = skillCalc(self.launchers, num)
         if skill == 'Leadership': self.leadership = skillCalc(self.leadership,num) # EMP
         if skill == 'Library Search': self.librarySearch = skillCalc(self.librarySearch,num) # INT
+        if skill == 'Life Science': self.lifeScience = skillCalc(self.lifeScience, num)
         if skill == 'Life Support': self.lifeSupport = skillCalc(self.lifeSupport, num) # TV; ENGINEERING
+        if skill == 'Linguistics': self.linguistics = skillCalc(self.linguistics, num)
+        
         #M
         if skill == 'M-Drive': self.mDrive = skillCalc(self.mDrive, num) # TV; ENGINEER
         if skill == 'Math': self.math = skillCalc(self.math,num) # INT
+        if skill == 'Mechanic': self.mechanic = skillCalc(self.mechanic, num)
         if skill == 'Melee': self.melee = skillCalc(self.melee,num) # REF
+        if skill == 'Military Tactics': self.militaryTactics = skillCalc(self.militaryTactics, num)
+        if skill == 'Motorboats': self.motorboats = skillCalc(self.history, num)
         if skill == 'Motorcycle': self.motorcycle = skillCalc(self.motorcycle,num) # REF
+        if skill == 'MPA': self.MPA = skillCalc(self.MPA, num)
+        
         #N
+        if skill == 'Natural Weapon': self.naturalWeapon = skillCalc(self.naturalWeapon, num)
+        if skill == 'Naval Tactics': self.navalTactics = skillCalc(self.navalTactics, num)
+        if skill == 'Navigation': self.navigation = skillCalc(self.navigation, num)
+        
         #O
+        if skill == 'Ocean Ships': self.oceanShips = skillCalc(self.history, num)
         if skill == 'Oratory': self.oratory = skillCalc(self.oratory,num) # COOL
         if skill == 'Ortillery': self.ortillery = skillCalc(self.ortillery, num) # TV; GUNNER
+        
         #P
         if skill == 'Paint or Draw': self.paintDraw = skillCalc(self.paintDraw,num) # TECH
         if skill == 'Performance': self.performance = skillCalc(self.performance,num) # EMP
         if skill == 'Personal Grooming': self.personalGrooming = skillCalc(self.personalGrooming,num) # ATTR
-        if skill == 'Persuasion': self.persuasion = skillCalc(self.persuasion,num) # EMP
+        if skill == 'Persuade': self.persuade = skillCalc(self.persuade, num) # EMP
+        if skill == 'Pharmaceuticals': self.pharmaceuticals = skillCalc(self.pharmaceuticals,num) # TECH
+        if skill == 'Philosophy': self.philosophy = skillCalc(self.philosophy, num)
+        if skill == 'Photo & Film': self.photoFilm = skillCalc(self.photoFilm,num) # TECH
+        if skill == 'Physical Science': self.physicalScience = skillCalc(self.physicalScience, num)
+        if skill == 'Physics': self.physics = skillCalc(self.physics,num) # INT
         if skill == 'Pick Lock': self.pickLock = skillCalc(self.rifle,num) # TECH
         if skill == 'Pick Pocket': self.pickPocket = skillCalc(self.pickLock,num) # TECH
-        if skill == 'Pharmaceuticals': self.pharmaceuticals = skillCalc(self.pharmaceuticals,num) # TECH
-        if skill == 'Photo & Film': self.photoFilm = skillCalc(self.photoFilm,num) # TECH
-        if skill == 'Physics': self.physics = skillCalc(self.physics,num) # INT
+        if skill == 'Pilot': self.pilot = skillCalc(self.pilot, num)
+        if skill == 'Planetology': self.planetology = skillCalc(self.planetology, num)
         if skill == 'Power': self.power = skillCalc(self.power, num) # TV; ENGINEERING
         if skill == 'Programming': self.programming = skillCalc(self.programming,num) # INT
-        #Q
+        if skill == 'Psionicology': self.psionicology = skillCalc(self.psionicology, num)
+        if skill == 'Psychology': self.psychology = skillCalc(self.psychology, num)
+        
+        # NO Q SKILLS
+       
         #R
+        if skill == 'Recon': self.recon = skillCalc(self.recon, num)
+        if skill == 'Remote Operation': self.remoteOperation = skillCalc(self.remoteOperation, num)
         if skill == 'Resist Torture & Drugs': self.resistTortureDrugs = skillCalc(self.resistTortureDrugs,num) # COOL
-        if skill == 'Rifle': self.rifle = skillCalc(self.rifle,num) # REF
+        if skill == 'Robotics': self.robotics = skillCalc(self.robotics, num)
         if skill == 'Rotor': self.rotor = skillCalc(self.rotor, num) # TV; FLYER
+        
         #S
+        if skill == 'Sail': self.sail = skillCalc(self.history, num)
+        if skill == 'Seafarer': self.seafarer = skillCalc(self.history, num)
+        if skill == 'Sensors': self.sensors = skillCalc(self.sensors, num)
         if skill == 'Screens': self.screens = skillCalc(self.screens, num) # TV; GUNNER
         if skill == 'Sculpting': self.sculpting = skillCalc(self.sculpting, num) # TV; ART
         if skill == 'Seduction': self.seduction = skillCalc(self.seduction,num) # EMP
         if skill == 'Shadow/Track': self.shadowTrack = skillCalc(self.shadowTrack,num) # INT
+        if skill == 'Shotgun': self.shotgun = skillCalc(self.shotgun, num)
+        if skill == 'Slug Pistol': self.slugPistol = skillCalc(self.slugPistol, num)
+        if skill == 'Slug Rifle': self.slugRifle = skillCalc(self.slugRifle, num)
+        if skill == 'Small Craft': self.smallCraft = skillCalc(self.smallCraft, num)
         if skill == 'Social': self.social = skillCalc(self.social,num) # EMP
+        if skill == 'Social Science': self.socialScience = skillCalc(self.socialScience, num)
+        if skill == 'Sophontology': self.sophontology = skillCalc(self.sophontology, num)
+        if skill == 'Spacecraft': self.spacecraft = skillCalc(self.spacecraft, num)
+        if skill == 'Space Science': self.spaceScience = skillCalc(self.spaceScience, num)
         if skill == 'Stealth': self.stealth = skillCalc(self.stealth,num) # REF
+        if skill == 'Steward': self.steward = skillCalc(self.steward, num)
         if skill == 'Stock Market': self.stockMarket = skillCalc(self.stockMarket,num) # INT
         if skill == 'Streetwise': self.streetwise = skillCalc(self.streetwise,num) # COOL
-        if skill == 'Strength': self.strength = skillCalc(self.strength, num) # TV; ATHLETICS
-        if skill == 'Strength Feat': self.strengthFeat = skillCalc(self.strengthFeat,num) # BODY
+        if skill == 'Strength': self.strength = skillCalc(self.strength, num) # TV; ATHLETICS; BODY
         if skill == 'Submachinegun': self.submachinegun = skillCalc(self.submachinegun,num) # REF
+        if skill == 'Submarine': self.submarine = skillCalc(self.history, num)
         if skill == 'Survival': self.survival = skillCalc(self.survival,num) # INT
         if skill == 'Swimming': self.swimming = skillCalc(self.swimming,num) # BODY
         if skill == 'System Knowledge': self.systemKnowledge = skillCalc(self.systemKnowledge,num) # INT
+        
         #T
         if skill == 'Tae Kwon Do': self.taeKwonDo = skillCalc(self.taeKwonDo,num) # REF
         if skill == 'Teaching': self.teaching = skillCalc(self.teaching,num) # INT
-        if skill == 'Thai Kick Boxing': self.thaiKickBoxing = skillCalc(self.thaiKickBoxing,num) # REF
-        if skill == 'Turrets': self.turrets = skillCalc(self.turrets, num) # TV; GUNNER
-        #U
-        #V
-        if skill == 'Vector Thrust': self.vectorThrust = skillCalc(self.vectorThrust,num) # REF; PILOT
-        if skill == 'Vector Thrust Tech': self.vectorThrustTech = skillCalc(self.vectorThrustTech,num) # TECH
-        if skill == 'Veterinary': self.veterinary = skillCalc(self.veterinary, num) # TV; ANIMALS
-        #W
-        if skill == 'Wardrobe & Style': self.wardrobeStyle = skillCalc(self.wardrobeStyle,num) # ATTR
-        if skill == 'Weaponsmith': self.weaponsmith = skillCalc(self.weaponsmith,num) # TECH
-        if skill == 'Wrestling': self.wrestling = skillCalc(self.wrestling,num) # REF
-        if skill == 'Writing': self.writing = skillCalc(self.writing, num) # TV; ART
-        #X
-        #Y
-        #Z
-        if skill == 'Zoology': self.zoology = skillCalc(self.zoology,num) # INT
-
-        if skill == 'Slug Rifle': self.slugRifle = skillCalc(self.slugRifle, num)
-        if skill == 'Slug Pistol': self.slugPistol = skillCalc(self.slugPistol, num)
-        if skill == 'Shotgun': self.shotgun = skillCalc(self.shotgun, num)
-        if skill == 'Energy Rifle': self.energyRifle = skillCalc(self.energyRifle, num)
-        if skill == 'Energy Pistol': self.energyPistol = skillCalc(self.energyPistol, num)
-
-        if skill == 'Heavy Weapons': self.heavyWeapons = skillCalc(self.heavyWeapons, num)
-        if skill == 'Launchers': self.launchers = skillCalc(self.launchers, num)
-        if skill == 'MPA': self.MPA = skillCalc(self.MPA, num)
-        if skill == 'Field Artillery': self.fieldArtillery = skillCalc(self.fieldArtillery, num)
-
-        if skill == 'Investigate': self.investigate = skillCalc(self.investigate, num)
-        if skill == 'Jack Of All Trades': self.jackOfAllTrades = skillCalc(self.jackOfAllTrades, num)
-        if skill == 'Language': self.language = skillCalc(self.language, num)
-        if skill == 'Leadership': self.leadership = skillCalc(self.leadership, num)
-        if skill == 'Mechanic': self.mechanic = skillCalc(self.mechanic, num)
-        if skill == 'Medic': self.medic = skillCalc(self.medic, num)
-
-        if skill == 'Melee': self.melee = skillCalc(self.melee, num)
-        if skill == 'Unarmed': self.unarmed = skillCalc(self.unarmed, num)
-        if skill == 'Blade': self.blade = skillCalc(self.blade, num)
-        if skill == 'Bludgeon': self.bludgeon = skillCalc(self.bludgeon, num)
-        if skill == 'Natural Weapon': self.naturalWeapon = skillCalc(self.naturalWeapon, num)
-
-        if skill == 'Navigation': self.navigation = skillCalc(self.navigation, num)
-        if skill == 'Persuade': self.persuade = skillCalc(self.persuade, num)
-
-        if skill == 'Pilot': self.pilot = skillCalc(self.pilot, num)
-        if skill == 'Small Craft': self.smallCraft = skillCalc(self.smallCraft, num)
-        if skill == 'Spacecraft': self.spacecraft = skillCalc(self.spacecraft, num)
-        if skill == 'Capital Ships': self.capitalShips = skillCalc(self.capitalShips, num)
-
-        if skill == 'Recon': self.recon = skillCalc(self.recon, num)
-        if skill == 'Remote Operation': self.remoteOperation = skillCalc(self.remoteOperation, num)
-
-        if skill == 'Physical Science': self.physicalScience = skillCalc(self.physicalScience, num)
-        if skill == 'Physics': self.physics = skillCalc(self.physics, num)
-        #if skill == 'Chemistry': self.recon = skillCalc(self.recon, num)
-        if skill == 'Electronic Science': self.electronicScience = skillCalc(self.electronicScience, num)
-
-        if skill == 'Life Science': self.lifeScience = skillCalc(self.lifeScience, num)
-        #if skill == 'Biology': self.recon = skillCalc(self.recon, num)
-        if skill == 'Cybernetics': self.cybernetics = skillCalc(self.cybernetics, num)
-        if skill == 'Genetics': self.genetics = skillCalc(self.genetics, num)
-        if skill == 'Psionicology': self.psionicology = skillCalc(self.psionicology, num)
-
-        if skill == 'Social Science': self.socialScience = skillCalc(self.socialScience, num)
-        if skill == 'Archeology': self.archeology = skillCalc(self.archeology, num)
-        if skill == 'Economics': self.economics = skillCalc(self.economics, num)
-        if skill == 'History': self.history = skillCalc(self.history, num)
-        if skill == 'Linguistics': self.linguistics = skillCalc(self.linguistics, num)
-        if skill == 'Philosophy': self.philosophy = skillCalc(self.philosophy, num)
-        if skill == 'Psychology': self.psychology = skillCalc(self.psychology, num)
-        if skill == 'Sophontology': self.sophontology = skillCalc(self.sophontology, num)
-
-        if skill == 'Space Science': self.spaceScience = skillCalc(self.spaceScience, num)
-        if skill == 'Planetology': self.planetology = skillCalc(self.planetology, num)
-        if skill == 'Robotics': self.robotics = skillCalc(self.robotics, num)
-        if skill == 'Xenology': self.xenology = skillCalc(self.xenology, num)
-
-        if skill == 'Seafarer': self.seafarer = skillCalc(self.history, num)
-        if skill == 'Sail': self.sail = skillCalc(self.history, num)
-        if skill == 'Submarine': self.submarine = skillCalc(self.history, num)
-        if skill == 'Ocean Ships': self.oceanShips = skillCalc(self.history, num)
-        if skill == 'Motorboats': self.motorboats = skillCalc(self.history, num)
-
-        if skill == 'Sensors': self.sensors = skillCalc(self.sensors, num)
-        if skill == 'Stealth': self.stealth = skillCalc(self.stealth, num)
-        if skill == 'Steward': self.steward = skillCalc(self.steward, num)
-        #if skill == 'Streetwise': self.sail = skillCalc(self.history, num)
-        if skill == 'Survival': self.survival = skillCalc(self.survival, num)
-
         if skill == 'Tactics': self.tactics = skillCalc(self.tactics, num)
-        if skill == 'Military Tactics': self.militaryTactics = skillCalc(self.militaryTactics, num)
-        if skill == 'Naval Tactics': self.navalTactics = skillCalc(self.navalTactics, num)
-
+        if skill == 'Thai Kick Boxing': self.thaiKickBoxing = skillCalc(self.thaiKickBoxing,num) # REF
         if skill == 'Trade': self.trade = skillCalc(self.trade, num)
         if skill == 'Trade Biologicals': self.tradeBiologicals = skillCalc(self.tradeBiologicals, num)
         if skill == 'Trade Civil Engineering': self.tradeCivilEngineering = skillCalc(self.tradeCivilEngineering, num)
         if skill == 'Trade Space Construction': self.tradeSpaceConstruction = skillCalc(self.tradeSpaceConstruction, num)
         if skill == 'Trade Hydroponics': self.tradeHydroponics = skillCalc(self.tradeHydroponics, num)
         if skill == 'Trade Polymers': self.tradePolymers = skillCalc(self.tradePolymers, num)
-
-        if skill == 'Vacc Suit': self.vaccSuit = skillCalc(self.vaccSuit, num)
-        if skill == 'Zero-G': self.zeroG = skillCalc(self.zeroG, num)
+        if skill == 'Turrets': self.turrets = skillCalc(self.turrets, num) # TV; GUNNER
         
+        #U
+        if skill == 'Unarmed': self.unarmed = skillCalc(self.unarmed, num)
+        
+        #V
+        if skill == 'Vacc Suit': self.vaccSuit = skillCalc(self.vaccSuit, num)
+        if skill == 'Vector Thrust': self.vectorThrust = skillCalc(self.vectorThrust,num) # REF; PILOT
+        if skill == 'Vector Thrust Tech': self.vectorThrustTech = skillCalc(self.vectorThrustTech,num) # TECH
+        if skill == 'Veterinary': self.veterinary = skillCalc(self.veterinary, num) # TV; ANIMALS
+        
+        #W
+        if skill == 'Wardrobe & Style': self.wardrobeStyle = skillCalc(self.wardrobeStyle,num) # ATTR
+        if skill == 'Weaponsmith': self.weaponsmith = skillCalc(self.weaponsmith,num) # TECH
+        if skill == 'Wrestling': self.wrestling = skillCalc(self.wrestling,num) # REF
+        if skill == 'Writing': self.writing = skillCalc(self.writing, num) # TV; ART
+        
+        #X
+        if skill == 'Xenology': self.xenology = skillCalc(self.xenology, num)
+        
+        # NO Y SKILLS
+        
+        #Z
+        if skill == 'Zero-G': self.zeroG = skillCalc(self.zeroG, num)
+        if skill == 'Zoology': self.zoology = skillCalc(self.zoology,num) # INT       
 
     def printSkills(self):
             # Special Abilities
