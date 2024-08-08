@@ -47,23 +47,16 @@ class skills():
         # >> ADD GUERILLA TACTICS
         # >> MAYBE PACK/PUNK TACTICS?
 
+        # Animal Skills
         #    Tag                                # Name of Tag               Source  Ability Note:
-
-        # A - A
-        self.accounting = n                     # Accounting                CP      INT
-        self.admin = n                          # Admin                     TV
-        self.advocate = n                       # Advocate                  TV              Consider removing
-        self.astrogation = n                    # Astrogation               TV              
-        self.awarenessNotice = n                # Awareness/Notice          CP      INT     Classic "Perception"
-
-        #   Animals
         self.animals = n                        # Animals                   TV
         self.animalRiding = n                   # Animal Riding             TV
         self.veterinary = n                     # Veterinary                TV
         self.animalTraining = n                 # Animal Training           TV
         self.animalFarming = n                  # Animal Farming            TV
-        
-        #   Art - Self Expression or Pastiche
+
+        # Art Skills
+        #    Tag                                # Name of Tag               Source  Ability Note:
         self.performance = n                    # Performance               CP      EMP
         self.composition = n                    # Composition               CP      INT
         self.dancing = n                        # Dancing                   CP/TV   REF     Traveller listed as 'Dance'
@@ -76,9 +69,11 @@ class skills():
         self.acting = n                         # Acting                    TV              
         self.holography = n                     # Holography                TV
         self.sculpting = n                      # Sculpting                 TV
+        self.wardrobeStyle = n                  # Wardrobe & Style          CP      ATTR
         self.writing = n                        # Writing                   TV
-        
-        #   Athletics
+
+        # Athletic Skills
+        #    Tag                                # Name of Tag               Source  Ability Note:
         self.athletics = n                      # Athletics                 CP      REF
         self.endurance = n                      # Endurance                 CP/TV   BODY
         self.coordination = n                   # Coordination              TV
@@ -86,16 +81,44 @@ class skills():
         self.flying = n                         # Flying                    TV              Only for characters with wings
         self.swimming = n                       # Swimming                  CP      BODY
 
-        # A - C
-        self.battleDress = n                    # Battle Dress              TV
-        self.blade = n                          # Blade                     TV
-        self.bludgeon = n                       # Bludgeon                  TV
-        self.brawling = n                       # Brawling                  CP      REF
-        self.broker = n                         # Broker                    TV
-        self.carouse = n                        # Carouse                   TV
-        
-        
-        # Combat Skills - Tool-Oriented Missile Weapons
+        # Driving Skills 
+        #    Tag                                # Name of Tag               Source  Ability Note:
+        self.driving = n                        # Driving                   CP      REF     Traveller refers as "Drive"
+        self.motorcycle = n                     # Motorcycle                CP      REF
+        self.heavyMachinery = n                 # Heavy Machinery           CP      REF 
+        self.driveMole = n                      # Drive Mole                TV
+        self.driveTracked = n                   # Drive Tracked             TV
+        self.driveWheeled = n                   # Drive Wheeled             TV
+
+        # Engineering Skills
+        #    Tag                                # Name of Tag               Source  Ability Note:
+        self.demolitions = n                    # Demolitions               CP      TECH
+        self.engineer = n                       # Engineer                  TV
+        self.mDrive = n                         # M-Drive                   TV
+        self.jDrive = n                         # J-Drive                   TV
+        #self.electricalEngineer = n            # Electrical Engineer       TV              Use Electronic Science instead
+        self.lifeSupport = n                    # Life Support              TV              Life Support Systems
+        self.power = n                          # Power                     TV              Power Plants
+
+        # Flyer Skills
+        #    Tag                                # Name of Tag               Source  Ability Note:
+        self.fixedWing = n                      # Fixed Wing                CP/TV   REF     Traveller referred 'Wing'
+        self.dirigible = n                      # Dirigible                 CP      REF     For Airships / Blimps
+        self.vectorThrust = n                   # Vector Thrust             CP      REF 
+        self.flyer = n                          # Flyer                     TV              For piloting in-atmosphere craft
+        self.grav = n                           # Grav                      TV              For crafts with anti-gravity propulsion
+        self.rotor = n                          # Rotor                     TV/CP   REF     Cyberpunk referred 'Gyro'
+
+        # Gunner Skills
+        #    Tag                                # Name of Tag               Source  Ability Note:
+        self.gunner = n                         # Gunner                    TV              Ship Weaponry Familiarity
+        self.turrets = n                        # Turrets                   TV              Mounted Turret Weapons
+        self.ortillery = n                      # Ortillery                 TV              Orbital Artillery
+        self.screens = n                        # Screens                   TV              Ship Weapons: Screens
+        self.capitalWeapons = n                 # Capital Weapons           TV              Massive weapons on ships 5k tons and up
+
+        # Gun Combat Skills
+        #    Tag                                # Name of Tag               Source  Ability Note:
         self.archery = n                        # Archery                   CP      REF
         self.fencing = n                        # Fencing                   CP      REF
         self.submachinegun = n                  # Submachinegun             CP      REF
@@ -105,77 +128,29 @@ class skills():
         self.shotgun = n                        # Shotgun                   TV
         self.energyRifle = n                    # Energy Rifle              TV
         self.energyPistol = n                   # Energy Pistol             TV
-        
-        # Heavy Weapons - Listed underneath combat skills for unknown reasons
+
+        # Heavy Weapons Skills
+        #    Tag                                # Name of Tag               Source  Ability Note:
         self.heavyWeapons = n                   # Heavy Weapons             CP/TV   REF
         self.launchers = n                      # Launchers                 TV  
         self.MPA = n                            # MPA                       TV              Man-Portable Artillery
         self.fieldArtillery = n                 # Field Artillery           TV
-        
-        # C - D
-        self.comms = n                          # Comms                     TV
-        self.computers = n                      # Computers                 TV
-        self.deception = n                      # Deception                 TV
-        self.diplomat = n                       # Diplomat                  TV
-        self.diagnoseIllness = n                # Diagnose Illness          CP      INT
-        self.dodgeEscape = n                    # Dodge/Escape              CP      REF
-        
-        # Driving - On or Below Surface Transportation Schemes
-        self.driving = n                        # Driving                   CP      REF     Traveller refers as "Drive"
-        self.motorcycle = n                     # Motorcycle                CP      REF
-        self.heavyMachinery = n                 # Heavy Machinery           CP      REF 
-        self.driveMole = n                      # Drive Mole                TV
-        self.driveTracked = n                   # Drive Tracked             TV
-        self.driveWheeled = n                   # Drive Wheeled             TV
 
-        # D - E
-        self.education = n                      # Education                 CP      INT
-        
-        # Engineer
-        self.engineer = n                       # Engineer                  TV
-        self.mDrive = n                         # M-Drive                   TV
-        self.jDrive = n                         # J-Drive                   TV
-        self.electricalEngineer = n             # Electrical Engineer       TV
-        self.lifeSupport = n                    # Life Support              TV              Life Support Systems
-        self.power = n                          # Power                     TV              Power Plants
-        self.explosives = n                     # Explosives                TV              Consider Merging with Demolitions
-
-        # E - F
-        self.expert = n                         # Expert                    CP      INT
-        
-        # Flyer - In-Atmosphere Flying Schemes
-        self.fixedWing = n                      # Fixed Wing                CP/TV   REF     Traveller referred 'Wing'
-        self.dirigible = n                      # Dirigible                 CP      REF     For Airships / Blimps
-        self.vectorThrust = n                   # Vector Thrust             CP      REF 
-        self.flyer = n                          # Flyer                     TV              For piloting in-atmosphere craft
-        self.grav = n                           # Grav                      TV              For crafts with anti-gravity propulsion
-        self.rotor = n                          # Rotor                     TV/CP   REF     Cyberpunk referred 'Gyro'
-
-        # F - G
-        self.gamble = n                         # Gamble                    CP/TV   INT     Traveller referred 'Gambler'
-        
-        # Gunner - On-Board Weaponry
-        self.gunner = n                         # Gunner                    TV              Ship Weaponry Familiarity
-        self.turrets = n                        # Turrets                   TV              Mounted Turret Weapons
-        self.ortillery = n                      # Ortillery                 TV              Orbital Artillery
-        self.screens = n                        # Screens                   TV              Ship Weapons: Screens
-        self.capitalWeapons = n                 # Capital Weapons           TV              Massive weapons on ships 5k tons and up
-
-        # G - M
-        self.hideEvade = n                      # Hide/Evade                CP      INT
-        self.humanPerception = n                # Human Perception          CP      EMP
-        self.interrogation = n                  # Interrogation             CP      COOL
-        self.interview = n                      # Interview                 CP      EMP
-        self.intimidate = n                     # Intimidate                CP      COOL
-        self.investigate = n                    # Investigate               TV
-        self.jackOfAllTrades = n                # Jack of all Trades        TV              Consider Removal
-        self.language = n                       # Language                  CP/TV   INT     Requires Extrapolation
-        self.leadership = n                     # Leadership                CP/TV   EMP
-        self.librarySearch = n                  # Library Search            CP      INT
-
-        #   Martial Arts - No Brawling, Melee, or Crude Fighting Styles
-        self.aikido = n                         # Aikido                    CP      REF
-        self.animalKungFu = n                   # Animal Kung Fu            CP      REF   
+        # Languages 
+        self.language = [['English',0],                       # Language                  CP/TV   INT     Requires Extrapolation
+                         ['Bantu',0],['Kongo',0],['Ashandi',0],['Zulu',0],['Swahili',0], # 1 of each language with no respect to dialect
+                         ['Japanese',0],['Korean',0],                                    # meant to just represent what skill you've picked up or learned
+                         ['Bulgarian',0],['Russian',0],['Czech',0],['Polish',0],['Ukranian',0],['Slovak',0],
+                         ['Microneasian',0],['Tagalog',0],['Polynesian',0],['Malayan',0],['Sudanese',0],['Indonesian',0],['Hawaiian',0],
+                         ['Burmese',0],['Cantonese',0],['Mandarin',0],['Thai',0],['Tibetan',0],['Vietnamese',0],
+                         ['Lingua Astra',0],['Alien Language',0],
+                         ['Spanish',0],['Portuguese',0],
+                         ['French',0],['German',0],['Italian',0],['Greek',0],['Danish',0],['Dutch',0],['Norwegian',0],['Swedish',0],['Finnish',0]]
+                         
+        # Martial Arts Skills
+        #    Tag                                # Name of Tag               Source  Ability Note:
+        self.aikido = n                         # Aikido                    CP      REF     Modern Japanese 
+        self.animalKungFu = n                   # Animal Kung Fu            CP      REF     Chinese
         self.boxing = n                         # Boxing                    CP      REF
         self.capoeria = n                       # Capoeria                  CP      REF
         self.choiLiFut = n                      # Choi Li Fut               CP      REF
@@ -185,42 +160,34 @@ class skills():
         self.thaiKickBoxing = n                 # Thai Kick Boxing          CP      REF
         self.wrestling = n                      # Wrestling                 CP      REF
 
-        # M - P
+        # Melee Skills
+        #    Tag                                # Name of Tag               Source  Ability Note:
+        self.blade = n                          # Blade                     TV
+        self.bludgeon = n                       # Bludgeon                  TV
+        self.brawling = n                       # Brawling                  CP      REF
         self.melee = n                          # Melee                     CP/TV   REF
         self.naturalWeapon = n                  # Natural Weapon            TV              Only for characters with claws etc.
-        self.navigation = n                     # Navigation                TV
-        self.oratory = n                        # Oratory                   CP      COOL
-        self.personalGrooming = n               # Personal Grooming         CP      ATTR
-        self.persuasion = n                     # Persuasion                CP      EMP
-
-        # Pilot
+        self.unarmed = n                        # Unarmed                   TV
+        
+        # Pilot Skills
+        #    Tag                                # Name of Tag               Source  Ability Note:
         self.pilot = n                          # Pilot                     TV              x = ship tonnage
         self.smallCraft = n                     # Small Craft               TV              x<100t
         self.spacecraft = n                     # Spacecraft                TV              100t<x<5kt
         self.capitalShips = n                   # Capital Ships             TV              x>5kt
-
-        self.persuade = n                       # Persuade                  TV
-        self.programming = n                    # Programming               CP      INT
-        self.recon = n                          # Recon                     TV
-        self.remoteOperation = n                # Remote Operation          TV
-        self.resistTortureDrugs = n             # Resist Torture & Drugs    CP      COOL
         
-        #   Seafarer
+        # Seafarer Skills 
+        #    Tag                                # Name of Tag               Source  Ability Note:
         self.seafarer = n
         self.sail = n
         self.submarine = n
         self.oceanShips = n
         self.motorboats = n
 
-
-        #   Sciences / Studies
-        # Physical Science
-        self.physicalScience = n                # Physical Science
-        self.physics = n                        # Physics                   CP/TV   INT
-        self.chemistry = n                      # Chemistry                 CP      INT 
-        self.electronicScience = n              # Electronic Science             
-        self.math = n                           # Math                      CP      INT
+        # The Sciences
+        
         # Life Science
+        #    Tag                                # Name of Tag               Source  Ability Note:
         self.lifeScience = n                    # Life Science
         self.biology = n                        # Biology                   CP/TV   INT
         self.botany = n                         # Botony                    CP      INT
@@ -229,7 +196,17 @@ class skills():
         self.psionicology = n                   # Psionicology
         self.pharmaceuticals = n                # Pharmaceuticals           CP      TECH
         self.zoology = n                        # Zoology                   CP      INT
+
+        # Physical Science
+        #    Tag                                # Name of Tag               Source  Ability Note:
+        self.physicalScience = n                # Physical Science
+        self.physics = n                        # Physics                   CP/TV   INT
+        self.chemistry = n                      # Chemistry                 CP      INT 
+        self.electronicScience = n              # Electronic Science             
+        self.math = n                           # Math                      CP      INT
+        
         # Social Science
+        #    Tag                                # Name of Tag               Source  Ability Note:
         self.socialScience = n                  # Social Science
         self.anthropology = n                   # Anthropology              CP      INT
         self.archeology = n                     # Archaeology
@@ -239,13 +216,84 @@ class skills():
         self.philosophy = n                     # Philosophy
         self.psychology = n                     # Psychology
         self.sophontology = n                   # Sophontology
+        
         # Space Science
+        #    Tag                                # Name of Tag               Source  Ability Note:
         self.spaceScience = n                   # Space Science
         self.planetology = n                    # Planetology
         self.robotics = n                       # Robotics
         self.xenology = n                       # Xenology
 
-        # S - T
+        # Tactical Skills 
+        #    Tag                                # Name of Tag               Source  Ability Note:
+        self.tactics = n                        # Tactics                   TV
+        self.militaryTactics = n                # Military Tactics          TV
+        self.navalTactics = n                   # Naval Tactics             TV
+
+        # Technical Skills
+        #    Tag                                # Name of Tag               Source  Ability Note:
+        self.aeroTech = n                       # Aero Tech                 CP      TECH
+        self.vectorThrustTech = n               # Vector Thrust Tech        CP      TECH
+        self.basicTech = n  #                   # Basic Tech                CP      TECH
+        self.cryotank = n                       # Cryotank                  CP      TECH
+        self.cyberdeckDesign = n                # Cyberdeck Design          CP      TECH
+        self.cyberTech = n  #                   # Cyber Tech                CP      TECH
+        self.electronics = n  #                 # Electronics               CP      TECH
+        self.electronicSecurity = n             # Electronic Security       CP      TECH
+        self.explosives = n                     # Explosives                TV              
+        self.firstAid = n                       # First Aid                 CP/TV   TECH    Traveller Refers 'Medic'
+        self.gyroTech = n                       # Gyro Tech                 CP      TECH    Includes work on rotor vehicles (helicopters)
+        self.weaponsmith = n                    # Weaponsmith               CP      TECH
+        self.mechanic = n                       # Mechanic                  TV
+
+        # Trade Skills 
+        #    Tag                                # Name of Tag               Source  Ability Note:
+        self.trade = n                          # Trade                     TV
+        self.tradeBiologicals = n               # Trade Biologicals         TV
+        self.tradeCivilEngineering = n          # Trade Civil Engineering   TV
+        self.tradeSpaceConstruction = n         # Trade Space Construction  TV
+        self.tradeHydroponics = n               # Trade Hydroponics         TV
+        self.tradePolymers = n                  # Trade Polymers            TV
+
+        # Misc. Skills
+        #    Tag                                # Name of Tag               Source  Ability Note:
+        self.accounting = n                     # Accounting                CP      INT
+        self.admin = n                          # Admin                     TV
+        self.advocate = n                       # Advocate                  TV              Consider removing
+        self.astrogation = n                    # Astrogation               TV              
+        self.awarenessNotice = n                # Awareness/Notice          CP      INT     Classic "Perception"
+        self.battleDress = n                    # Battle Dress              TV
+        self.broker = n                         # Broker                    TV
+        self.carouse = n                        # Carouse                   TV
+        self.comms = n                          # Comms                     TV
+        self.computers = n                      # Computers                 TV
+        self.deception = n                      # Deception                 TV
+        self.diplomat = n                       # Diplomat                  TV
+        self.diagnoseIllness = n                # Diagnose Illness          CP      INT
+        self.dodgeEscape = n                    # Dodge/Escape              CP      REF
+        self.education = n                      # Education                 CP      INT
+        self.expert = n                         # Expert                    CP      INT
+        self.gamble = n                         # Gamble                    CP/TV   INT     Traveller referred 'Gambler'
+        self.hideEvade = n                      # Hide/Evade                CP      INT
+        self.humanPerception = n                # Human Perception          CP      EMP
+        self.interrogation = n                  # Interrogation             CP      COOL
+        self.interview = n                      # Interview                 CP      EMP
+        self.intimidate = n                     # Intimidate                CP      COOL
+        self.investigate = n                    # Investigate               TV
+        self.jackOfAllTrades = n                # Jack of all Trades        TV              Consider Removal
+        
+        self.leadership = n                     # Leadership                CP/TV   EMP
+        self.librarySearch = n                  # Library Search            CP      INT
+        self.navigation = n                     # Navigation                TV
+        self.oratory = n                        # Oratory                   CP      COOL
+        self.personalGrooming = n               # Personal Grooming         CP      ATTR
+        self.persuade = n                       # Persuade                  TV/CP   EMP
+        self.pickLock = n                       # Pick Lock                 CP      TECH
+        self.pickPocket = n                     # Pick Pocket               CP      TECH
+        self.programming = n                    # Programming               CP      INT
+        self.recon = n                          # Recon                     TV
+        self.remoteOperation = n                # Remote Operation          TV
+        self.resistTortureDrugs = n             # Resist Torture & Drugs    CP      COOL
         self.seduction = n                      # Seduction                 CP      EMP
         self.sensors = n                        # Sensors                   TV      
         self.shadowTrack = n                    # Shadow/Track              CP      INT
@@ -256,44 +304,8 @@ class skills():
         self.streetwise = n                     # Streetwise                CP/TV   COOL
         self.survival = n                       # Survival                  CP/TV   INT
         self.systemKnowledge = n                # System Knowledge          CP      INT  
-
-        # Tactics
-        self.tactics = n                        # Tactics                   TV
-        self.militaryTactics = n                # Military Tactics          TV
-        self.navalTactics = n                   # Naval Tactics             TV
-        
-        # T - T
         self.teaching = n                       # Teaching                  CP      INT
-
-        #   Technical Skills
-        self.aeroTech = n                       # Aero Tech                 CP      TECH
-        self.vectorThrustTech = n               # Vector Thrust Tech        CP      TECH
-        self.basicTech = n  #                   # Basic Tech                CP      TECH
-        self.cryotank = n                       # Cryotank                  CP      TECH
-        self.cyberdeckDesign = n                # Cyberdeck Design          CP      TECH
-        self.cyberTech = n  #                   # Cyber Tech                CP      TECH
-        self.demolitions = n                    # Demolitions               CP      TECH
-        self.electronics = n  #                 # Electronics               CP      TECH
-        self.electronicSecurity = n             # Electronic Security       CP      TECH
-        self.firstAid = n                       # First Aid                 CP/TV   TECH    Traveller Refers 'Medic'
-        self.gyroTech = n                       # Gyro Tech                 CP      TECH
-        self.pickLock = n                       # Pick Lock                 CP      TECH
-        self.pickPocket = n                     # Pick Pocket               CP      TECH
-        self.weaponsmith = n                    # Weaponsmith               CP      TECH
-        self.mechanic = n                       # Mechanic                  TV
-
-        # Trade: will probably attempt to add one per freight entry (LOTS)
-        self.trade = n                          # Trade                     TV
-        self.tradeBiologicals = n               # Trade Biologicals         TV
-        self.tradeCivilEngineering = n          # Trade Civil Engineering   TV
-        self.tradeSpaceConstruction = n         # Trade Space Construction  TV
-        self.tradeHydroponics = n               # Trade Hydroponics         TV
-        self.tradePolymers = n                  # Trade Polymers            TV
-        
-        # T - Z
-        self.unarmed = n                        # Unarmed                   TV
         self.vaccSuit = n                       # Vacc Suit                 TV
-        self.wardrobeStyle = n                  # Wardrobe & Style          CP      ATTR
         self.zeroG = n                          # Zero-G                    TV
 
     def train(self,character,skill,num):
@@ -632,6 +644,15 @@ class skills():
         if skill == 'Zero-G': self.zeroG = skillCalc(self.zeroG, num)
         if skill == 'Zoology': self.zoology = skillCalc(self.zoology,num) # INT       
 
+    def learn(self,language,num):
+        if language == 'Random': 
+            x = random.choice(self.languages)[0]
+            language = x[0]
+        for i in range(len(self.language)):
+            if self.language[i][0] == language:
+                self.language[i][1] = skillCalc(self.language[i],num)
+        return language
+    
     def printSkills(self):
             # Special Abilities
         if self.authority > 0: print('Authority (' + str(self.authority) + ')')
