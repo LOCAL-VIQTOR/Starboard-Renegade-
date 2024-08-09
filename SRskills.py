@@ -330,136 +330,136 @@ class skills():
         if skill == 'Resources': self.resources = skillCalc(self.resources,num)
         if skill == 'Streetdeal': self.streetdeal = skillCalc(self.streetdeal,num)
 
-        # SB Skill (Any) Lists
+        # SB Skill (any) Lists
         # Takes skill groups and prerequisites into account when 'training' a new skill
         
-        # Animals (Any)
+        # Animals (any)
         animalSkills = ['Animals','Animal Riding','Veterinary','Animal Training','Animal Farming']
-        if skill == 'Animals (Any)': skill = random.choice(animalSkills)
+        if skill == 'Animals (any)': skill = random.choice(animalSkills)
         if skill in animalSkills and self.animals == n: skill = 'Animals'
         
-        # Art (Any)
+        # Art (any)
         artSkills = ['Art','Acting','Composition','Dancing','Disguise','Forgery','Holograpy','Instrument','Paint or Draw','Performance','Photo & Film','Sculpting','Wardrobe & Style','Writing']
-        if skill == 'Art (Any)': skill = random.choice(artSkills)
+        if skill == 'Art (any)': skill = random.choice(artSkills)
         if skill in artSkills and self.art == n: skill = 'Art'
 
-        # Athletics (Any)
+        # Athletics (any)
         athleticSkills = ['Athletics','Endurance','Coordination','Strength','Fyling','Swimming']
-        if skill == 'Athletics (Any)': skill = random.choice(athleticSkills)
+        if skill == 'Athletics (any)': skill = random.choice(athleticSkills)
         if skill in athleticSkills and self.athletics == n: skill == 'Athletics'
 
-        # Driving (Any)
+        # Driving (any)
         drivingSkills = ['Driving','Motorcycle','Heavy Machinery','Drive Mole','Drive Tracked','Drive Wheeled']
-        if skill == 'Driving (Any)': skill = random.choice(drivingSkills)
+        if skill == 'Driving (any)': skill = random.choice(drivingSkills)
         if skill in drivingSkills and self.driving == n: skill = 'Driving'
 
-        # Engineer (Any)
+        # Engineer (any)
         engineeringSkills = ['Demolitions','Engineer','M-Drive','J-Drive','Life Support','Power']
-        if skill == 'Engineer (Any)': skill = random.choice(engineeringSkills)
+        if skill == 'Engineer (any)': skill = random.choice(engineeringSkills)
         if skill in engineeringSkills and self.engineer == n: skill = 'Engineer'
 
-        # Flyer (Any)
+        # Flyer (any)
         flyerSkills = ['Dirigible','Fixed Wing','Flyer','Grav','Rotor','Vector Thrust']
-        if skill == 'Flyer (Any)': skill = random.choice(flyerSkills)
+        if skill == 'Flyer (any)': skill = random.choice(flyerSkills)
         if skill in flyerSkills and self.flyer == n: skill = 'Flyer'
 
-        # Gunner (Any)
+        # Gunner (any)
         gunnerSkills = ['Gunner','Turrets','Ortillery','Screens','Captial Weapons']
-        if skill == 'Gunner (Any)': skill = random.choice(gunnerSkills)
+        if skill == 'Gunner (any)': skill = random.choice(gunnerSkills)
         if skill in gunnerSkills and self.gunner == n: skill = 'Gunner'
 
-        # Gun Combat (Any)
+        # Gun Combat (any)
         gunCombatSkills = ['Submachinegun','Gun Combat','Slug Rifle','Slug Pistol','Shotgun','Energy Rifle','Energy Pistol']
-        if skill == 'Gun Combat (Any)': skill = random.choice(gunCombatSkills)
+        if skill == 'Gun Combat (any)': skill = random.choice(gunCombatSkills)
         if skill in gunCombatSkills and self.gunCombat == n: skill = 'Gun Combat'
 
-        # Heavy Weapons (Any)
+        # Heavy Weapons (any)
         heavyWeaponsSkills = ['Heavy Weapons','Launchers','MPA','Field Artillery']
-        if skill == 'Heavy Weapons (Any)': skill = random.choice(heavyWeaponSkills)
+        if skill == 'Heavy Weapons (any)': skill = random.choice(heavyWeaponSkills)
         if skill in heavyWeaponSkills and self.heavyWeapons == n: skill = 'Heavy Weapons'
 
         # Languages - They end here and do not go on to the alphabetized list
         languagesList = []
         for i in range(len(self.language)):
             languagesList.append(self.language[i][0])
-        if skill == 'Language (Any)': skill = random.choice(languageList)
+        if skill == 'Language (any)': skill = random.choice(languageList)
         if skill in languagesList: self.learn(skill,num)
 
         # Martial Arts Skills
         martialArtsSkills = ['Aikido','Animal Kung Fu','Boxing','Capoeria','Choi Li Fut','Fencing','Judo','Karate','Tae Kwon Do','Thai Kick Boxing','Wrestling']
-        if skill == 'Martial Arts (Any)': skill = random.choice(martialArtsSkills)
+        if skill == 'Martial Arts (any)': skill = random.choice(martialArtsSkills)
 
         # Melee Skills
         meleeSkills = ['Archery','Blade','Bludgeon','Brawling','Melee','Natural Weapon','Unarmed']
-        if skill == 'Melee (Any)': skill = random.choice(meleeSkills)
+        if skill == 'Melee (any)': skill = random.choice(meleeSkills)
         if skill in meleeSkills and self.melee == n: skill = 'Melee'
 
-        # Pilot (Any)
+        # Pilot (any)
         pilotSkills = ['Pilot','Small Craft','Spacecraft','Capital Ships']
-        if skill == 'Pilot (Any)': skill = random.choice(pilotSkills)
+        if skill == 'Pilot (any)': skill = random.choice(pilotSkills)
         if skill in pilotSkills and self.pilot == n: skill = 'Pilot'
 
-        # Seafarer (Any)
+        # Seafarer (any)
         seafarerSkills = ['Seafarer','Sail','Ocean Ships','Motorboats','Submarine']
-        if skill == 'Seafarer (Any)': skill = random.choice(seafarerSkills)
+        if skill == 'Seafarer (any)': skill = random.choice(seafarerSkills)
         if skill in seafarerSkills and self.seafarer == n: skill = 'Seafarer'
 
-        # Science (Any) - Automatically detects number of skills and rolls them with the probability
+        # Science (any) - Automatically detects number of skills and rolls them with the probability
         # of each science section's individual skills being picked - the more skills in the section,
         # the more likely it is picked. Adaptive to changes in skill amount
-        if skill == 'Science (Any)':
+        if skill == 'Science (any)':
             lifeNum = len(lifeScienceSkills)
             physNum = len(physicalScienceSkills) + lifeNum
             socNum = len(socialScienceSkills) + physNum
             spacNum = len(spaceScienceSkills) + socNum
             sciChoice = d(1,spacNum,0)
-            sciAnswer = 'Life Science (Any)'
-            if sciChoice > lifeNum: sciAnswer = 'Physical Science (Any)'
-            if sciChoice > physNum: sciAnswer = 'Social Science (Any)'
-            if sciChoice > socNum: sciAnswer = 'Space Science (Any)'
+            sciAnswer = 'Life Science (any)'
+            if sciChoice > lifeNum: sciAnswer = 'Physical Science (any)'
+            if sciChoice > physNum: sciAnswer = 'Social Science (any)'
+            if sciChoice > socNum: sciAnswer = 'Space Science (any)'
             skill = sciAnswer
         
-        # Life Science (Any)
+        # Life Science (any)
         lifeScienceSkills = ['Life Science','Biology','Botany','Cybernetics','Genetics','Psionicology','Pharmaceuticals','Zoology']
-        if skill == 'Life Science (Any)': skill = random.choice(lifeScienceSkills)
+        if skill == 'Life Science (any)': skill = random.choice(lifeScienceSkills)
         if skill in lifeScienceSkills and self.lifeScience == n: skill = 'Life Science'
 
-        # Physical Science (Any)
+        # Physical Science (any)
         physicalScienceSkills = ['Physical Science','Physics','Chemistry','Electronic Science','Math']
-        if skill == 'Physical Science (Any)': skill = random.choice(physicalScienceSkills)
+        if skill == 'Physical Science (any)': skill = random.choice(physicalScienceSkills)
         if skill in physicalScienceSkills and self.physicalScience == n: skill = 'Physical Science'
 
-        # Social Science (Any)
+        # Social Science (any)
         socialScienceSkills = ['Social Science','Anthropology','Archaeology','Economics','History','Linguistics','Philosophy','Psychology','Sophontology']
-        if skill == 'Social Science (Any)': skill = random.choice(socialScienceSkills)
+        if skill == 'Social Science (any)': skill = random.choice(socialScienceSkills)
         if skill in socialScienceSkills and self.socialScience == n: skill = 'Social Science'
 
-        # Space Science (Any)
+        # Space Science (any)
         spaceScienceSkills = ['Space Science','Planetology','Robotocs','Xenology']
-        if skill == 'Space Science (Any)': skill = random.choice(spaceScienceSkills)
+        if skill == 'Space Science (any)': skill = random.choice(spaceScienceSkills)
         if skill in spaceScienceSkills and self.spaceScience == n: skill = 'Space Science'
 
-        # Tactics (Any)
+        # Tactics (any)
         tacticalSkills = ['Tactics','Military Tactics','Naval Tactics','Guerrilla Tactics']
-        if skill == 'Tactics (Any)': skill = random.choice(tacticalSkills)
+        if skill == 'Tactics (any)': skill = random.choice(tacticalSkills)
         if skill in tacticalSkills and self.tactics == n: skill = 'Tactics'
 
-        # Technical Skills (Any)
-        if skill = 'Tech Skill (Any)': skill = random.choice(['Technician (Any)','Mechanic (Any)'])
+        # Technical Skills (any)
+        if skill = 'Tech Skill (any)': skill = random.choice(['Technician (any)','Mechanic (any)'])
 
         # Technician Skills
         basicTechSkills = ['Basic Tech','Cryotank','Cyberdeck Design','Electronics','Explosives','Weaponsmith']
-        if skill == 'Technician (Any)': skill = random.choice(basicTechSkills)
+        if skill == 'Technician (any)': skill = random.choice(basicTechSkills)
         if skill in basicTechSkills and self.basicTech == n: skill = 'Basic Tech'
 
         # Mechanic Skills
         mechanicSkills = ['Mechanic','Aero Tech','Vector Thrust Tech','Cyber Tech','Electronic Security','Gyro Tech']
-        if skill == 'Mechanic (Any)': skill = random.choice(mechanicSkills)
+        if skill == 'Mechanic (any)': skill = random.choice(mechanicSkills)
         if skill in mechanicSkills and self.mechanic == n: skill = 'Mechanic'
 
-        # Trade (Any)
+        # Trade (any)
         tradeSkills = ['Trade','Trade Biologicals','Trade Civil Engineering','Trade Space Construction','Trade Hydroponics','Trade Polymers']
-        if skill == 'Trade (Any)': skill = random.choice(tradeSkills)
+        if skill == 'Trade (any)': skill = random.choice(tradeSkills)
         if skill in tradeSkills and self.trade == n: skill = 'Trade'
 
 
