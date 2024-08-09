@@ -57,17 +57,17 @@ class skills():
 
         # Art Skills
         #    Tag                                # Name of Tag               Source  Ability Note:
-        self.performance = n                    # Performance               CP      EMP
+        self.art = n                            # Art                       TV
+        self.acting = n                         # Acting                    TV          
         self.composition = n                    # Composition               CP      INT
         self.dancing = n                        # Dancing                   CP/TV   REF     Traveller listed as 'Dance'
         self.disguise = n                       # Disguise                  CP      TECH    Fool others (person)
         self.forgery = n                        # Forgery                   CP      TECH    Fool others (object)
+        self.holography = n                     # Holography                TV
         self.instrument = n                     # Instrument                CP/TV   TECH    Requires extrapolation
         self.paintDraw = n                      # Paint or Draw             CP      TECH    Consider separating
+        self.performance = n                    # Performance               CP      EMP
         self.photoFilm = n                      # Photo & Film              CP      TECH    Consider renaming "Camera"
-        self.art = n                            # Art                       TV
-        self.acting = n                         # Acting                    TV              
-        self.holography = n                     # Holography                TV
         self.sculpting = n                      # Sculpting                 TV
         self.wardrobeStyle = n                  # Wardrobe & Style          CP      ATTR
         self.writing = n                        # Writing                   TV
@@ -96,19 +96,18 @@ class skills():
         self.engineer = n                       # Engineer                  TV
         self.mDrive = n                         # M-Drive                   TV
         self.jDrive = n                         # J-Drive                   TV
-        #self.electricalEngineer = n            # Electrical Engineer       TV              Use Electronic Science instead
         self.lifeSupport = n                    # Life Support              TV              Life Support Systems
         self.power = n                          # Power                     TV              Power Plants
 
         # Flyer Skills
         #    Tag                                # Name of Tag               Source  Ability Note:
-        self.fixedWing = n                      # Fixed Wing                CP/TV   REF     Traveller referred 'Wing'
         self.dirigible = n                      # Dirigible                 CP      REF     For Airships / Blimps
-        self.vectorThrust = n                   # Vector Thrust             CP      REF 
+        self.fixedWing = n                      # Fixed Wing                CP/TV   REF     Traveller referred 'Wing'
         self.flyer = n                          # Flyer                     TV              For piloting in-atmosphere craft
         self.grav = n                           # Grav                      TV              For crafts with anti-gravity propulsion
         self.rotor = n                          # Rotor                     TV/CP   REF     Cyberpunk referred 'Gyro'
-
+        self.vectorThrust = n                   # Vector Thrust             CP      REF 
+        
         # Gunner Skills
         #    Tag                                # Name of Tag               Source  Ability Note:
         self.gunner = n                         # Gunner                    TV              Ship Weaponry Familiarity
@@ -119,8 +118,6 @@ class skills():
 
         # Gun Combat Skills
         #    Tag                                # Name of Tag               Source  Ability Note:
-        self.archery = n                        # Archery                   CP      REF
-        self.fencing = n                        # Fencing                   CP      REF
         self.submachinegun = n                  # Submachinegun             CP      REF
         self.gunCombat = n                      # Gun Combat                TV
         self.slugRifle = n                      # Slug Rife                 TV/CP   REF     Cyberpunk referred 'rifle'
@@ -137,15 +134,16 @@ class skills():
         self.fieldArtillery = n                 # Field Artillery           TV
 
         # Languages 
-        self.language = [['English',0],                       # Language                  CP/TV   INT     Requires Extrapolation
-                         ['Bantu',0],['Kongo',0],['Ashandi',0],['Zulu',0],['Swahili',0], # 1 of each language with no respect to dialect
-                         ['Japanese',0],['Korean',0],                                    # meant to just represent what skill you've picked up or learned
-                         ['Bulgarian',0],['Russian',0],['Czech',0],['Polish',0],['Ukranian',0],['Slovak',0],
-                         ['Microneasian',0],['Tagalog',0],['Polynesian',0],['Malayan',0],['Sudanese',0],['Indonesian',0],['Hawaiian',0],
-                         ['Burmese',0],['Cantonese',0],['Mandarin',0],['Thai',0],['Tibetan',0],['Vietnamese',0],
-                         ['Lingua Astra',0],['Alien Language',0],
-                         ['Spanish',0],['Portuguese',0],
-                         ['French',0],['German',0],['Italian',0],['Greek',0],['Danish',0],['Dutch',0],['Norwegian',0],['Swedish',0],['Finnish',0]]
+        self.language = [['English',n],                       # Language                  CP/TV   INT     Requires Extrapolation
+                         ['Bantu',n],['Kongo',n],['Ashandi',n],['Zulu',n],['Swahili',n], # 1 of each language with no respect to dialect
+                         ['Japanese',n],['Korean',n],                                    # meant to just represent what skill you've picked up or learned
+                         ['Bulgarian',n],['Russian',n],['Czech',n],['Polish',n],['Ukranian',n],['Slovak',n],
+                         ['Microneasian',n],['Tagalog',n],['Polynesian',n],['Malayan',n],['Sudanese',n],['Indonesian',n],['Hawaiian',n],
+                         ['Burmese',n],['Cantonese',n],['Mandarin',n],['Thai',n],['Tibetan',n],['Vietnamese',n],
+                         ['Lingua Astra',n],['Alien Language',n],
+                         ['Spanish',n],['Portuguese',n],
+                         ['French',n],['German',n],['Italian',n],['Greek',n],['Danish',n],['Dutch',n],['Norwegian',n],['Swedish',n],['Finnish',n]]
+        # Languages need no additional skills list
                          
         # Martial Arts Skills
         #    Tag                                # Name of Tag               Source  Ability Note:
@@ -154,6 +152,7 @@ class skills():
         self.boxing = n                         # Boxing                    CP      REF
         self.capoeria = n                       # Capoeria                  CP      REF
         self.choiLiFut = n                      # Choi Li Fut               CP      REF
+        self.fencing = n                        # Fencing                   CP      REF
         self.judo = n                           # Judo                      CP      REF
         self.karate = n                         # Karate                    CP      REF
         self.taeKwonDo = n                      # Tae Kwon Do               CP      REF
@@ -162,6 +161,7 @@ class skills():
 
         # Melee Skills
         #    Tag                                # Name of Tag               Source  Ability Note:
+        self.archery = n                        # Archery                   CP      REF
         self.blade = n                          # Blade                     TV
         self.bludgeon = n                       # Bludgeon                  TV
         self.brawling = n                       # Brawling                  CP      REF
@@ -184,16 +184,15 @@ class skills():
         self.oceanShips = n
         self.motorboats = n
 
-        # The Sciences
-        
+                                                # The Sciences
         # Life Science
         #    Tag                                # Name of Tag               Source  Ability Note:
         self.lifeScience = n                    # Life Science
         self.biology = n                        # Biology                   CP/TV   INT
-        self.botany = n                         # Botony                    CP      INT
+        self.botany = n                         # Botany                    CP      INT
         self.cybernetics = n                    # Cybernetics
         self.genetics = n                       # Genetics
-        self.psionicology = n                   # Psionicology
+        self.psionicology = n                   # Psionicology                            Consider replacing with a 'science of mutation'd life'
         self.pharmaceuticals = n                # Pharmaceuticals           CP      TECH
         self.zoology = n                        # Zoology                   CP      INT
 
@@ -202,7 +201,7 @@ class skills():
         self.physicalScience = n                # Physical Science
         self.physics = n                        # Physics                   CP/TV   INT
         self.chemistry = n                      # Chemistry                 CP      INT 
-        self.electronicScience = n              # Electronic Science             
+        self.electronicScience = n              # Electronic Science                         Counted for instances of 'Electrical Engineering'
         self.math = n                           # Math                      CP      INT
         
         # Social Science
@@ -229,22 +228,24 @@ class skills():
         self.tactics = n                        # Tactics                   TV
         self.militaryTactics = n                # Military Tactics          TV
         self.navalTactics = n                   # Naval Tactics             TV
+        self.guerrillaTactics = n               # Guerrilla Tactics         SR
 
-        # Technical Skills
+        # Basic Tech Skills
         #    Tag                                # Name of Tag               Source  Ability Note:
-        self.aeroTech = n                       # Aero Tech                 CP      TECH
-        self.vectorThrustTech = n               # Vector Thrust Tech        CP      TECH
         self.basicTech = n  #                   # Basic Tech                CP      TECH
         self.cryotank = n                       # Cryotank                  CP      TECH
         self.cyberdeckDesign = n                # Cyberdeck Design          CP      TECH
-        self.cyberTech = n  #                   # Cyber Tech                CP      TECH
         self.electronics = n  #                 # Electronics               CP      TECH
-        self.electronicSecurity = n             # Electronic Security       CP      TECH
         self.explosives = n                     # Explosives                TV              
-        self.firstAid = n                       # First Aid                 CP/TV   TECH    Traveller Refers 'Medic'
-        self.gyroTech = n                       # Gyro Tech                 CP      TECH    Includes work on rotor vehicles (helicopters)
         self.weaponsmith = n                    # Weaponsmith               CP      TECH
+
+        # Mechanic Skills
         self.mechanic = n                       # Mechanic                  TV
+        self.aeroTech = n                       # Aero Tech                 CP      TECH
+        self.vectorThrustTech = n               # Vector Thrust Tech        CP      TECH
+        self.cyberTech = n  #                   # Cyber Tech                CP      TECH
+        self.electronicSecurity = n             # Electronic Security       CP      TECH
+        self.gyroTech = n                       # Gyro Tech                 CP      TECH    Includes work on rotor vehicles (helicopters)
 
         # Trade Skills 
         #    Tag                                # Name of Tag               Source  Ability Note:
@@ -273,6 +274,7 @@ class skills():
         self.dodgeEscape = n                    # Dodge/Escape              CP      REF
         self.education = n                      # Education                 CP      INT
         self.expert = n                         # Expert                    CP      INT
+        self.firstAid = n                       # First Aid                 CP/TV   TECH    Traveller Refers 'Medic'
         self.gamble = n                         # Gamble                    CP/TV   INT     Traveller referred 'Gambler'
         self.hideEvade = n                      # Hide/Evade                CP      INT
         self.humanPerception = n                # Human Perception          CP      EMP
@@ -281,7 +283,6 @@ class skills():
         self.intimidate = n                     # Intimidate                CP      COOL
         self.investigate = n                    # Investigate               TV
         self.jackOfAllTrades = n                # Jack of all Trades        TV              Consider Removal
-        
         self.leadership = n                     # Leadership                CP/TV   EMP
         self.librarySearch = n                  # Library Search            CP      INT
         self.navigation = n                     # Navigation                TV
@@ -329,82 +330,142 @@ class skills():
         if skill == 'Resources': self.resources = skillCalc(self.resources,num)
         if skill == 'Streetdeal': self.streetdeal = skillCalc(self.streetdeal,num)
 
-        # Traveller Skills Lists
-        # Animals
-        if skill == 'Animals (Any)':
-            if self.animals == -3: skill = 'Animals'
-            if self.animals > -3:
-                skill = random.choice(['Animals',
-                                       'Animal Riding',
-                                       'Veterinary',
-                                       'Animal Training',
-                                       'Animal Farming'])
-        # Art
-        if skill == 'Art (Any)':
-            if self.art == -3: skill = 'Art'
-            if self.art > -3:
-                skill = random.choice(['Art',
-                                       'Acting',
-                                       'Dancing',
-                                       'Holography',
-                                       'Instrument',
-                                       'Sculpting',
-                                       'Writing'])
-        # Athletics
-        if skill == 'Athletics (Any)':
-            if self.athletics == -3: skill = 'Athletics'
-            if self.athletics > -3:
-                skill = random.choice(['Athletics',
-                                       'Coordination',
-                                       'Endurance',
-                                       'Strength Feat',
-                                       'Flying',])
+        # SB Skill (Any) Lists
+        # Takes skill groups and prerequisites into account when 'training' a new skill
+        
+        # Animals (Any)
+        animalSkills = ['Animals','Animal Riding','Veterinary','Animal Training','Animal Farming']
+        if skill == 'Animals (Any)': skill = random.choice(animalSkills)
+        if skill in animalSkills and self.animals == n: skill = 'Animals'
+        
+        # Art (Any)
+        artSkills = ['Art','Acting','Composition','Dancing','Disguise','Forgery','Holograpy','Instrument','Paint or Draw','Performance','Photo & Film','Sculpting','Wardrobe & Style','Writing']
+        if skill == 'Art (Any)': skill = random.choice(artSkills)
+        if skill in artSkills and self.art == n: skill = 'Art'
 
-        # Cyberpunk Skill Lists
-        # Martial Arts
-        if skill == 'Martial Arts (Any)':
-            skill = random.choice(['Aikido',
-                                   'Animal Kung Fu',
-                                   'Boxing',
-                                   'Capoeria',
-                                   'Choi Li Fut',
-                                   'Judo',
-                                   'Karate',
-                                   'Tae Kwon Do',
-                                   'Thai Kick Boxing',
-                                   'Wrestling'])
-        # Combat Skills
-        if skill == 'Combat Skills (Any)':
-            skill = random.choice(['Aikido',
-                                   'Animal Kung Fu',
-                                   'Boxing',
-                                   'Capoeria',
-                                   'Choi Li Fut',
-                                   'Judo',
-                                   'Karate',
-                                   'Tae Kwon Do',
-                                   'Thai Kick Boxing',
-                                   'Wrestling'])
-        ############# Technical Skills
-        if skill == 'Techie Skills':
-            skill = random.choice(['Aero Tech',
-                                   'Vector Thrust Tech',
-                                   'Cryotank',
-                                   'Cyberdeck Design',
-                                   'Demolitions',
-                                   'Disguise',
-                                   'Electronic Security',
-                                   'First Aid',
-                                   'Forgery',
-                                   'Gyro Tech',
-                                   'Paint or Draw',
-                                   'Photo & Film',
-                                   'Pharmaceuticals',
-                                   'Pick Lock',
-                                   'Pick Pocket',
-                                   'Instrument',
-                                   'Weaponsmith'])
-        # SKILL (ANY) LISTS
+        # Athletics (Any)
+        athleticSkills = ['Athletics','Endurance','Coordination','Strength','Fyling','Swimming']
+        if skill == 'Athletics (Any)': skill = random.choice(athleticSkills)
+        if skill in athleticSkills and self.athletics == n: skill == 'Athletics'
+
+        # Driving (Any)
+        drivingSkills = ['Driving','Motorcycle','Heavy Machinery','Drive Mole','Drive Tracked','Drive Wheeled']
+        if skill == 'Driving (Any)': skill = random.choice(drivingSkills)
+        if skill in drivingSkills and self.driving == n: skill = 'Driving'
+
+        # Engineer (Any)
+        engineeringSkills = ['Demolitions','Engineer','M-Drive','J-Drive','Life Support','Power']
+        if skill == 'Engineer (Any)': skill = random.choice(engineeringSkills)
+        if skill in engineeringSkills and self.engineer == n: skill = 'Engineer'
+
+        # Flyer (Any)
+        flyerSkills = ['Dirigible','Fixed Wing','Flyer','Grav','Rotor','Vector Thrust']
+        if skill == 'Flyer (Any)': skill = random.choice(flyerSkills)
+        if skill in flyerSkills and self.flyer == n: skill = 'Flyer'
+
+        # Gunner (Any)
+        gunnerSkills = ['Gunner','Turrets','Ortillery','Screens','Captial Weapons']
+        if skill == 'Gunner (Any)': skill = random.choice(gunnerSkills)
+        if skill in gunnerSkills and self.gunner == n: skill = 'Gunner'
+
+        # Gun Combat (Any)
+        gunCombatSkills = ['Submachinegun','Gun Combat','Slug Rifle','Slug Pistol','Shotgun','Energy Rifle','Energy Pistol']
+        if skill == 'Gun Combat (Any)': skill = random.choice(gunCombatSkills)
+        if skill in gunCombatSkills and self.gunCombat == n: skill = 'Gun Combat'
+
+        # Heavy Weapons (Any)
+        heavyWeaponsSkills = ['Heavy Weapons','Launchers','MPA','Field Artillery']
+        if skill == 'Heavy Weapons (Any)': skill = random.choice(heavyWeaponSkills)
+        if skill in heavyWeaponSkills and self.heavyWeapons == n: skill = 'Heavy Weapons'
+
+        # Languages - They end here and do not go on to the alphabetized list
+        languagesList = []
+        for i in range(len(self.language)):
+            languagesList.append(self.language[i][0])
+        if skill == 'Language (Any)': skill = random.choice(languageList)
+        if skill in languagesList: self.learn(skill,num)
+
+        # Martial Arts Skills
+        martialArtsSkills = ['Aikido','Animal Kung Fu','Boxing','Capoeria','Choi Li Fut','Fencing','Judo','Karate','Tae Kwon Do','Thai Kick Boxing','Wrestling']
+        if skill == 'Martial Arts (Any)': skill = random.choice(martialArtsSkills)
+
+        # Melee Skills
+        meleeSkills = ['Archery','Blade','Bludgeon','Brawling','Melee','Natural Weapon','Unarmed']
+        if skill == 'Melee (Any)': skill = random.choice(meleeSkills)
+        if skill in meleeSkills and self.melee == n: skill = 'Melee'
+
+        # Pilot (Any)
+        pilotSkills = ['Pilot','Small Craft','Spacecraft','Capital Ships']
+        if skill == 'Pilot (Any)': skill = random.choice(pilotSkills)
+        if skill in pilotSkills and self.pilot == n: skill = 'Pilot'
+
+        # Seafarer (Any)
+        seafarerSkills = ['Seafarer','Sail','Ocean Ships','Motorboats','Submarine']
+        if skill == 'Seafarer (Any)': skill = random.choice(seafarerSkills)
+        if skill in seafarerSkills and self.seafarer == n: skill = 'Seafarer'
+
+        # Science (Any) - Automatically detects number of skills and rolls them with the probability
+        # of each science section's individual skills being picked - the more skills in the section,
+        # the more likely it is picked. Adaptive to changes in skill amount
+        if skill == 'Science (Any)':
+            lifeNum = len(lifeScienceSkills)
+            physNum = len(physicalScienceSkills) + lifeNum
+            socNum = len(socialScienceSkills) + physNum
+            spacNum = len(spaceScienceSkills) + socNum
+            sciChoice = d(1,spacNum,0)
+            sciAnswer = 'Life Science (Any)'
+            if sciChoice > lifeNum: sciAnswer = 'Physical Science (Any)'
+            if sciChoice > physNum: sciAnswer = 'Social Science (Any)'
+            if sciChoice > socNum: sciAnswer = 'Space Science (Any)'
+            skill = sciAnswer
+        
+        # Life Science (Any)
+        lifeScienceSkills = ['Life Science','Biology','Botany','Cybernetics','Genetics','Psionicology','Pharmaceuticals','Zoology']
+        if skill == 'Life Science (Any)': skill = random.choice(lifeScienceSkills)
+        if skill in lifeScienceSkills and self.lifeScience == n: skill = 'Life Science'
+
+        # Physical Science (Any)
+        physicalScienceSkills = ['Physical Science','Physics','Chemistry','Electronic Science','Math']
+        if skill == 'Physical Science (Any)': skill = random.choice(physicalScienceSkills)
+        if skill in physicalScienceSkills and self.physicalScience == n: skill = 'Physical Science'
+
+        # Social Science (Any)
+        socialScienceSkills = ['Social Science','Anthropology','Archaeology','Economics','History','Linguistics','Philosophy','Psychology','Sophontology']
+        if skill == 'Social Science (Any)': skill = random.choice(socialScienceSkills)
+        if skill in socialScienceSkills and self.socialScience == n: skill = 'Social Science'
+
+        # Space Science (Any)
+        spaceScienceSkills = ['Space Science','Planetology','Robotocs','Xenology']
+        if skill == 'Space Science (Any)': skill = random.choice(spaceScienceSkills)
+        if skill in spaceScienceSkills and self.spaceScience == n: skill = 'Space Science'
+
+        # Tactics (Any)
+        tacticalSkills = ['Tactics','Military Tactics','Naval Tactics','Guerrilla Tactics']
+        if skill == 'Tactics (Any)': skill = random.choice(tacticalSkills)
+        if skill in tacticalSkills and self.tactics == n: skill = 'Tactics'
+
+        # Technical Skills (Any)
+        if skill = 'Tech Skill (Any)': skill = random.choice(['Technician (Any)','Mechanic (Any)'])
+
+        # Technician Skills
+        basicTechSkills = ['Basic Tech','Cryotank','Cyberdeck Design','Electronics','Explosives','Weaponsmith']
+        if skill == 'Technician (Any)': skill = random.choice(basicTechSkills)
+        if skill in basicTechSkills and self.basicTech == n: skill = 'Basic Tech'
+
+        # Mechanic Skills
+        mechanicSkills = ['Mechanic','Aero Tech','Vector Thrust Tech','Cyber Tech','Electronic Security','Gyro Tech']
+        if skill == 'Mechanic (Any)': skill = random.choice(mechanicSkills)
+        if skill in mechanicSkills and self.mechanic == n: skill = 'Mechanic'
+
+        # Trade (Any)
+        tradeSkills = ['Trade','Trade Biologicals','Trade Civil Engineering','Trade Space Construction','Trade Hydroponics','Trade Polymers']
+        if skill == 'Trade (Any)': skill = random.choice(tradeSkills)
+        if skill in tradeSkills and self.trade == n: skill = 'Trade'
+
+
+        
+        
+        # ALPHABETIZED LIST OF ALL SKILLS
 
         #A
         if skill == 'Accounting': self.accounting = skillCalc(self.accounting,num) # INT
