@@ -161,7 +161,7 @@ class backstory():
             a = ['Trade (any)', 0]
             skill_list.append(a)
         if 'Ri' in character.homeworld.codes:
-            a = ['Carouse (any)', 0]
+            a = ['Carouse', 0] # Was 'Carouse (any)' for when it was divided by medium
             skill_list.append(a)
         if len(skill_list) > 0: return random.choice(skill_list)
         if len(skill_list) == 0: return ['null',0]

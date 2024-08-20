@@ -92,33 +92,33 @@ class character():
         if z == 10: self.affectations = 'Fingerless Gloves'
 
     def generate(self,homeworld):
-        self.name = generateName()
-        self.roll_stats()
-        self.homeworld = homeworld
-        history = backstory()
-        history.generateBackstory(homeworld.uwp[7])
-        self.backstory = history
-        home_skill = self.backstory.homeworld_skills(self)
-        tiein = generateName()
-        self.backstory.valuedPerson = tiein+' ('+self.backstory.valuedPerson+')'
-        self.personalStylist()
-        p_occupy = occupation()
-        self.occupation = p_occupy
-        self.occupation.aptitudeTest(self)
-        p_skills = skills(self)
-        self.skills = p_skills
-        self.skills.train(self,home_skill[0],home_skill[1])
-        self.occupation.rollSkills(self)
-        self.occupation.occupationTable(self)
-        self.occupation.lifeEventsGenerator(self)
+        self.name = generateName()                                                  # Generate a name for the character.
+        self.roll_stats()                                                           # Roll the character's ability scores.
+        self.homeworld = homeworld                                                  # Set the included planet as the homeworld.
+        history = backstory()                                                       # Create an instance of the backstory() class.
+        history.generateBackstory(homeworld.uwp[7])                                 # Generate a backstory in the created instance.
+        self.backstory = history                                                    # Sets the character's backstory as the created backstory.
+        home_skill = self.backstory.homeworld_skills(self)                          # Creates a variable containing the 'homeworld skill'.
+        tiein = generateName()                                                      # Generates a name for a tie-in character.
+        self.backstory.valuedPerson = tiein+' ('+self.backstory.valuedPerson+')'    # Sets the tie-in for our main character's most valued person.
+        self.personalStylist()                                                      # Sets the character's hair, clothing, and affectations.
+        p_occupy = occupation()                                                     # Creates an instance of the occupation() class.
+        self.occupation = p_occupy                                                  # Sets the character's occupation as the created instance.
+        self.occupation.aptitudeTest(self)                                          # Decides the character's sabatical job based on ability scores.
+        p_skills = skills(self)                                                     # Creates an instance of the skills() class.
+        self.skills = p_skills                                                      # Set the character's skills as the instance.
+        self.skills.train(self,home_skill[0],home_skill[1])                         # Trains the character in their native homeworld skill.
+        self.occupation.rollSkills(self)                                            # Rolls the character's occupation skills.
+        self.occupation.occupationTable(self)                                       # Gives the character a job for initial funds.
+        self.occupation.lifeEventsGenerator(self)                                   # Generates a number of life events to apply to the character.
         
-        self.age = self.age + len(self.occupation.lifeEvents)
-        p_lifepath = lifepath()
-        self.lifepath = p_lifepath
-        self.lifepath.careerAge = self.age
+        self.age = self.age + len(self.occupation.lifeEvents)                       # Sets character age to 16 plus the number of life events.
+        p_lifepath = lifepath()                                                     # Creates an instance of the lifepath() class.
+        self.lifepath = p_lifepath                                                  # Sets the character's lifepath as the instance. 
+        self.lifepath.careerAge = self.age                                          # Sets the starting age for your lifepath as the current age. 
 
-        self.lifepath.career = 'Drifter'
-        self.lifepath.drifter_career_check(self)
+        self.lifepath.career = 'Drifter'                                            # Sets the career path as 'Drifter' for troubleshooting purposes.
+        self.lifepath.drifter_career_check(self)                                    # Performs a 'career check'. I don't know what that means. (Hello, God? Are you there?)
         
         
     def characterNiche(self):
@@ -174,7 +174,7 @@ class character():
         for i in range(len(self.lifepath.events)):
             print(self.lifepath.events[i])
 
-def ctest():
+def ctest(): # For testing character generation.
     home = planet()
     home.generate(['0505'],True)
     diana = character()

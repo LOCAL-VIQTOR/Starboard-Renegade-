@@ -1,6 +1,10 @@
 from SRcharacters import *
 from SRskills import *
 
+# TODO: ADD ENEMIES
+    #   VERIFY ALL SKILL STRINGS
+    #   CONSIDER LOWING AMOUNT OF SKILLS TRAINED (CURRENTLY 40) // LINE 37
+
 class occupation():
     def __init__(self):
         self.role = ''
@@ -47,15 +51,18 @@ class occupation():
                 skillDistribution[x] += 1
                 
             if self.role == 'Solo':
+                gunAmmo = random.choice(['Energy ','Slug'])
+                handgun = gunAmmo + 'Pistol'
+                rifle = gunAmmo + 'Rifle'
                 classSkills = ['Combat Sense',
                                'Awareness/Notice',
-                               'Handgun',
-                               'Martial Arts (Any)',
+                               handgun,
+                               'Martial Arts (any)',
                                'Brawling',
                                'Weaponsmith',
-                               'Rifle',
+                               rifle,
                                'Athletics',
-                               'Submachinegun',
+                               'Submachinegun', # The eternal question. . . Should I include E. Submachine guns?
                                'Stealth']
             if self.role == 'Corporate':
                 classSkills = ['Resources',
@@ -80,34 +87,42 @@ class occupation():
                                'Photo & Film',
                                'Interview']
             if self.role == 'Nomad':
+                gunAmmo = random.choice(['Energy ','Slug'])
+                rifle = gunAmmo + 'Rifle'
                 classSkills = ['Family',
                                'Awareness/Notice',
                                'Endurance',
                                'Melee',
-                               'Rifle',
+                               rifle,
                                'Driving',
                                'Basic Tech',
                                'Survival',
                                'Brawling',
                                'Athletics']
-            if self.role == 'Techie':
-                techieSkills = ['Aero Tech',
-                                'Vector Thrust Tech',
-                                'Cryotank',
-                                'Cyberdeck Design',
-                                'Demolitions',
-                                'Disguise',
-                                'Electronic Security',
-                                'First Aid',
-                                'Forgery',
-                                'Gyro Tech',
-                                'Paint or Draw',
-                                'Photo & Film',
-                                'Pharmaceuticals',
-                                'Pick Lock',
-                                'Pick Pocket',
-                                'Instrument',
-                                'Weaponsmith']
+            if self.role == 'Techie': # Replace "Techie Skills" with Basic Tech, Mechanic, and Engineering Skills
+                #techieSkills = ['Aero Tech',
+                #                'Vector Thrust Tech',
+                #                'Cryotank',
+                #                'Cyberdeck Design',
+                #                'Demolitions',
+                #                'Disguise',
+                #                'Electronic Security',
+                #                'First Aid',
+                #                'Forgery',
+                #                'Gyro Tech',
+                #                'Paint or Draw',
+                #                'Photo & Film',
+                #                'Pharmaceuticals',
+                #                'Pick Lock',
+                #                'Pick Pocket',
+                #                'Instrument',
+                #                'Weaponsmith']
+                
+                # NEW Techie Skills
+                techieSkills = ['Demolitions','Engineer','M-Drive','J-Drive','Life Support','Power',
+                                'Cryotank','Cyberdeck Design','Explosives','Weaponsmith',
+                                'Mechanic','Aero Tech','Vector Thrust Tech','Electronic Security','Gyro Tech']
+
                 skillOne = random.choice(techieSkills)
                 techieSkills.remove(skillOne)
                 skillTwo = random.choice(techieSkills)
@@ -133,7 +148,7 @@ class occupation():
                                'Brawling',
                                'Instrument',
                                'Streetwise',
-                               'Persuation',
+                               'Persuade',
                                'Seduction']
             if self.role == 'Medtechie':
                 classSkills = ['Medical Tech',
@@ -147,16 +162,18 @@ class occupation():
                                'Zoology',
                                'Human Perception']
             if self.role == 'Fixer':
+                gunAmmo = random.choice(['Energy ','Slug '])
+                handgun = gunAmmo + 'Pistol'
                 classSkills = ['Streetdeal',
                                'Awareness/Notice',
                                'Forgery',
-                               'Handgun',
+                               handgun,
                                'Brawling',
                                'Melee',
                                'Pick Lock',
                                'Pick Pocket',
                                'Intimidate',
-                               'Persuasion']
+                               'Persuade']
             if self.role == 'Netrunner':
                 classSkills = ['Interface',
                                'Awareness/Notice',
@@ -169,9 +186,11 @@ class occupation():
                                'Electronics',
                                'Programming']
             if self.role == 'Cop':
+                gunAmmo = random.choice(['Energy ','Slug '])
+                handgun = gunAmmo + 'Pistol'
                 classSkills = ['Authority',
                                'Awareness/Notice',
-                               'Handgun',
+                               handgun,
                                'Human Perception',
                                'Athletics',
                                'Education',
@@ -185,7 +204,9 @@ class occupation():
                 character.skills.train(self,classSkills[i],skillDistribution[i]) # OOR
 
             # ROLL PICKUP SKILLS
-            masterSkillsList = ['Personal Grooming','Wardrobe & Style','Endurance','Strength Feat','Swimming','Interrogation','Intimidate','Oratory','Resist Torture & Drugs','Streetwise','Human Perception','Interview','Leadership','Seduction','Social','Persuasion','Performance','Accounting','Anthropology','Awareness/Notice','Biology','Botany','Chemistry','Composition','Diagnose Illness','Education','Expert','Gamble','Hide/Evade','History','Language','Library Search','Math','Physics','Programming','Shadow/Track','Stock Market','System Knowledge','Teaching','Survival','Zoology','Archery','Athletics','Brawling','Dancing','Dodge/Escape','Driving','Fencing','Handgun','Heavy Weapons','Aikido','Animal Kung Fu','Boxing','Capoeria','Choi Li Fut','Judo','Karate','Tae Kwon Do','Thai Kick Boxing','Wresling','Melee','Moorcycle','Heavy Machinery','Gyro','Fixed Wing','Dirigible','Vector Thrust','Rifle','Stealth','Submachinegun','Aero Tech','Vector Thrust Tech','Basic Tech','Cryotank','Cyberdeck Design','Cyber Tech','Demolitions','Disguise','Electronics','Electronic Security','First Aid','Forgery','Gyro Tech','Paint or Draw','Photo & Film','Pharmaceuticals','Pick Lock','Pick Pocket','Instrument','Weaponsmith']
+            # MASTER SKILLS LIST NEEDS TO BE UPDATED
+            # OR ELSE PICKUP SKILLS MUST BE REWRITTEN    
+            masterSkillsList = ['Personal Grooming','Wardrobe & Style','Endurance','Strength','Swimming','Interrogation','Intimidate','Oratory','Resist Torture & Drugs','Streetwise','Human Perception','Interview','Leadership','Seduction','Social','Persuasion','Performance','Accounting','Anthropology','Awareness/Notice','Biology','Botany','Chemistry','Composition','Diagnose Illness','Education','Expert','Gamble','Hide/Evade','History','Language','Library Search','Math','Physics','Programming','Shadow/Track','Stock Market','System Knowledge','Teaching','Survival','Zoology','Archery','Athletics','Brawling','Dancing','Dodge/Escape','Driving','Fencing','Handgun','Heavy Weapons','Aikido','Animal Kung Fu','Boxing','Capoeria','Choi Li Fut','Judo','Karate','Tae Kwon Do','Thai Kick Boxing','Wresling','Melee','Moorcycle','Heavy Machinery','Gyro','Fixed Wing','Dirigible','Vector Thrust','Rifle','Stealth','Submachinegun','Aero Tech','Vector Thrust Tech','Basic Tech','Cryotank','Cyberdeck Design','Cyber Tech','Demolitions','Disguise','Electronics','Electronic Security','First Aid','Forgery','Gyro Tech','Paint or Draw','Photo & Film','Pharmaceuticals','Pick Lock','Pick Pocket','Instrument','Weaponsmith']
             skillsList = []
             for i in range(len(masterSkillsList)):
                 if masterSkillsList[i] not in classSkills: skillsList.append(masterSkillsList[i])
