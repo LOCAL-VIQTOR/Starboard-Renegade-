@@ -5,6 +5,10 @@ BEGIN TRANSMISSION
 YEAR: 2006
 EXTRA TERRESTRIAL LIFE: EXTREMELY RARE
 ```
+## 
+
+## Extra-Terrestrial Life
+Human life has extended out into the understandable universe, and we have not found much in terms of intelligent or even non-intelligent life. Although there are clear signs around the universe of other civilizations, most of them were not advanced enough to spread to the habitable universe, or fell to an unknown war or mysterious disease from long ago. Humans are the dominant species of life on nearly every planet (besides the cattle stock which is common on many planets), and the known forms of intelligent life are spread out and commonly shrouded in their own enigmatic culture. 
 
 ## Corpos
 Corporations are in full swing, with many companies maintaining a broad network of intergalactic fulfillment centers while others maintain near absolute monopolies in their respective regions. Corporate espionage is more than prevalent in the society of 2006, with hostile takeovers, client theft, and mob-style executions. 
