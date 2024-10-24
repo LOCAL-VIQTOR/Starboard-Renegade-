@@ -12,18 +12,27 @@ def dsixtysix(tens_modifier, ones_modifier):  # Rolls D66 with a modifier to 10s
     return (random.randint(1, 6) * 10) + random.randint(1, 6) + (tens_modifier * 10) + ones_modifier
 
 def hexSwitch(number):  # Takes a decimal and returns a hexadecimal string
-    if number < 10: return str(number)
-    if number == 10: return 'A'
-    if number == 11: return 'B'
-    if number == 12: return 'C'
-    if number == 13: return 'D'
-    if number == 14: return 'E'
-    if number == 15: return 'F'
-    if number == 16: return 'G'
-    if number == 17: return 'H'
-    if number == 18: return 'J'
-    if number == 19: return 'K'
-    if number == 20: return 'L'
+    if isinstance(number,int)==True:
+        if number < 10: return str(number)
+        if 10 <= number <= 20:
+            to_letter = {10:'A',11:'B',12:'C',13:'D',14:'E',15:'F',16:'G',17:'H',18:'J',19:'K',20:'L'}
+            return to_letter[number]
+        else: print('Error: hexSwitch above 20')
+    if isinstance(number,str)==True:
+        if number == 'A': return 10
+        if number == 'B': return 11
+        if number == 'C': return 12
+        if number == 'D': return 13
+        if number == 'E': return 14
+        if number == 'F': return 15
+        if number == 'G': return 16
+        if number == 'H': return 17
+        if number == 'J': return 18
+        if number == 'K': return 19
+        if number == 'L': return 20
+        else: return int(number)
+    else: print('hexSwitch not number or letter.')
+        
 
 def alphaSwitch(numLet):  # Takes either a number or a
     if str(numLet).isdigit() == True:  # letter and returns the inverse
