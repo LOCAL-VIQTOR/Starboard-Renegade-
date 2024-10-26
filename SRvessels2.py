@@ -1,7 +1,8 @@
 # PROGRAM       SRvessels 
 # AUTHOR        LOCAL-VIQTOR
-# DATE CREATED  Unknown; Relocated 10/17/2024 | 10/20/2024
+# DATE CREATED  Unknown; Relocated 10/17/2024 | 10/25/2024
 from SRtools import *
+from SRcomputers2 import *
 #import random
 # Vessel Class
 # Hardpoint Class
@@ -118,7 +119,8 @@ class VesselStats():
         print('Tons:   '+str(self.tons))
 
 class Hull(Spec):
-    def __init__(self,config='Wedge',hull_class='4',_random=False):
+    def __init__(self,config='Wedge',hull_class='4',_random=False,fuel_scoops=False):
+        self.fuel_scoops = fuel_scoops
         standard = ['Wedge', 'Cone', 'Sphere', 'Cylinder']
         streamlined = ['Wing', 'Disc', 'Other Lifting Body']
         if _random == True:
@@ -133,9 +135,12 @@ class Hull(Spec):
         if config in streamlined:
             self.configuration = 'Streamlined'
             hull_price = hull_price * 1.1
+            self.fuel_scoops = True
         if self.configuration == 'Distributed':
             hull_price = hull_price * 0.9
             self.body = 'Distributed'
+        if self.fuel_scoops and self.configuration != 'Streamlined':
+            hull_price += 1000000
         super().__init__(num=hull_class,spec=self.configuration,cost=int(hull_price*1000000),tons=int(hexSwitch(hull_class)*100))
 
 class Armor():
@@ -315,7 +320,9 @@ class Hardpoint(Spec):  # WILL HAE TO CHANGE RANGE INTO A NUMBER INSTEAD OF RELA
                 y = d(1,2,0)
                 if y == 1: bay = random.choice(bays_list)
                 if y == 2: screen = random.choice(screens_list)
-        if _random_turret: turrets = [random.choice(turrets_list)]
+        if _random_turret:
+            turrets = [random.choice(turrets_list)]
+            
 
         if isinstance(turrets,list) == True:
             turret_options = turrets
@@ -381,7 +388,7 @@ class Hardpoint(Spec):  # WILL HAE TO CHANGE RANGE INTO A NUMBER INSTEAD OF RELA
             if turrets > 0:
                 if fixed:
                     spec = 'Fixed-Mount '+spec
-                    self.tons -= 1
+                    tons -= 1
                     cost = cost // 2
                 if popup:
                     spec = spec + ' Pop-up'
@@ -409,39 +416,45 @@ class Hardpoint(Spec):  # WILL HAE TO CHANGE RANGE INTO A NUMBER INSTEAD OF RELA
         #print(self.cost)
 
 class SpaceVessel():
-    def __init__(self,_random=True,hardpoint_budget=3):
+    def __init__(self,_random=True,hardpoint_budget=3,thrust=3,jump=1):
         self.designation = 'Test Vessel'
         self.license = self.return_license()
         self.hull = Hull(_random=_random)
         self.armor = Armor(self.hull,_random=_random)
         self.stats = VesselStats(self.hull,self.armor)
-        self.mdrive = Drive(self,thrust=3)
-        self.jdrive = Drive(self,jump=1)
+        self.mdrive = Drive(self,thrust=thrust)
+        self.jdrive = Drive(self,jump=jump)
         power = self.mdrive.num
         if power < self.jdrive.num: power = self.jdrive.num
         self.pplant = Drive(self,power=power)
-        #self.title_papers = TitlePapers(self)
         self.fuel = [0,self.jdrive.fuel*self.jdrive.jump+self.pplant.fuel]
         self.available_hull = self.hull.tons - (self.armor.tons+self.mdrive._tons()+self.jdrive._tons()+self.pplant._tons()+self.fuel[1])
 
-        # How do we decide how much will go in weapons vs. hull vs. options?
-        HARDPOINTS = self.hull.tons // 100
-        HP_TONS_BUDGET = self.available_hull // hardpoint_budget
-        self.hardpoints = []
+        self.bridge = self._bridge()
+        self.available_hull -= self.bridge.tons
+        self.stats.cost += self.bridge.cost
 
+        self.computer = Computer(model='Model '+str(self.jdrive.jump))
+        self.stats.cost += self.computer.cost
+        self.stats.upd_tl(self.computer.tl)
+        
         self.sensors = SensorSuite('Random')
         self.stats.cost += self.sensors.cost
         self.available_hull -= self.sensors.tons
         self.stats.upd_tl(self.sensors.tl)
 
+        # How do we decide how much will go in weapons vs. hull vs. options?
+        HARDPOINTS = self.hull.tons // 100
+        HP_TONS_BUDGET = self.available_hull // hardpoint_budget
+        self.hardpoints = []
         for i in range(HARDPOINTS):
             if 50 >= HP_TONS_BUDGET > 15:
-                new_hardpoint = Hardpoint(_random_turret=True)
+                new_hardpoint = Hardpoint(_random_turret=True,fixed=rbool(),popup=rbool())
                 self.hardpoints.append(new_hardpoint)
                 HP_TONS_BUDGET -= new_hardpoint.tons
                 self.stats.upd_tl(new_hardpoint.tl)
             elif HP_TONS_BUDGET > 50:
-                new_hardpoint = Hardpoint(_random=True)
+                new_hardpoint = Hardpoint(_random=True,fixed=rbool(),popup=rbool())
                 self.hardpoints.append(new_hardpoint)
                 HP_TONS_BUDGET -= new_hardpoint.tons
                 self.stats.upd_tl(new_hardpoint.tl)
@@ -463,6 +476,26 @@ class SpaceVessel():
         for i in range(4): lic = lic  + str(random.randint(0,9))
         return lic
 
+    def hardpoint_summary(self):
+        weapons_list = []
+        for hp in self.hardpoints:
+            if 'Turret' in hp.spec:
+                for turret in hp.turrets:
+                    if turret.spec not in weapons_list: weapons_list.append(turret.spec)
+            else:
+                if hp.spec not in weapons_list: weapons_list.append(hp.spec)
+        print(weapons_list)
+
+    def _bridge(self):
+        hull_tons = self.hull.tons
+        if hull_tons <= 200: tons = 10
+        if 200 < hull_tons <= 1000: tons = 20
+        if 1000 < hull_tons <= 2000: tons = 40
+        if hull_tons > 2000: tons = 60
+        cost = 500000 * (hull_tons//100)
+        return Spec(tons=tons,cost=cost)
+                
+                
     def print(self):
         print(self.designation+' ('+self.license+')')
         print('Owner: '+self.title_papers.owner)
@@ -476,10 +509,12 @@ class SpaceVessel():
         for weapon in self.hardpoints:
             weapon.print()
         self.sensors.print()
+        print(self.computer.model)
+        self.hardpoint_summary()
 
 for i in range(3):
     print()
-    b_bertha = SpaceVessel()
-    while b_bertha.stats.tl > 9: b_bertha = SpaceVessel()
+    b_bertha = SpaceVessel(_random=True)
+    #while b_bertha.stats.tl < 14: b_bertha = SpaceVessel()
     b_bertha.print()
     
