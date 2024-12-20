@@ -3,6 +3,7 @@
 import random
 import math
 from SRtools import *
+from SRfreight import *
 #from SRskills import returnEthnics
 
 # Where does this go?
@@ -63,8 +64,8 @@ def generateHexList(rows, columns):         # Creates and returns a list of habi
     for x in range(columns):                # Creates a hex where the x location (x*100+y) up to 9999.
         for y in range(rows):
             z = (x + 1) * 100 + y + 1
-            if x < 10: z = '0' + str(z)     # Add a leading 0 if hex is less than 1000
-            if x >= 10: z = str(z)
+            if x < 11: z = '0' + str(z)     # Add a leading 0 if hex is less than 1000
+            if x >= 11: z = str(z)
             c = random.randint(1, 2)       # Gives each hex a 50/50 shot of containing a settled world.
             if c == 2: hexes.append(z)      # Adds successful hexes to the hexes list
     return hexes
@@ -177,7 +178,7 @@ class planet():  # Planet Class
             self.uwp[0] = 'B'
             self.starportQuality = 'Good'
             self.berthingCost = random.randint(1, 6) * 500
-            self.fuel = 'Refined fuel'
+            self.fuel = 'Refined Fuel' ## HAD A LOWERCASE F for fuel
             self.facilities = 'Spacecraft Repair Facilities'
 
         # Excellent Starport
