@@ -2,6 +2,9 @@ import random
 from SRtools import *
 from SRplanets import *
 
+# This is just extra information I'm keeping
+# here for a game I have with my roommate.
+
 dhomeworld = planet()
 dhomeworld.hex = '0505'
 dhomeworld.name = 'Delta-4'
